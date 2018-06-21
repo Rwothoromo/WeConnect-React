@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactPasswordStrength from 'react-password-strength';
 import { NotificationManager } from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -43,9 +44,9 @@ class RegisterUser extends Component {
                         </p>
                     </div>
                     <div className="col-md-6">
-                        <form className="form-signin weconnect-form" onSubmit={this.registerUser}>
+                        <form className="form-signin weconnect-form" action="#">
                             <div className="form-group">
-                                <label className="control-label col-md-12" style={{textAlign: 'center'}}>Register</label>
+                                <label className="control-label col-md-12" htmlFor style={{textAlign: 'center'}}>Register</label>
                             </div>
                             <div className="form-group">
                                 <input type="text" className="form-control" placeholder="First name" id="first_name" name="first_name" required />
@@ -54,13 +55,22 @@ class RegisterUser extends Component {
                                 <input type="text" className="form-control" placeholder="Last name" id="last_name" name="last_name" required />
                             </div>
                             <div className="form-group">
-                                <input type="text" className="form-control" placeholder="Username" id="username" name="username" required />
+                                <ReactPasswordStrength
+                                    className="form-control"
+                                    minLength={5}
+                                    minScore={2}
+                                    scoreWords={['weak', 'okay', 'good', 'strong', 'stronger']}
+                                    inputProps={{ type: "password", placeholder: "Password", id: "password", name: "password", required: "required", autoComplete: "off", className: "form-control" }}
+                                    />
                             </div>
                             <div className="form-group">
-                                <input type="password" className="form-control" placeholder="Password" id="password" name="password" required />
-                            </div>
-                            <div className="form-group">
-                                <input type="password" className="form-control" placeholder="Confirm password" id="confirm_password" name="confirm_password" required />
+                                <ReactPasswordStrength
+                                    className="form-control"
+                                    minLength={5}
+                                    minScore={2}
+                                    scoreWords={['weak', 'okay', 'good', 'strong', 'stronger']}
+                                    inputProps={{ type: "password", placeholder: "Confirm password", id: "confirm_password", name: "confirm_password", required: "required", autoComplete: "off", className: "form-control" }}
+                                    />
                             </div>
                             <div className="form-group">
                                 <input type="submit" className="btn btn-default weconnect-btn" id="register" name="register" defaultValue="Sign up" />
