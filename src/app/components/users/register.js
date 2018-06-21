@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import ReactPasswordStrength from 'react-password-strength';
 import { NotificationManager } from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
@@ -7,10 +8,21 @@ import '../../static/css/style.css';
 import axios from "axios";
 
 class RegisterUser extends Component {
+    constructor() {
+        super();
+        this.state = {
+            registered: false
+        }
+    }
+
     registerUser = (event) => {
         event.preventDefault();
+        var passwordStrength = document.getElementsByClassName("ReactPasswordStrength-strength-desc")[0];
+
         if (event.target.elements.password.value !== event.target.elements.confirm_password.value) {
             NotificationManager.error("Passwords do not match!");
+        } else if (passwordStrength.innerHTML === 'weak') {
+            NotificationManager.error("Please use a stronger password!");
         } else {
             let user = {
                 first_name: event.target.elements.first_name.value,
@@ -22,6 +34,7 @@ class RegisterUser extends Component {
                 headers: {'Content-Type': 'application/json'}
             }).then(response => {
                 NotificationManager.success(response.data.message);
+                this.setState({registered: true});
             }).catch(error => {
                 NotificationManager.error(error.response.data.message);
             })
@@ -29,6 +42,9 @@ class RegisterUser extends Component {
     }
 
     render() {
+        if (this.state.registered) {
+            return (<Redirect to="/users/login"/>)
+        }
         return (
             <main role="main" className="container-fluid home-bg">
                 <br /><br /><br /><br />
@@ -44,15 +60,18 @@ class RegisterUser extends Component {
                         </p>
                     </div>
                     <div className="col-md-6">
-                        <form className="form-signin weconnect-form" action="#">
+                        <form className="form-signin weconnect-form" onSubmit={this.registerUser}>
                             <div className="form-group">
-                                <label className="control-label col-md-12" htmlFor style={{textAlign: 'center'}}>Register</label>
+                                <label className="control-label col-md-12" style={{textAlign: 'center'}}>Register</label>
                             </div>
                             <div className="form-group">
                                 <input type="text" className="form-control" placeholder="First name" id="first_name" name="first_name" required />
                             </div>
                             <div className="form-group">
                                 <input type="text" className="form-control" placeholder="Last name" id="last_name" name="last_name" required />
+                            </div>
+                            <div className="form-group">
+                                <input type="text" className="form-control" placeholder="Username" id="username" name="username" required />
                             </div>
                             <div className="form-group">
                                 <ReactPasswordStrength
