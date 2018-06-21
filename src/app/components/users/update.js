@@ -10,7 +10,7 @@ class UpdateUser extends Component {
 			<div className="row col-md-12">
 				<div className="col-md-2" />
 				<div className="col-md-8">
-					<form className="form-signin weconnect-form" action="#">
+					<form className="form-signin weconnect-form">
 						<div className="form-group">
 							<label className="control-label col-md-12" htmlFor style={{textAlign: 'center'}}>Update profile</label>
 						</div>
