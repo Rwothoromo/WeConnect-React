@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactPasswordStrength from 'react-password-strength';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../static/css/style.css';
 
@@ -30,10 +31,22 @@ class RegisterUser extends Component {
                             <input type="text" className="form-control" placeholder="Last name" id="last_name" name="last_name" required />
                         </div>
                         <div className="form-group">
-                            <input type="password" className="form-control" placeholder="Password" id="password" name="password" required />
+                            <ReactPasswordStrength
+                                className="form-control"
+                                minLength={5}
+                                minScore={2}
+                                scoreWords={['weak', 'okay', 'good', 'strong', 'stronger']}
+                                inputProps={{ type: "password", placeholder: "Password", id: "password", name: "password", required: "required", autoComplete: "off", className: "form-control" }}
+                                />
                         </div>
                         <div className="form-group">
-                            <input type="password" className="form-control" placeholder="Confirm password" id="confirm_password" name="confirm_password" required />
+                            <ReactPasswordStrength
+                                className="form-control"
+                                minLength={5}
+                                minScore={2}
+                                scoreWords={['weak', 'okay', 'good', 'strong', 'stronger']}
+                                inputProps={{ type: "password", placeholder: "Confirm password", id: "confirm_password", name: "confirm_password", required: "required", autoComplete: "off", className: "form-control" }}
+                                />
                         </div>
                         <div className="form-group">
                             <input type="submit" className="btn btn-default weconnect-btn" id="register" name="register" defaultValue="Sign up" />

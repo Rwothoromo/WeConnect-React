@@ -57,6 +57,16 @@ footer {
     opacity: 0.9;
 }
 
+.ReactPasswordStrength {
+    padding: 0px !important; 
+    font-size: 12px !important;
+}
+
+.ReactPasswordStrength-input {
+    padding: .375rem .75rem !important; 
+    font-size: 16px !important;
+}
+
 .weconnect-btn {
     font-size: 24px;
     color: #f8f8f8;
