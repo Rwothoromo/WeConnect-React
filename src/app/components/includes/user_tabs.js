@@ -12,8 +12,11 @@ class UserTabs extends Component {
 				<li className="nav-item">
 					<a href="/businesses/index" className="nav-link">Businesses</a>
 				</li>
-				<li className="nav-item" style={{float: 'right'}}>
+				<li className="nav-item">
 					<a href="/users/profile" className="nav-link">Profile</a>
+				</li>
+				<li className="nav-item">
+					<a href="/users/logout" className="nav-link">Logout</a>
 				</li>
 			</ul>
 		);
