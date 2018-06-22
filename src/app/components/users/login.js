@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
 import { NotificationManager } from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../static/css/style.css';
 import axios from "axios";
+import { isLoggedIn } from '../../utils/helpers';
 
 class LoginUser extends Component {
 	constructor() {
 		super();
 		this.state = {
-			loggedIn: false
+			loggedIn: isLoggedIn()
 		}
 	}
 
@@ -25,8 +25,10 @@ class LoginUser extends Component {
 			headers: {'Content-Type': 'application/json'}
 		}).then(response => {
 			NotificationManager.success(response.data.message);
-			this.setState({loggedIn: true});
-			localStorage.setItem("access_token", response.data.access_token);
+			if (response.status === 200) {
+				localStorage.setItem("access_token", response.data.access_token);
+				this.setState({loggedIn: true});
+			}
 		}).catch(error => {
 			NotificationManager.error(error.response.data.message);
 		})
@@ -34,7 +36,7 @@ class LoginUser extends Component {
 
 	render() {
 		if (this.state.loggedIn) {
-			return (<Redirect to="/businesses/index"/>);
+			window.location = "/";
 		}
 		return (
 			<main role="main" className="container-fluid home-bg">

@@ -12,6 +12,7 @@ import RegisterBusiness from './app/components/businesses/register';
 import BusinessesList from './app/components/businesses';
 import ShowBusiness from './app/components/businesses/show';
 import UpdateBusiness from './app/components/businesses/update';
+import LogoutUser from './app/components/users/logout';
 
 const Routes = () => (
 	<Router>
@@ -21,6 +22,7 @@ const Routes = () => (
 			<Route exact strict path={"/users/login"} component={LoginUser}/>
 			<Route exact strict path={"/users/profile"} component={ProfileUser}/>
 			<Route exact strict path={"/users/update"} component={UpdateUser}/>
+			<Route exact strict path={"/users/logout"} component={LogoutUser}/>
 			<Route exact strict path={"/businesses/register"} component={RegisterBusiness}/>
 			<Route exact strict path={"/businesses/index"} component={BusinessesList}/>
 			<Route exact strict path={"/businesses/show"} component={ShowBusiness}/>

@@ -5,18 +5,13 @@ import '../../static/css/style.css';
 import logo from '../../static/img/logo.PNG'
 import UserTabs from './user_tabs';
 import VisitorTabs from './visitor_tabs';
+import { isLoggedIn } from '../../utils/helpers';
 
 class Header extends Component {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		this.state = {
-			userAccess: false
-		}
-	}
-
-	componentWillMount = () => {
-		if (localStorage.getItem("access_token") !== null) {
-			this.setState({userAccess: true});
+			loggedIn: isLoggedIn()
 		}
 	}
 
@@ -32,7 +27,7 @@ class Header extends Component {
 					</button>
 					<div className="collapse navbar-collapse" id="navbarCollapse">
 						{
-							this.state.userAccess ? <UserTabs/> : <VisitorTabs/>
+							this.state.loggedIn ? <UserTabs/> : <VisitorTabs/>
 						}
 					</div>
 				</nav>
