@@ -10,9 +10,6 @@ class BusinessesList extends Component {
 				<div className="row col-md-12">
 					<div className="col-md-2" />
 					<div className="col-md-8 weconnect-div">
-						<div className="row weconnect-modal justify-content-md-center">
-							<input type="submit" className="btn btn-default" id="add_new" name="add_new" defaultValue="Add new" />
-						</div>
 						<br />
 						<div className="table-responsive">
 							<table className="table table-striped table-bordered table-hover table-condensed">
@@ -32,7 +29,7 @@ class BusinessesList extends Component {
 										<td>Construction</td>
 										<td>Kabale</td>
 										<td align="center">
-											<a href="">View
+											<a href="/businesses/show">View
 											</a>
 										</td>
 									</tr>
@@ -42,7 +39,7 @@ class BusinessesList extends Component {
 										<td>Furniture</td>
 										<td>Kampala</td>
 										<td align="center">
-											<a href="">View
+											<a href="/businesses/show">View
 											</a>
 										</td>
 									</tr>

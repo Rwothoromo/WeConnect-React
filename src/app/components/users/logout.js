@@ -6,7 +6,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../static/css/style.css';
 import axios from "axios";
 import { isLoggedIn } from '../../utils/helpers';
-import LoginUser from './login';
 
 class LogoutUser extends Component {
 	constructor() {

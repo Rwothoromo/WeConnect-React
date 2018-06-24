@@ -1,38 +1,67 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
+import { NotificationManager } from 'react-notifications';
+import 'react-notifications/lib/notifications.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../static/css/style.css';
+import axios from "axios";
 
 class RegisterBusiness extends Component {
+	constructor() {
+		super();
+		this.state = {
+			registered: false
+		}
+	}
+
+	registerBusiness = (event) => {
+		event.preventDefault();
+		let business = {
+			name: event.target.elements.name.value,
+			description: event.target.elements.description.value,
+			category: event.target.elements.category.value,
+			location: event.target.elements.location.value,
+			photo: event.target.elements.photo.value
+		}
+		axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
+		axios.post(`https://weconnect-api-v2-rwothoromo.herokuapp.com/api/v2/businesses`, JSON.stringify(business), {
+			headers: {'Content-Type': 'application/json'}
+		}).then(response => {
+			NotificationManager.success(response.data.message);
+			this.setState({registered: true});
+		}).catch(error => {
+			NotificationManager.error(error.response.data.message);
+		})
+	}
+
 	render() {
+		if (this.state.registered) {
+			return (<Redirect to="/businesses/index"/>)
+		}
 		return (
 			<main role="main" className="container-fluid other-bg">
 				<br /><br /><br /><br />
 				<div className="row col-md-12">
 					<div className="col-md-2" />
 					<div className="col-md-8 weconnect-div">
-						<form className="form-signin weconnect-form">
+						<form className="form-signin weconnect-form" onSubmit={this.registerBusiness}>
 							<div className="form-group">
 								<label className="control-label col-md-12" style={{textAlign: 'center'}}>Register a business</label>
 							</div>
 							<div className="form-group">
-								<input type="text" className="form-control" placeholder="Business name" id="business_name" name="business_name" required />
+								<input type="text" className="form-control" placeholder="Business name" id="name" name="name" required />
 							</div>
 							<div className="form-group">
-								<textarea className="col-md-12" placeholder="Description" id="description" name="description" cols={28} rows={3} defaultValue={""} />
+								<textarea className="form-control" placeholder="Description" id="description" name="description" cols={28} rows={3} defaultValue={""} />
 							</div>
 							<div className="form-group">
-								<select className="col-md-12" id="category" name="category">
-									<option value selected>--select category--</option>
-									<option value={1}>Construction</option>
-									<option value={2}>Furniture</option>
-								</select>
+								<input type="text" className="form-control" placeholder="Category" id="category" name="category" required />
 							</div>
 							<div className="form-group">
-								<select className="col-md-12" id="location" name="location">
-									<option value selected>--select location--</option>
-									<option value={1}>Kabale</option>
-									<option value={2}>Kampala</option>
-								</select>
+								<input type="text" className="form-control" placeholder="Location" id="location" name="location" required />
+							</div>
+							<div className="form-group">
+								<input type="text" className="form-control" placeholder="Photo" id="photo" name="photo" required />
 							</div>
 							<div className="form-group">
 								<input type="submit" className="btn btn-default weconnect-btn" id="register" name="register" defaultValue="Register" />
