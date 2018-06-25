@@ -24,7 +24,7 @@ class RegisterBusiness extends Component {
 			photo: event.target.elements.photo.value
 		}
 		axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
-		axios.post(`https://weconnect-api-v2-rwothoromo.herokuapp.com/api/v2/businesses`, JSON.stringify(business), {
+		axios.post(`http://127.0.0.1:5000/api/v2/businesses`, JSON.stringify(business), {
 			headers: {'Content-Type': 'application/json'}
 		}).then(response => {
 			NotificationManager.success(response.data.message);
@@ -44,7 +44,7 @@ class RegisterBusiness extends Component {
 				<div className="row col-md-12">
 					<div className="col-md-2" />
 					<div className="col-md-8 weconnect-div">
-						<form className="form-signin weconnect-form" onSubmit={this.registerBusiness}>
+						<form className="weconnect-form" onSubmit={this.registerBusiness}>
 							<div className="form-group">
 								<label className="control-label col-md-12" style={{textAlign: 'center'}}>Register a business</label>
 							</div>

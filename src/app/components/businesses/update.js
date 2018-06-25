@@ -10,7 +10,7 @@ class UpdateBusiness extends Component {
 				<div className="row col-md-12">
 					<div className="col-md-2" />
 					<div className="col-md-8 weconnect-div">
-						<form className="form-signin weconnect-form">
+						<form className="weconnect-form">
 							<div className="form-group">
 								<label className="control-label col-md-12" style={{textAlign: 'center'}}>Update business</label>
 							</div>

@@ -5,12 +5,12 @@ import '../../static/css/style.css';
 class UpdateUser extends Component {
   render() {
 	return (
-		<main role="main" className="container-fluid other-bg">
+		<main role="main" className="container-fluid home-bg">
 			<br /><br /><br /><br />
 			<div className="row col-md-12">
 				<div className="col-md-2" />
 				<div className="col-md-8">
-					<form className="form-signin weconnect-form">
+					<form className="weconnect-form">
 						<div className="form-group">
 							<label className="control-label col-md-12" htmlFor style={{textAlign: 'center'}}>Update profile</label>
 						</div>
@@ -33,7 +33,7 @@ class UpdateUser extends Component {
 				</div>
 				<div className="col-md-2" />
 			</div>
-	  	</main>
+		  </main>
 	);
   }
 }

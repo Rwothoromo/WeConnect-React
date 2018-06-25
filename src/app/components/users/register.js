@@ -30,7 +30,7 @@ class RegisterUser extends Component {
 				username: event.target.elements.username.value,
 				password: event.target.elements.password.value
 			}
-			axios.post(`https://weconnect-api-v2-rwothoromo.herokuapp.com/api/v2/auth/register`, JSON.stringify(user), {
+			axios.post(`http://127.0.0.1:5000/api/v2/auth/register`, JSON.stringify(user), {
 				headers: {'Content-Type': 'application/json'}
 			}).then(response => {
 				NotificationManager.success(response.data.message);
@@ -60,7 +60,7 @@ class RegisterUser extends Component {
 						</p>
 					</div>
 					<div className="col-md-6">
-						<form className="form-signin weconnect-form" onSubmit={this.registerUser}>
+						<form className="weconnect-form" id="register-user" onSubmit={this.registerUser}>
 							<div className="form-group">
 								<label className="control-label col-md-12" style={{textAlign: 'center'}}>Register</label>
 							</div>
