@@ -6,4 +6,9 @@ cache:
     - node_modules
 script:
   - npm test
+<<<<<<< HEAD
 after_script: "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+=======
+  - npm run coverage
+after_script: "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+>>>>>>> feature(test-components): Test components
