@@ -24,7 +24,7 @@ class RegisterBusiness extends Component {
 			photo: event.target.elements.photo.value
 		}
 		axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
-		axios.post(`http://127.0.0.1:5000/api/v2/businesses`, JSON.stringify(business), {
+		axios.post(`https://weconnect-api-v2-rwothoromo.herokuapp.com/api/v2/businesses`, JSON.stringify(business), {
 			headers: {'Content-Type': 'application/json'}
 		}).then(response => {
 			NotificationManager.success(response.data.message);
