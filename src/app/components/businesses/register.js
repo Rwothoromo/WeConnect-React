@@ -26,7 +26,7 @@ class RegisterBusiness extends Component {
 		}
 		axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
 		axios.post(`${apiUrl}/businesses`, JSON.stringify(business), {
-			headers: {'Content-Type': 'application/json'}
+      headers: {'Content-Type': 'application/json'}
 		}).then(response => {
 			NotificationManager.success(response.data.message);
 			this.setState({registered: true});

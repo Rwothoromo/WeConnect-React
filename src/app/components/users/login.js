@@ -22,7 +22,7 @@ class LoginUser extends Component {
 			username: event.target.elements.username.value,
 			password: event.target.elements.password.value
 		}
-		axios.post(`${apiUrl}/auth/login`, JSON.stringify(user), {
+    axios.post(`${apiUrl}/auth/login`, JSON.stringify(user), {
 			headers: {'Content-Type': 'application/json'}
 		}).then(response => {
 			NotificationManager.success(response.data.message);

@@ -36,8 +36,8 @@ class RegisterUser extends Component {
 				username: event.target.elements.username.value,
 				password: password
 			}
-			axios.post(`${apiUrl}/auth/register`, JSON.stringify(user), {
-				headers: {'Content-Type': 'application/json'}
+      axios.post(`${apiUrl}/auth/register`, JSON.stringify(user), {
+        headers: {'Content-Type': 'application/json'}
 			}).then(response => {
 				NotificationManager.success(response.data.message);
 				this.setState({registered: true});
