@@ -1,7 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import RegisterBusiness from '../../components/businesses/register';
-import ReactPasswordStrength from 'react-password-strength';
 import MockAdapter from 'axios-mock-adapter';
 
 describe('<RegisterBusiness />', () => {

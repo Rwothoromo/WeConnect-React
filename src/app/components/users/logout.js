@@ -5,6 +5,7 @@ import 'react-notifications/lib/notifications.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../static/css/style.css';
 import axios from "axios";
+import { apiUrl } from '../../../App';
 import { isLoggedIn } from '../../utils/helpers';
 
 class LogoutUser extends Component {
@@ -17,8 +18,8 @@ class LogoutUser extends Component {
 
 	componentDidMount = () => {
 		axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
-		axios.post(`https://weconnect-api-v2-rwothoromo.herokuapp.com/api/v2/auth/logout`, {
-			headers: {'Content-Type': 'application/json'}
+    axios.post(`${apiUrl}/auth/logout`, {
+      headers: {'Content-Type': 'application/json'}
 		}).then(response => {
 			this.setState({loggedIn: false});
 			localStorage.removeItem("access_token");

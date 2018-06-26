@@ -6,6 +6,8 @@ import 'react-notifications/lib/notifications.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../static/css/style.css';
 import axios from "axios";
+import { apiUrl } from '../../../App'
+import { contains } from '../../utils/helpers';
 
 class RegisterUser extends Component {
 	constructor() {
@@ -17,21 +19,25 @@ class RegisterUser extends Component {
 
 	registerUser = (event) => {
 		event.preventDefault();
-		var passwordStrength = document.getElementsByClassName("ReactPasswordStrength-strength-desc")[0];
 
-		if (event.target.elements.password.value !== event.target.elements.confirm_password.value) {
+		var passwordStrength = document.getElementsByClassName("ReactPasswordStrength-strength-desc")[0];
+		var password = document.getElementsByClassName("ReactPasswordStrength-input")[0].value;
+		var confirm_password = document.getElementsByClassName("ReactPasswordStrength-input")[1].value;
+		var accepted = ['okay', 'good', 'strong', 'stronger'];
+
+		if (password !== confirm_password) {
 			NotificationManager.error("Passwords do not match!");
-		} else if (passwordStrength.innerHTML === 'weak') {
+		} else if (!contains(accepted, passwordStrength.innerHTML)) {
 			NotificationManager.error("Please use a stronger password!");
 		} else {
 			let user = {
 				first_name: event.target.elements.first_name.value,
 				last_name: event.target.elements.last_name.value,
 				username: event.target.elements.username.value,
-				password: event.target.elements.password.value
+				password: password
 			}
-			axios.post(`https://weconnect-api-v2-rwothoromo.herokuapp.com/api/v2/auth/register`, JSON.stringify(user), {
-				headers: {'Content-Type': 'application/json'}
+      axios.post(`${apiUrl}/auth/register`, JSON.stringify(user), {
+        headers: {'Content-Type': 'application/json'}
 			}).then(response => {
 				NotificationManager.success(response.data.message);
 				this.setState({registered: true});
@@ -74,7 +80,7 @@ class RegisterUser extends Component {
 								<input type="text" className="form-control" placeholder="Username" id="username" name="username" required />
 							</div>
 							<div className="form-group">
-								<ReactPasswordStrength
+								<ReactPasswordStrength id="password_div"
 									className="form-control"
 									minLength={5}
 									minScore={2}
@@ -83,7 +89,7 @@ class RegisterUser extends Component {
 									/>
 							</div>
 							<div className="form-group">
-								<ReactPasswordStrength
+								<ReactPasswordStrength id="confirm_password_div"
 									className="form-control"
 									minLength={5}
 									minScore={2}

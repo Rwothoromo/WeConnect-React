@@ -5,6 +5,7 @@ import 'react-notifications/lib/notifications.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../static/css/style.css';
 import axios from "axios";
+import { apiUrl } from '../../../App'
 
 class RegisterBusiness extends Component {
 	constructor() {
@@ -24,8 +25,8 @@ class RegisterBusiness extends Component {
 			photo: event.target.elements.photo.value
 		}
 		axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
-		axios.post(`https://weconnect-api-v2-rwothoromo.herokuapp.com/api/v2/businesses`, JSON.stringify(business), {
-			headers: {'Content-Type': 'application/json'}
+		axios.post(`${apiUrl}/businesses`, JSON.stringify(business), {
+      headers: {'Content-Type': 'application/json'}
 		}).then(response => {
 			NotificationManager.success(response.data.message);
 			this.setState({registered: true});

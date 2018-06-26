@@ -14,6 +14,8 @@ import ShowBusiness from './app/components/businesses/show';
 import UpdateBusiness from './app/components/businesses/update';
 import LogoutUser from './app/components/users/logout';
 
+export const apiUrl = process.env.REACT_APP_BACKEND_HOST || 'http://127.0.0.1:5000/api/v2'
+
 const Routes = () => (
 	<Router>
 		<div>
