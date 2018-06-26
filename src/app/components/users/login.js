@@ -21,7 +21,7 @@ class LoginUser extends Component {
 			username: event.target.elements.username.value,
 			password: event.target.elements.password.value
 		}
-		axios.post(`http://127.0.0.1:5000/api/v2/auth/login`, JSON.stringify(user), {
+		axios.post(`https://weconnect-api-v2-rwothoromo.herokuapp.com/api/v2/auth/login`, JSON.stringify(user), {
 			headers: {'Content-Type': 'application/json'}
 		}).then(response => {
 			NotificationManager.success(response.data.message);
