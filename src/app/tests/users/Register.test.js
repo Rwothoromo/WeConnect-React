@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import RegisterUser from '../../components/users/register';
 import ReactPasswordStrength from 'react-password-strength';
 import MockAdapter from 'axios-mock-adapter';
@@ -20,10 +20,9 @@ describe('<RegisterUser />', () => {
 		expect(wrapper.find('.home-bg')).toHaveLength(1);
 	});
 
-	it('registers user', () => {
-		mock.onPost('auth/register').reply(201, {});
-		wrapper.find('[type="submit"]').simulate('submit', {
-			preventDefault: () => {}
+	it('registers user', async () => {
+		mock.onPost('auth/register', {}).reply(201, {
+			message: 'User added'
 		});
-  });
+	});
 });

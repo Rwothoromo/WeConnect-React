@@ -5,6 +5,7 @@ import 'react-notifications/lib/notifications.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../static/css/style.css';
 import axios from "axios";
+import { apiUrl } from '../../../App'
 
 class RegisterBusiness extends Component {
 	constructor() {
@@ -24,7 +25,7 @@ class RegisterBusiness extends Component {
 			photo: event.target.elements.photo.value
 		}
 		axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
-		axios.post(`http://127.0.0.1:5000/api/v2/businesses`, JSON.stringify(business), {
+		axios.post(`${apiUrl}/businesses`, JSON.stringify(business), {
 			headers: {'Content-Type': 'application/json'}
 		}).then(response => {
 			NotificationManager.success(response.data.message);

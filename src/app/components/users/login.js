@@ -4,6 +4,7 @@ import 'react-notifications/lib/notifications.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../static/css/style.css';
 import axios from "axios";
+import { apiUrl } from '../../../App'
 import { isLoggedIn } from '../../utils/helpers';
 
 class LoginUser extends Component {
@@ -21,7 +22,7 @@ class LoginUser extends Component {
 			username: event.target.elements.username.value,
 			password: event.target.elements.password.value
 		}
-		axios.post(`http://127.0.0.1:5000/api/v2/auth/login`, JSON.stringify(user), {
+		axios.post(`${apiUrl}/auth/login`, JSON.stringify(user), {
 			headers: {'Content-Type': 'application/json'}
 		}).then(response => {
 			NotificationManager.success(response.data.message);
