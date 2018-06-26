@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../static/css/style.css';
+import { business_image } from '../../static/img/business.jpg';
 
 class ShowBusiness extends Component {
 	render() {
@@ -18,7 +19,7 @@ class ShowBusiness extends Component {
 							<h1 className="display-4">Katwe Consultants</h1>
 							<p className="lead">Your number one consultants on running businesses.</p>
 							<p>
-								<img className="rounded img-fluid" style={{width: 400, height: 'auto'}} src="../../../static/img/business.jpg" alt="Katwe Consultants" />
+								<img className="rounded img-fluid" style={{width: 400, height: 'auto'}} src={business_image} alt="Katwe Consultants" />
 							</p>
 							<br /><br />
 							<h3>Expensive</h3>
