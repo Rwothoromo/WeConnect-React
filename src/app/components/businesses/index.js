@@ -44,7 +44,7 @@ class BusinessesList extends Component {
 					<td>{business.category_name}</td>
 					<td>{business.location_name}</td>
 					<td align="center">
-						<a href={'/businesses/show/' + business.id}>View</a>
+						<a href={'/businesses/show/' + business.id} className="btn btn-info btn-sm">View</a>
 					</td>
 				</tr>
 			);
