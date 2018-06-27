@@ -33,7 +33,6 @@ class ShowBusiness extends Component {
 			});
 		}).catch(error => {
 			NotificationManager.error(error.response.data.message);
-			window.location = '/businesses/register';
 		});
 	}
 
