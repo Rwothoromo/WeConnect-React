@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../static/css/style.css';
 import axios from "axios";
 import { apiUrl } from '../../../App';
-import { isLoggedIn } from '../../utils/helpers';
+import { isLoggedIn, clearUser } from '../../utils/helpers';
 
 class LogoutUser extends Component {
 	constructor() {
@@ -18,11 +18,10 @@ class LogoutUser extends Component {
 
 	componentDidMount = () => {
 		axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
-    axios.post(`${apiUrl}/auth/logout`, {
-      headers: {'Content-Type': 'application/json'}
-		}).then(response => {
+    axios.post(`${apiUrl}/auth/logout`).then(response => {
 			this.setState({loggedIn: false});
 			localStorage.removeItem("access_token");
+			clearUser();
 			window.location = "/auth/login";
 		}).catch(error => {
 			NotificationManager.error(error.response.data.message);
@@ -30,7 +29,7 @@ class LogoutUser extends Component {
 	}
 
 	render() {
-		return (<Redirect to="/"/>);
+		return (<Redirect to="/auth/login"/>);
 	}
 }
 

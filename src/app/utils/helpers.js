@@ -1,16 +1,22 @@
 export function isLoggedIn() {
-    if (localStorage.getItem("access_token") !== null) {
-        return true;
-    }
-    return false;
+	if (localStorage.getItem("access_token") !== null) {
+		return true;
+	}
+	return false;
 }
 
 export function contains(listVar, aVar) {
-    var i;
-    for (i=0; i<listVar.length; i++) {
-        if (listVar[i] === aVar) {
-            return true;
-        }
-    }
-    return false;
+	var i;
+	for (i=0; i<listVar.length; i++) {
+		if (listVar[i] === aVar) {
+			return true;
+		}
+	}
+	return false;
+}
+
+export function clearUser() {
+	localStorage.removeItem("username");
+	localStorage.removeItem("first_name");
+	localStorage.removeItem("last_name");
 }
