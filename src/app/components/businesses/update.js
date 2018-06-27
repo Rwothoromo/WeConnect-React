@@ -57,10 +57,10 @@ class UpdateBusiness extends Component {
 
 	render() {
 		if (!this.state.loggedIn) {
-			return (<Redirect to="/auth/login"/>);
+			return (<Redirect to="/auth/login" />);
 		}
 		if (this.state.updated) {
-			return (<Redirect to="/businesses/index"/>)
+			return (<Redirect to="/businesses/index" />);
 		}
 		return (
 			<main role="main" className="container-fluid other-bg">

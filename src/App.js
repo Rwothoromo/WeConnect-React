@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { NotificationContainer } from 'react-notifications';
 
 import Index from './app/components/index';
@@ -27,7 +27,6 @@ const Routes = () => (
 			<Route exact strict path={"/auth/profile"} component={ProfileUser}/>
 			<Route exact strict path={"/auth/update"} component={UpdateUser}/>
 			<Route exact strict path={"/auth/logout"} component={LogoutUser}/>
-			{/* <Route exact strict path={"/auth/reset-password"} component={ResetPassword}/> */}
 			<Route exact strict path={"/businesses/register"} component={RegisterBusiness}/>
 			<Route exact strict path={"/businesses/index"} component={BusinessesList}/>
 			<Route exact strict path={"/businesses/show/:id"} component={ShowBusiness}/>
