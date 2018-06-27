@@ -27,9 +27,9 @@ class UserTabs extends Component {
 								Account
 						</a>
 						<div className="dropdown-menu" aria-labelledby="userDropdown">
-								<a className="dropdown-item" href="/users/profile">Profile</a>
+								<a className="dropdown-item" href="/auth/profile">Profile</a>
 								<div className="dropdown-divider"></div>
-								<a className="dropdown-item" href="/users/logout">Logout</a>
+								<a className="dropdown-item" href="/auth/logout">Logout</a>
 						</div>
 				</li>
 			</ul>

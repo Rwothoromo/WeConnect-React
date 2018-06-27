@@ -49,7 +49,7 @@ class RegisterUser extends Component {
 
 	render() {
 		if (this.state.registered) {
-			return (<Redirect to="/users/login"/>)
+			return (<Redirect to="/auth/login"/>)
 		}
 		return (
 			<main role="main" className="container-fluid home-bg">

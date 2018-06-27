@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../static/css/style.css';
 import axios from "axios";
 import { apiUrl } from '../../../App';
 import { NotificationManager } from 'react-notifications';
+import { isLoggedIn } from '../../utils/helpers';
 
 class BusinessesList extends Component {
 	constructor() {
@@ -11,15 +13,14 @@ class BusinessesList extends Component {
 		this.state = {
 			businesses_list: [],
 			next_page: null,
-			prev_page: null
+			prev_page: null,
+			loggedIn: isLoggedIn()
 		}
 	}
 
 	componentDidMount = () => {
 		axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
-    axios.get(`${apiUrl}/businesses`, {
-      headers: {'Content-Type': 'application/json'}
-		}).then(response => {
+		axios.get(`${apiUrl}/businesses`).then(response => {
 			this.setState({
 				businesses_list: response.data.businesses,
 				next_page: response.data.next_page,
@@ -32,6 +33,9 @@ class BusinessesList extends Component {
 	}
 
 	render() {
+		if (!this.state.loggedIn) {
+			return (<Redirect to="/auth/login"/>);
+		}
 		let businesses = this.state.businesses_list.map((business, index) => {
 			return (
 				<tr key={index}>
@@ -40,7 +44,7 @@ class BusinessesList extends Component {
 					<td>{business.category_name}</td>
 					<td>{business.location_name}</td>
 					<td align="center">
-						<a href={'/businesses/' + business.id}>View</a>
+						<a href={'/businesses/show/' + business.id}>View</a>
 					</td>
 				</tr>
 			);
