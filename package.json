@@ -8,6 +8,7 @@
     "jquery": "^3.3.1",
     "popper.js": "^1.14.3",
     "react": "^16.3.2",
+    "react-autosuggest": "^9.3.4",
     "react-dom": "^16.3.2",
     "react-notifications": "^1.4.3",
     "react-password-strength": "^2.3.1",

@@ -11,25 +11,25 @@ class UserTabs extends Component {
 				<li className="nav-item">
 					<a href="/" className="nav-link">Home</a>
 				</li>
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="businessDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+				<li className="nav-item dropdown">
+					<a className="nav-link dropdown-toggle" href="" id="businessDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
 						aria-expanded="false">
 						Businesses
 					</a>
-					<div class="dropdown-menu" aria-labelledby="businessDropdown">
-						<a class="dropdown-item" href="/businesses/index">View</a>
-						<a class="dropdown-item" href="/businesses/register">Add</a>
+					<div className="dropdown-menu" aria-labelledby="businessDropdown">
+						<a className="dropdown-item" href="/businesses/index">View</a>
+						<a className="dropdown-item" href="/businesses/register">Add</a>
 					</div>
 				</li>
-				<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+				<li className="nav-item dropdown">
+						<a className="nav-link dropdown-toggle" href="" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
 								aria-expanded="false">
 								Account
 						</a>
-						<div class="dropdown-menu" aria-labelledby="userDropdown">
-								<a class="dropdown-item" href="/users/profile">Profile</a>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="/users/logout">Logout</a>
+						<div className="dropdown-menu" aria-labelledby="userDropdown">
+								<a className="dropdown-item" href="/users/profile">Profile</a>
+								<div className="dropdown-divider"></div>
+								<a className="dropdown-item" href="/users/logout">Logout</a>
 						</div>
 				</li>
 			</ul>
