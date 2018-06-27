@@ -1,9 +1,51 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../static/css/style.css';
+import axios from "axios";
+import { apiUrl } from '../../../App';
+import { NotificationManager } from 'react-notifications';
 
 class BusinessesList extends Component {
+	constructor() {
+		super();
+		this.state = {
+			businesses_list: [],
+			next_page: null,
+			prev_page: null
+		}
+	}
+
+	componentDidMount = () => {
+		axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
+    axios.get(`${apiUrl}/businesses`, {
+      headers: {'Content-Type': 'application/json'}
+		}).then(response => {
+			this.setState({
+				businesses_list: response.data.businesses,
+				next_page: response.data.next_page,
+				prev_page: response.data.prev_page
+			});
+		}).catch(error => {
+			NotificationManager.error(error.response.data.message);
+			window.location = '/businesses/register';
+		});
+	}
+
 	render() {
+		let businesses = this.state.businesses_list.map((business, index) => {
+			return (
+				<tr key={index}>
+					<td>{business.name}</td>
+					<td>{business.description}</td>
+					<td>{business.category_name}</td>
+					<td>{business.location_name}</td>
+					<td align="center">
+						<a href={'/businesses/' + business.id}>View</a>
+					</td>
+				</tr>
+			);
+		});
+
 		return (
 			<main role="main" className="container-fluid other-bg">
 				<br /><br /><br /><br />
@@ -23,26 +65,7 @@ class BusinessesList extends Component {
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td>Buyondo Hardware</td>
-										<td>One stop center for building materials...</td>
-										<td>Construction</td>
-										<td>Kabale</td>
-										<td align="center">
-											<a href="/businesses/show">View
-											</a>
-										</td>
-									</tr>
-									<tr>
-										<td>Tours</td>
-										<td>Quality imported furniture for all your needs</td>
-										<td>Furniture</td>
-										<td>Kampala</td>
-										<td align="center">
-											<a href="/businesses/show">View
-											</a>
-										</td>
-									</tr>
+									{businesses}
 								</tbody>
 							</table>
 						</div>
