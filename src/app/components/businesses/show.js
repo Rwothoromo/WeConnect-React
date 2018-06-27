@@ -1,44 +1,80 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../static/css/style.css';
-import { business_image } from '../../static/img/business.jpg';
+import axios from "axios";
+import { apiUrl } from '../../../App';
+import { NotificationManager } from 'react-notifications';
+import { isLoggedIn } from '../../utils/helpers';
+// import business_image from '../../static/img/business.jpg';
 
 class ShowBusiness extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			business: {},
+			reviews_list: [],
+			loggedIn: isLoggedIn()
+		}
+	}
+
+	componentDidMount = () => {
+		const id = this.props.match.params.id;
+		axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
+    axios.get(`${apiUrl}/businesses/${id}`).then(response => {
+			this.setState({
+				business: response.data
+			});
+		});
+
+		axios.get(`${apiUrl}/businesses/${id}/reviews`).then(response => {
+			this.setState({
+				reviews_list: response.data
+			});
+		}).catch(error => {
+			NotificationManager.error(error.response.data.message);
+			window.location = '/businesses/register';
+		});
+	}
+
 	render() {
+		if (!this.state.loggedIn) {
+			return (<Redirect to="/auth/login"/>);
+		}
+
+		let reviews = this.state.reviews_list.map((review, index) => {
+			return (
+				<div>
+					<br />
+					<h3>{review.name}</h3>
+					<p>{review.description}</p>
+					<p>
+						<i>By: {review.author}</i>
+					</p>
+				</div>
+			);
+		});
+
 		return (
 			<main role="main" className="container-fluid other-bg">
 				<br /><br /><br /><br />
 				<div className="row col-md-12">
 					<div className="col-md-2" />
 					<div className="col-md-8 weconnect-div">
-						<div className="row weconnect-modal justify-content-md-center">
-							<input type="submit" className="btn btn-default" id="add_review" name="add_review" defaultValue="Add review" />
+						<div>
+							<a href={'/businesses/edit/' + this.props.match.params.id} className="btn btn-info btn-sm">Edit</a>&nbsp;
+							<a href={'/businesses/delete/' + this.props.match.params.id} className="btn btn-danger btn-sm">Delete</a>&nbsp;
+							<a href={'/businesses/review/' + this.props.match.params.id} className="btn btn-success btn-sm">Review</a>
 						</div>
 						<br />
 						<div className="text-center text-white">
-							<h1 className="display-4">Katwe Consultants</h1>
-							<p className="lead">Your number one consultants on running businesses.</p>
-							<p>
-								<img className="rounded img-fluid" style={{width: 400, height: 'auto'}} src={business_image} alt="Katwe Consultants" />
-							</p>
-							<br /><br />
-							<h3>Expensive</h3>
-							<p>Their services are too expensive</p>
-							<p>
-								<i>By: John Doe</i>
-							</p>
-							<br /><br />
-							<h3>Amazing offers</h3>
-							<p>The offers fitted exactly into our company budget</p>
-							<p>
-								<i>By: Jane Dinn</i>
-							</p>
-							<br /><br />
-							<h3>Need for expansion</h3>
-							<p>Management should consider expanding throughout Kampala</p>
-							<p>
-								<i>By: Semei Ndawula</i>
-							</p>
+							<h1 className="display-4">{this.state.business.name}</h1>
+							<p>{this.state.business.description}</p><br />
+							<h1 className="display-5">Reviews</h1>
+							{/* <p>
+								<img className="rounded img-fluid" src={business_image} alt="Katwe Consultants" />
+							</p> */}
+							{reviews}
 						</div>
 					</div>
 					<div className="col-md-2" />

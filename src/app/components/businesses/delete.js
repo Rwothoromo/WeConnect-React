@@ -6,32 +6,29 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../static/css/style.css';
 import axios from "axios";
 import { apiUrl } from '../../../App';
-import { isLoggedIn } from '../../utils/helpers';
 
-class LogoutUser extends Component {
-	constructor() {
-		super();
+class DeleteBusiness extends Component {
+	constructor(props) {
+		super(props);
 		this.state = {
-			loggedIn: isLoggedIn()
+			deleted: false
 		}
 	}
 
 	componentDidMount = () => {
+		const id = this.props.match.params.id;
 		axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
-    axios.post(`${apiUrl}/auth/logout`, {
-      headers: {'Content-Type': 'application/json'}
-		}).then(response => {
-			this.setState({loggedIn: false});
-			localStorage.removeItem("access_token");
-			window.location = "/users/login";
+    axios.delete(`${apiUrl}/businesses/${id}`).then(response => {
+			this.setState({deleted: true});
+			NotificationManager.success(response.data.message);
 		}).catch(error => {
 			NotificationManager.error(error.response.data.message);
 		});
 	}
 
 	render() {
-		return (<Redirect to="/"/>);
+		return (<Redirect to="/businesses/index"/>);
 	}
 }
 
-export default LogoutUser;
+export default DeleteBusiness;
