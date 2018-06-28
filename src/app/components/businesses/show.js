@@ -45,6 +45,7 @@ class ShowBusiness extends Component {
 		const user = decode(localStorage.getItem("access_token"));
 		if (this.state.business.created_by === user.sub) {
 			document.getElementById("owner").className = "show";
+			document.getElementById("non-owner").className = "collapse";
 		}
 
 		let reviews = this.state.reviews_list.map((review, index) => {
@@ -71,7 +72,7 @@ class ShowBusiness extends Component {
 								<a href={'/businesses/edit/' + this.props.match.params.id} className="btn btn-info btn-sm">Edit</a>&nbsp;
 								<a href={'/businesses/delete/' + this.props.match.params.id} className="btn btn-danger btn-sm">Delete</a>&nbsp;
 							</div>
-							<div className="row">
+							<div className="row" id="non-owner">
 								&nbsp;&nbsp;&nbsp;&nbsp;<a href={'/businesses/review/' + this.props.match.params.id} className="btn btn-success btn-sm">Review</a>
 							</div>
 						</div>
