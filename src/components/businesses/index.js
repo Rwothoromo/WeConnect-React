@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../static/css/style.css';
 import axios from "axios";
-import { apiUrl } from '../../../App';
+import { apiUrl } from '../../App';
 import { NotificationManager } from 'react-notifications';
 import { isLoggedIn } from '../../utils/helpers';
 
@@ -32,6 +32,26 @@ class BusinessesList extends Component {
 		});
 	}
 
+	searchBusinesses = (event) => {
+		event.preventDefault();
+		let q = event.target.elements.q.value
+		let	category = event.target.elements.category.value
+		let location = event.target.elements.location.value
+	
+		axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
+		axios.get(`${apiUrl}/businesses?q=${q}&category=${category}&location=${location}`, {
+			headers: {'Content-Type': 'application/json'}
+		}).then(response => {
+			this.setState({
+				businesses_list: response.data.businesses,
+				next_page: response.data.next_page,
+				prev_page: response.data.prev_page
+			});
+		}).catch(error => {
+			NotificationManager.error(error.response.data.message);
+		})
+	}
+
 	render() {
 		if (!this.state.loggedIn) {
 			return (<Redirect to="/auth/login"/>);
@@ -56,6 +76,22 @@ class BusinessesList extends Component {
 				<div className="row col-md-12">
 					<div className="col-md-2" />
 					<div className="col-md-8 weconnect-div">
+						<form className="weconnect-form" onSubmit={this.searchBusinesses}>
+							<div className="row col-md-12">
+								<div className="col-md-3">
+									<input type="text" className="form-control" placeholder="Business name" id="q" name="q" defaultValue="" />
+								</div>
+								<div className="col-md-3">
+									<input type="text" className="form-control" placeholder="Category" id="category" name="category" defaultValue="" />
+								</div>
+								<div className="col-md-3">
+									<input type="text" className="form-control" placeholder="Location" id="location" name="location" defaultValue="" />
+								</div>
+								<div className="col-md-3">
+									<input type="submit" className="btn btn-success" defaultValue="Search" />
+								</div>
+							</div>
+						</form>
 						<br />
 						<div className="table-responsive">
 							<table className="table table-striped table-bordered table-hover table-condensed">
