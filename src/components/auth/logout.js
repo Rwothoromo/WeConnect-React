@@ -5,7 +5,7 @@ import 'react-notifications/lib/notifications.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../static/css/style.css';
 import axios from "axios";
-import { apiUrl } from '../../../App';
+import { apiUrl } from '../../App';
 import { isLoggedIn, clearUser } from '../../utils/helpers';
 
 class LogoutUser extends Component {
