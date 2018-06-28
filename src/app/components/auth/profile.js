@@ -43,7 +43,7 @@ class ProfileUser extends Component {
 
   render() {
 		if (!this.state.loggedIn) {
-			return (<Redirect to="/"/>);
+      window.location = "/";
 		}
 
 		return (
