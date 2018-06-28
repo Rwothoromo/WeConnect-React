@@ -29,7 +29,7 @@ class LogoutUser extends Component {
 	}
 
 	render() {
-		return (<Redirect to="/auth/login"/>);
+		return (<Redirect to="/"/>);
 	}
 }
 
