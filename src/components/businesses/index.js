@@ -34,14 +34,13 @@ class BusinessesList extends Component {
 
 	searchBusinesses = (event) => {
 		event.preventDefault();
-		let query = {
-			q: event.target.elements.q.value,
-			category: event.target.elements.category.value,
-			location: event.target.elements.location.value
-		}
+		let q = event.target.elements.q.value
+		let	category = event.target.elements.category.value
+		let location = event.target.elements.location.value
+	
 		axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
-		axios.get(`${apiUrl}/businesses`, JSON.stringify(query), {
-      headers: {'Content-Type': 'application/json'}
+		axios.get(`${apiUrl}/businesses?q=${q}&category=${category}&location=${location}`, {
+			headers: {'Content-Type': 'application/json'}
 		}).then(response => {
 			this.setState({
 				businesses_list: response.data.businesses,
