@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import { NotificationManager } from 'react-notifications';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../static/css/style.css';
@@ -42,7 +43,7 @@ class ProfileUser extends Component {
 
   render() {
 		if (!this.state.loggedIn) {
-			window.location = "/auth/login";
+			window.location = "/";
 		}
 
 		return (
