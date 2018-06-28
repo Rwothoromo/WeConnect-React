@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../static/css/style.css';
 import axios from "axios";
 import { apiUrl } from '../../../App';
+import decode from 'jwt-decode';
 import { NotificationManager } from 'react-notifications';
 import { isLoggedIn } from '../../utils/helpers';
 // import business_image from '../../static/img/business.jpg';
@@ -32,13 +33,18 @@ class ShowBusiness extends Component {
 				reviews_list: response.data
 			});
 		}).catch(error => {
-			NotificationManager.error(error.response.data.message);
+			NotificationManager.warning(error.response.data.message);
 		});
 	}
 
 	render() {
 		if (!this.state.loggedIn) {
 			return (<Redirect to="/auth/login"/>);
+		}
+
+		const user = decode(localStorage.getItem("access_token"));
+		if (this.state.business.created_by === user.sub) {
+			document.getElementById("owner").className = "show";
 		}
 
 		let reviews = this.state.reviews_list.map((review, index) => {
@@ -60,10 +66,14 @@ class ShowBusiness extends Component {
 				<div className="row col-md-12">
 					<div className="col-md-2" />
 					<div className="col-md-8 weconnect-div">
-						<div>
-							<a href={'/businesses/edit/' + this.props.match.params.id} className="btn btn-info btn-sm">Edit</a>&nbsp;
-							<a href={'/businesses/delete/' + this.props.match.params.id} className="btn btn-danger btn-sm">Delete</a>&nbsp;
-							<a href={'/businesses/review/' + this.props.match.params.id} className="btn btn-success btn-sm">Review</a>
+						<div className="row">
+							<div className="col collapse" id="owner">
+								<a href={'/businesses/edit/' + this.props.match.params.id} className="btn btn-info btn-sm">Edit</a>&nbsp;
+								<a href={'/businesses/delete/' + this.props.match.params.id} className="btn btn-danger btn-sm">Delete</a>&nbsp;
+							</div>
+							<div className="row">
+								&nbsp;&nbsp;&nbsp;&nbsp;<a href={'/businesses/review/' + this.props.match.params.id} className="btn btn-success btn-sm">Review</a>
+							</div>
 						</div>
 						<br />
 						<div className="text-center text-white">
