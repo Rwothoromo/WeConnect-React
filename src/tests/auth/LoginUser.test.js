@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import LoginUser from '../../components/auth/login';
+import LoginUser from '../../components/auth/LoginUser';
 import MockAdapter from 'axios-mock-adapter';
 
 describe('<LoginUser />', () => {

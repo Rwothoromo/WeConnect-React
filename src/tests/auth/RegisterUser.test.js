@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import RegisterUser from '../../components/auth/register';
+import RegisterUser from '../../components/auth/RegisterUser';
 import ReactPasswordStrength from 'react-password-strength';
 import MockAdapter from 'axios-mock-adapter';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import RegisterBusiness from '../../components/businesses/register';
+import RegisterBusiness from '../../components/businesses/RegisterBusiness';
 import MockAdapter from 'axios-mock-adapter';
 
 describe('<RegisterBusiness />', () => {
