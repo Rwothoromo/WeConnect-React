@@ -23,7 +23,7 @@ class UpdateBusiness extends Component {
     this.setState({description: event.target.description});
 	}
 
-	componentDidMount = () => {
+	componentDidMount() {
 		const id = this.props.match.params.id;
 		axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
     axios.get(`${apiUrl}/businesses/${id}`).then(response => {
@@ -41,8 +41,7 @@ class UpdateBusiness extends Component {
 			name: event.target.elements.name.value,
 			description: event.target.elements.description.value,
 			category: event.target.elements.category.value,
-			location: event.target.elements.location.value,
-			photo: event.target.elements.photo.value
+			location: event.target.elements.location.value
 		}
 		axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
 		axios.put(`${apiUrl}/businesses/${id}`, JSON.stringify(business), {
@@ -59,9 +58,11 @@ class UpdateBusiness extends Component {
 		if (!this.state.loggedIn) {
 			return (<Redirect to="/auth/login" />);
 		}
+
 		if (this.state.updated) {
 			return (<Redirect to="/businesses/index" />);
 		}
+
 		return (
 			<main role="main" className="container-fluid other-bg">
 				<br /><br /><br /><br />
@@ -87,10 +88,6 @@ class UpdateBusiness extends Component {
 							<div className="form-group">
 								<label>Location:</label>
 								<input type="text" className="form-control" placeholder="Location" id="location" name="location" defaultValue={this.state.business.location_name} required />
-							</div>
-							<div className="form-group">
-								<label>Photo:</label>
-								<input type="text" className="form-control" placeholder="Photo" id="photo" name="photo" defaultValue={this.state.business.photo} required />
 							</div>
 							<div className="form-group">
 								<input type="submit" className="btn btn-default weconnect-btn" id="update" name="update" defaultValue="Update" />

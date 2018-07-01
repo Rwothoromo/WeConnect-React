@@ -6,7 +6,6 @@ import Index from './components/index';
 import RegisterUser from './components/auth/register';
 import LoginUser from './components/auth/login';
 import ProfileUser from './components/auth/profile';
-import UpdateUser from './components/auth/update';
 import Layout from './components/shared/layout';
 import RegisterBusiness from './components/businesses/register';
 import BusinessesList from './components/businesses';
@@ -25,7 +24,6 @@ const Routes = () => (
 			<Route exact strict path={"/auth/register"} component={RegisterUser}/>
 			<Route exact strict path={"/auth/login"} component={LoginUser}/>
 			<Route exact strict path={"/auth/profile"} component={ProfileUser}/>
-			<Route exact strict path={"/auth/update"} component={UpdateUser}/>
 			<Route exact strict path={"/auth/logout"} component={LogoutUser}/>
 			<Route exact strict path={"/businesses/register"} component={RegisterBusiness}/>
 			<Route exact strict path={"/businesses/index"} component={BusinessesList}/>

@@ -15,7 +15,9 @@ class DeleteBusiness extends Component {
 		}
 	}
 
-	componentDidMount = () => {
+	componentDidMount() {
+		let confirm = window.confirm("This action will completely delete the business! Proceed?");
+		if (!confirm) return;
 		const id = this.props.match.params.id;
 		axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
     axios.delete(`${apiUrl}/businesses/${id}`).then(response => {

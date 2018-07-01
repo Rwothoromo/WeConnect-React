@@ -1,12 +1,8 @@
 import { isLoggedIn, contains, clearUser } from '../../utils/helpers';
 
-describe('Helper - Logged in', () => {
-	it('checks if user logged in', () => {
+describe('Helper - isLoggedIn', () => {
+	it('checks if user not logged in', () => {
 		localStorage.clear();
-		localStorage.setItem("access_token", "dummy-token");
-		expect(isLoggedIn()).toBe(true);
-		localStorage.removeItem("access_token");
-		clearUser();
 		expect(isLoggedIn()).toBe(false);
 	});
 });

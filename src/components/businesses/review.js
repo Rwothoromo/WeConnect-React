@@ -18,7 +18,7 @@ class ReviewBusiness extends Component {
 		}
 	}
 
-  componentDidMount = () => {
+  componentDidMount() {
 		const id = this.props.match.params.id;
 		axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
     axios.get(`${apiUrl}/businesses/${id}`).then(response => {
@@ -50,9 +50,11 @@ class ReviewBusiness extends Component {
 		if (!this.state.loggedIn) {
 			return (<Redirect to="/auth/login"/>);
 		}
+
 		if (this.state.reviewed) {
 			return (<Redirect to={'/businesses/show/' + this.props.match.params.id} />)
 		}
+
 		return (
 			<main role="main" className="container-fluid other-bg">
 				<br /><br /><br /><br />

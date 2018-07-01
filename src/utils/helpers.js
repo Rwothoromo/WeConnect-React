@@ -1,5 +1,13 @@
+import decode from 'jwt-decode';
+
 export function isLoggedIn() {
 	if (localStorage.getItem("access_token") !== null) {
+		let token = decode(localStorage.getItem("access_token"));
+		if (token.exp < Date.now() / 1000) {
+			localStorage.removeItem("access_token");
+			clearUser();
+			return false;
+		}
 		return true;
 	}
 	return false;
