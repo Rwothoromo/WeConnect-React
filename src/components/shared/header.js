@@ -3,9 +3,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../static/css/style.css';
 
 import logo from '../../static/img/logo.PNG'
-import UserTabs from './user_tabs';
-import VisitorTabs from './visitor_tabs';
-import { isLoggedIn } from '../../utils/helpers';
+import UserTabs from './UserTabs';
+import VisitorTabs from './VisitorTabs';
+import { isLoggedIn } from '../../utils/Helpers';
 
 class Header extends Component {
 	constructor(props) {

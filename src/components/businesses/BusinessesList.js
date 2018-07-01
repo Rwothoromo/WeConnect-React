@@ -5,8 +5,8 @@ import '../../static/css/style.css';
 import axios from "axios";
 import { apiUrl } from '../../App';
 import { NotificationManager } from 'react-notifications';
-import { isLoggedIn } from '../../utils/helpers';
-import Paginator from '../shared/paginator';
+import { isLoggedIn } from '../../utils/Helpers';
+import Paginator from '../shared/Paginator';
 
 class BusinessesList extends Component {
 	constructor() {
