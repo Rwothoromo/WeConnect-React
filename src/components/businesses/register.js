@@ -6,11 +6,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../static/css/style.css';
 import axios from "axios";
 import { apiUrl } from '../../App'
+import { isLoggedIn } from '../../utils/helpers';
 
 class RegisterBusiness extends Component {
 	constructor() {
 		super();
 		this.state = {
+			loggedIn: isLoggedIn(),
 			registered: false
 		}
 	}
@@ -21,8 +23,7 @@ class RegisterBusiness extends Component {
 			name: event.target.elements.name.value,
 			description: event.target.elements.description.value,
 			category: event.target.elements.category.value,
-			location: event.target.elements.location.value,
-			photo: event.target.elements.photo.value
+			location: event.target.elements.location.value
 		}
 		axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
 		axios.post(`${apiUrl}/businesses`, JSON.stringify(business), {
@@ -36,9 +37,14 @@ class RegisterBusiness extends Component {
 	}
 
 	render() {
+		if (!this.state.loggedIn) {
+			return (<Redirect to="/auth/login"/>);
+		}
+
 		if (this.state.registered) {
 			return (<Redirect to="/businesses/index"/>)
 		}
+
 		return (
 			<main role="main" className="container-fluid other-bg">
 				<br /><br /><br /><br />
@@ -60,9 +66,6 @@ class RegisterBusiness extends Component {
 							</div>
 							<div className="form-group">
 								<input type="text" className="form-control" placeholder="Location" id="location" name="location" required />
-							</div>
-							<div className="form-group">
-								<input type="text" className="form-control" placeholder="Photo" id="photo" name="photo" required />
 							</div>
 							<div className="form-group">
 								<input type="submit" className="btn btn-default weconnect-btn" id="register" name="register" defaultValue="Register" />

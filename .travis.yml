@@ -2,7 +2,7 @@ language: node_js
 node_js:
   - "stable"
 env:
-  - REACT_APP_BACKEND_HOST=http://127.0.0.1:5000/api/v2
+  - REACT_APP_BACKEND_HOST=https://weconnect-api-v2-rwothoromo.herokuapp.com/api/v2
 script:
   - npm test
   - npm run coverage

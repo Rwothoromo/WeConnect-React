@@ -7,7 +7,6 @@ import { apiUrl } from '../../App';
 import decode from 'jwt-decode';
 import { NotificationManager } from 'react-notifications';
 import { isLoggedIn } from '../../utils/helpers';
-// import business_image from '../../static/img/business.jpg';
 
 class ShowBusiness extends Component {
 	constructor(props) {
@@ -19,7 +18,7 @@ class ShowBusiness extends Component {
 		}
 	}
 
-	componentDidMount = () => {
+	componentDidMount() {
 		const id = this.props.match.params.id;
 		axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
     axios.get(`${apiUrl}/businesses/${id}`).then(response => {
@@ -81,9 +80,6 @@ class ShowBusiness extends Component {
 							<h1 className="display-4">{this.state.business.name}</h1>
 							<p>{this.state.business.description}</p><br />
 							<h1 className="display-5">Reviews</h1>
-							{/* <p>
-								<img className="rounded img-fluid" src={business_image} alt="Katwe Consultants" />
-							</p> */}
 							{reviews}
 						</div>
 					</div>

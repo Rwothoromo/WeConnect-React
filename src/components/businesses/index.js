@@ -6,6 +6,7 @@ import axios from "axios";
 import { apiUrl } from '../../App';
 import { NotificationManager } from 'react-notifications';
 import { isLoggedIn } from '../../utils/helpers';
+import Paginator from '../shared/paginator';
 
 class BusinessesList extends Component {
 	constructor() {
@@ -18,9 +19,9 @@ class BusinessesList extends Component {
 		}
 	}
 
-	componentDidMount = () => {
+	componentDidMount() {
 		axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
-		axios.get(`${apiUrl}/businesses`).then(response => {
+		axios.get(`${apiUrl}/businesses?limit=5`).then(response => {
 			this.setState({
 				businesses_list: response.data.businesses,
 				next_page: response.data.next_page,
@@ -52,10 +53,28 @@ class BusinessesList extends Component {
 		})
 	}
 
+	handlePageChange = (event, page) => {
+		event.preventDefault();
+
+		axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
+		axios.get(`${apiUrl}/businesses?limit=5&page=${page}`, {
+			headers: {'Content-Type': 'application/json'}
+		}).then(response => {
+			this.setState({
+				businesses_list: response.data.businesses,
+				next_page: response.data.next_page,
+				prev_page: response.data.prev_page
+			});
+		}).catch(error => {
+			NotificationManager.error(error.response.data.message);
+		})
+	}
+
 	render() {
 		if (!this.state.loggedIn) {
 			return (<Redirect to="/auth/login"/>);
 		}
+
 		let businesses = this.state.businesses_list.map((business, index) => {
 			return (
 				<tr key={index}>
@@ -109,6 +128,10 @@ class BusinessesList extends Component {
 								</tbody>
 							</table>
 						</div>
+						<Paginator 
+							prev_page={this.state.prev_page} 
+							next_page={this.state.next_page} 
+							handlePageChange={this.handlePageChange} />
 					</div>
 					<div className="col-md-2" />
 				</div>

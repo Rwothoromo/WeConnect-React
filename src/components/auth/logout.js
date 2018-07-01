@@ -16,7 +16,7 @@ class LogoutUser extends Component {
 		}
 	}
 
-	componentDidMount = () => {
+	componentDidMount() {
 		axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
     axios.post(`${apiUrl}/auth/logout`).then(response => {
 			this.setState({loggedIn: false});
