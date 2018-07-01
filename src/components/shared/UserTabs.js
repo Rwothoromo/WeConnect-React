@@ -17,7 +17,7 @@ class UserTabs extends Component {
 						Businesses
 					</a>
 					<div className="dropdown-menu" aria-labelledby="businessDropdown">
-						<a className="dropdown-item" href="/businesses/index">View</a>
+						<a className="dropdown-item" href="/businesses">View</a>
 						<a className="dropdown-item" href="/businesses/register">Add</a>
 					</div>
 				</li>

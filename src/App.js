@@ -26,7 +26,7 @@ const Routes = () => (
 			<Route exact strict path={"/auth/profile"} component={ProfileUser}/>
 			<Route exact strict path={"/auth/logout"} component={LogoutUser}/>
 			<Route exact strict path={"/businesses/register"} component={RegisterBusiness}/>
-			<Route exact strict path={"/businesses/index"} component={BusinessesList}/>
+			<Route exact strict path={"/businesses"} component={BusinessesList}/>
 			<Route exact strict path={"/businesses/show/:id"} component={ShowBusiness}/>
 			<Route exact strict path={"/businesses/edit/:id"} component={UpdateBusiness}/>
 			<Route exact strict path={"/businesses/delete/:id"} component={DeleteBusiness}/>

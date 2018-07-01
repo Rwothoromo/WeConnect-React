@@ -42,7 +42,7 @@ class RegisterBusiness extends Component {
 		}
 
 		if (this.state.registered) {
-			return (<Redirect to="/businesses/index"/>)
+			return (<Redirect to="/businesses"/>)
 		}
 
 		return (

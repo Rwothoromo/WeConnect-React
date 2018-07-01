@@ -29,7 +29,7 @@ class DeleteBusiness extends Component {
 	}
 
 	render() {
-		return (<Redirect to="/businesses/index"/>);
+		return (<Redirect to="/businesses"/>);
 	}
 }
 
