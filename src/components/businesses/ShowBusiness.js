@@ -6,7 +6,7 @@ import axios from "axios";
 import { apiUrl } from '../../App';
 import decode from 'jwt-decode';
 import { NotificationManager } from 'react-notifications';
-import { isLoggedIn } from '../../utils/helpers';
+import { isLoggedIn } from '../../utils/Helpers';
 
 class ShowBusiness extends Component {
 	constructor(props) {

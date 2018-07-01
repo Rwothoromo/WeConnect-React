@@ -2,18 +2,18 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { NotificationContainer } from 'react-notifications';
 
-import Index from './components/index';
-import RegisterUser from './components/auth/register';
-import LoginUser from './components/auth/login';
-import ProfileUser from './components/auth/profile';
-import Layout from './components/shared/layout';
-import RegisterBusiness from './components/businesses/register';
-import BusinessesList from './components/businesses';
-import ShowBusiness from './components/businesses/show';
-import UpdateBusiness from './components/businesses/update';
-import LogoutUser from './components/auth/logout';
-import DeleteBusiness from './components/businesses/delete';
-import ReviewBusiness from './components/businesses/review';
+import Index from './components/Index';
+import RegisterUser from './components/auth/RegisterUser';
+import LoginUser from './components/auth/LoginUser';
+import ProfileUser from './components/auth/ProfileUser';
+import Layout from './components/shared/Layout';
+import RegisterBusiness from './components/businesses/RegisterBusiness';
+import BusinessesList from './components/businesses/BusinessesList';
+import ShowBusiness from './components/businesses/ShowBusiness';
+import UpdateBusiness from './components/businesses/UpdateBusiness';
+import LogoutUser from './components/auth/LogoutUser';
+import DeleteBusiness from './components/businesses/DeleteBusiness';
+import ReviewBusiness from './components/businesses/ReviewBusiness';
 
 export const apiUrl = process.env.REACT_APP_BACKEND_HOST || 'http://127.0.0.1:5000/api/v2'
 
