@@ -60,7 +60,7 @@ class UpdateBusiness extends Component {
 		}
 
 		if (this.state.updated) {
-			return (<Redirect to="/businesses/index" />);
+			return (<Redirect to="/businesses" />);
 		}
 
 		return (
