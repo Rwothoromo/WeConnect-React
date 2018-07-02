@@ -3,9 +3,13 @@ node_js:
   - "stable"
 env:
   - REACT_APP_BACKEND_HOST=https://weconnect-api-v2-rwothoromo.herokuapp.com/api/v2
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
 script:
   - npm test
   - npm run coverage
 after_script:
   - "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
-  - codeclimate-test-reporter < ./coverage/lcov.info
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT -r 1c037152c1ca0ee88d7ed485921754f2a35f72faaa47ed7f510c00635138b1f3
