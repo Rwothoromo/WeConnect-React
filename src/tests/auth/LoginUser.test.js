@@ -34,6 +34,19 @@ describe('<LoginUser />', () => {
 		loginForm.simulate('submit', {
 			preventDefault: () => {}
 		});
+	});
 
+	it('rejects wrong username and password', async () => {
+		mock.onPost(`${apiUrl}/auth/login`).reply(401, {
+			message: "Incorrect username and password combination!"
+		});
+
+		wrapper.setState({loggedIn: false});
+		expect(wrapper.state('loggedIn')).toBe(false);
+
+		const loginForm = wrapper.find('form');
+		loginForm.simulate('submit', {
+			preventDefault: () => {}
+		});
 	});
 });
