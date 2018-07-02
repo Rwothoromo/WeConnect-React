@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import { NotificationManager } from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../static/css/style.css';
@@ -18,13 +17,11 @@ class LogoutUser extends Component {
 
 	componentDidMount() {
 		axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
-    axios.post(`${apiUrl}/auth/logout`).then(response => {
+		axios.post(`${apiUrl}/auth/logout`).then(response => {
 			this.setState({loggedIn: false});
 			localStorage.removeItem("access_token");
 			clearUser();
 			window.location = "/auth/login";
-		}).catch(error => {
-			NotificationManager.error(error.response.data.message);
 		});
 	}
 

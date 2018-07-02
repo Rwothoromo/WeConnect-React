@@ -1,43 +1,42 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { MemoryRouter } from 'react-router-dom';
+import { shallow } from 'enzyme';
 import RegisterBusiness from '../../components/businesses/RegisterBusiness';
 import MockAdapter from 'axios-mock-adapter';
+import Axios from 'axios';
+import { apiUrl } from '../../App';
 
 describe('<RegisterBusiness />', () => {
-	const wrapper = mount(<RegisterBusiness />);
-	const mock = new MockAdapter(wrapper.instance().xhr);
-
-	it('renders without crashing', () => {
-		expect(wrapper.find('.control-label').text()).toContain('Register a business');
-	});
-
-	it('renders a `.other-bg`', () => {
-		expect(wrapper.find('.other-bg')).toHaveLength(1);
-	});
+	const mock = new MockAdapter(Axios);
+	const wrapper = shallow(<MemoryRouter><RegisterBusiness /></MemoryRouter>);
 
 	it('registers business', async () => {
-		mock.onPost(`${apiUrl}businesses/register`).reply(201, {
+		localStorage.setItem({
+			access_token: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MzA1MTUwMjEsImlhdCI6MTUzMDUxMTQyMSwic3ViIjo0fQ.qE4TVdgp5a6PFO_gGlIGJW4vb5i63o5xzlLK9EJjJnM"
+		});
+		localStorage.setItem({first_name: "Sonia"});
+		localStorage.setItem({last_name: "Karungi"});
+		localStorage.setItem({username: "karungi"});
+
+		mock.onPost(`${apiUrl}/businesses`).reply(201, {
 			message: "Business added"
 		});
 
-		expect(wrapper.state('registered')).toBe(false);
+		const registerBusinessComponent = wrapper.find(RegisterBusiness).dive();
+		registerBusinessComponent.setState({loggedIn: true});
+		expect(registerBusinessComponent.state('registered')).toBe(false);
 
-		let name = wrapper.find('input[name="name"]');
-		name.simulate('change', {target: {name: 'name', value: 'jimz auto'}});
-
-		let description = wrapper.find('input[name="description"]');
-		description.simulate('change', {target: {name: 'description', value: 'best auto-part deals' }});
-
-		let category = wrapper.find('input[name="category"]');
-		category.simulate('change', {target: {name: 'category', value: 'cars' }});
-
-		let location = wrapper.find('input[name="location"]');
-		location.simulate('change', {target: {name: 'location', value: 'nakawa' }});
-
-		const registerForm = wrapper.find('form');
+		const registerForm = registerBusinessComponent.find('form');
 		registerForm.simulate('submit', {
-			preventDefault: () => {}
+			preventDefault: () => {},
+			target: {
+				elements: {
+					name: "jimz auto",
+					description: "best auto-part deals",
+					category: "cars",
+					location: "nakawa"
+				}
+			}
 		});
-
 	});
 });

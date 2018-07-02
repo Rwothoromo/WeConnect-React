@@ -35,14 +35,12 @@ class ProfileUser extends Component {
 			localStorage.removeItem("access_token");
 			clearUser();
 			window.location = '/auth/login';
-		}).catch(error => {
-			NotificationManager.error(error.response.data.message);
 		});
 	}
 
   render() {
 		if (!this.state.loggedIn) {
-      window.location = "/";
+	  	window.location = "/";
 		}
 
 		return (

@@ -49,7 +49,7 @@ class ShowBusiness extends Component {
 
 		let reviews = this.state.reviews_list.map((review, index) => {
 			return (
-				<div>
+				<div key={index}>
 					<br />
 					<h3>{review.name}</h3>
 					<p>{review.description}</p>
