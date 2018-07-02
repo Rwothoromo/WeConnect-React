@@ -11,15 +11,6 @@ describe('<ShowBusiness />', () => {
 	const mock = new MockAdapter(Axios);
 
 	it('shows a businesses', async () => {
-		localStorage.setItem({
-			access_token: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MzA1MTUwMjEsImlhdCI6MTUzMDUxMTQyMSwic3ViIjo0fQ.qE4TVdgp5a6PFO_gGlIGJW4vb5i63o5xzlLK9EJjJnM"
-		});
-		localStorage.setItem({first_name: "Sonia"});
-		localStorage.setItem({last_name: "Karungi"});
-		localStorage.setItem({username: "karungi"});
-
-		const showBusinessComponent = wrapper.find(ShowBusiness).dive();
-
 		mock.onGet(`${apiUrl}/businesses/2`).reply(200, {
 			business: {
         author: "Edwin Kato",
@@ -35,6 +26,8 @@ describe('<ShowBusiness />', () => {
         updated_at:"Thu, 28 Jun 2018 14:33:42 GMT"
       }
 		});
+
+		const showBusinessComponent = wrapper.find(ShowBusiness).dive();
 
 		mock.onGet(`${apiUrl}/businesses/2/reviews`).reply(200, {
 			reviews_list:  [{}, {}]

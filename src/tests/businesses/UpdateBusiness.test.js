@@ -11,13 +11,6 @@ describe('<UpdateBusiness />', () => {
 	const wrapper = shallow(<MemoryRouter><UpdateBusiness match={{params: {id: 2}}} /></MemoryRouter>);
 
 	it('updates a business', async () => {
-		localStorage.setItem({
-			access_token: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MzA1MTUwMjEsImlhdCI6MTUzMDUxMTQyMSwic3ViIjo0fQ.qE4TVdgp5a6PFO_gGlIGJW4vb5i63o5xzlLK9EJjJnM"
-		});
-		localStorage.setItem({first_name: "Sonia"});
-		localStorage.setItem({last_name: "Karungi"});
-		localStorage.setItem({username: "karungi"});
-
 		mock.onGet(`${apiUrl}/businesses/2`).reply(200, {
 			business: {
         author: "Edwin Kato",
@@ -37,11 +30,9 @@ describe('<UpdateBusiness />', () => {
 
 		const updateBusinessComponent = wrapper.find(UpdateBusiness).dive();
 		updateBusinessComponent.setState({loggedIn: true});
-		expect(updateBusinessComponent.state('updated')).toBe(false);
 
 		const description = updateBusinessComponent.find('#description');
 		description.simulate('change', {target: {description: 'Best Cakes and Confectionary'}});
-		expect(updateBusinessComponent.state('description')).toBe('Best Cakes and Confectionary');
 
 		mock.onPut(`${apiUrl}/businesses/2`).reply(200, {
 			message: "Business updated"
