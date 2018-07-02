@@ -1,4 +1,4 @@
-import { isLoggedIn, contains, clearUser } from '../../utils/helpers';
+import { isLoggedIn, contains, clearUser } from '../../utils/Helpers';
 
 describe('Helper - isLoggedIn', () => {
 	it('checks if user not logged in', () => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import BusinessList from '../../components/businesses';
+import BusinessList from '../../components/businesses/BusinessesList';
 import MockAdapter from 'axios-mock-adapter';
 import Axios from 'axios';
 

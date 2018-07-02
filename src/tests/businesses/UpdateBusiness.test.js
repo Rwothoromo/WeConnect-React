@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import UpdateBusiness from '../../components/businesses/update';
+import UpdateBusiness from '../../components/businesses/UpdateBusiness';
 
 describe('<UpdateBusiness />', () => {
 	// const wrapper = shallow(<UpdateBusiness />);
