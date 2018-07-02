@@ -6,7 +6,7 @@ import 'react-notifications/lib/notifications.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../static/css/style.css';
 import axios from "axios";
-import { apiUrl } from '../../App'
+import { apiUrl } from '../../App';
 import { contains } from '../../utils/Helpers';
 
 class RegisterUser extends Component {
