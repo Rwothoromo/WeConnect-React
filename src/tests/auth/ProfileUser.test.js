@@ -14,7 +14,6 @@ describe('<ProfileUser />', () => {
 	});
 
 	it('resets user password', async () => {
-		wrapper.setState({loggedIn: true});
 		mock.onPost(`${apiUrl}/auth/reset-password`).reply(200, {
 			message: "User password reset",
 			new_password: "new_password"
@@ -25,7 +24,6 @@ describe('<ProfileUser />', () => {
 			preventDefault: () => {},
 			clearUser: () => {}
 		});
-		localStorage.removeItem("access_token");
 		expect(spyResetPassword).toHaveBeenCalled();
 	});
 });
