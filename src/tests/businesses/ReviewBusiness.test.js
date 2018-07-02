@@ -30,7 +30,6 @@ describe('<ReviewBusiness />', () => {
         location: 2,
         location_name: "Kabale",
         name: "Baker's",
-        photo: "Photo",
         updated_at:"Thu, 28 Jun 2018 14:33:42 GMT"
       }
 		});

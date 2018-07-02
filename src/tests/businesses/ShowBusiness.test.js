@@ -3,7 +3,6 @@ import { MemoryRouter } from 'react-router-dom';
 import { shallow } from 'enzyme';
 import ShowBusiness from '../../components/businesses/ShowBusiness';
 import MockAdapter from 'axios-mock-adapter';
-import decode from 'jwt-decode';
 import Axios from 'axios';
 import { apiUrl } from '../../App';
 
@@ -20,7 +19,6 @@ describe('<ShowBusiness />', () => {
 		localStorage.setItem({username: "karungi"});
 
 		const showBusinessComponent = wrapper.find(ShowBusiness).dive();
-		const user = decode("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MzA1MTUwMjEsImlhdCI6MTUzMDUxMTQyMSwic3ViIjo0fQ.qE4TVdgp5a6PFO_gGlIGJW4vb5i63o5xzlLK9EJjJnM");
 
 		mock.onGet(`${apiUrl}/businesses/2`).reply(200, {
 			business: {
@@ -34,7 +32,6 @@ describe('<ShowBusiness />', () => {
         location: 2,
         location_name: "Kabale",
         name: "Baker's",
-        photo: "Photo",
         updated_at:"Thu, 28 Jun 2018 14:33:42 GMT"
       }
 		});

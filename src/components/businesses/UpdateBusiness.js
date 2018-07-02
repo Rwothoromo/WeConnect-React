@@ -16,11 +16,6 @@ class UpdateBusiness extends Component {
 			description: '',
 			updated: false
 		};
-    this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
-	}
-
-	handleDescriptionChange(event) {
-    this.setState({description: event.target.description});
 	}
 
 	componentDidMount() {
@@ -32,6 +27,10 @@ class UpdateBusiness extends Component {
 				description: response.data.description
 			});
 		});
+	}
+
+	handleDescriptionChange = (event) => {
+    this.setState({description: event.target.description});
 	}
 
 	updateBusiness = (event) => {

@@ -10,7 +10,7 @@ describe('<RegisterBusiness />', () => {
 	const mock = new MockAdapter(Axios);
 	const wrapper = shallow(<MemoryRouter><RegisterBusiness /></MemoryRouter>);
 
-	it('registers business', async () => {
+	it('registers a business', async () => {
 		localStorage.setItem({
 			access_token: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MzA1MTUwMjEsImlhdCI6MTUzMDUxMTQyMSwic3ViIjo0fQ.qE4TVdgp5a6PFO_gGlIGJW4vb5i63o5xzlLK9EJjJnM"
 		});
