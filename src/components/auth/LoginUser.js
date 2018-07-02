@@ -26,13 +26,11 @@ class LoginUser extends Component {
 			headers: {'Content-Type': 'application/json'}
 		}).then(response => {
 			NotificationManager.success(response.data.message);
-			if (response.status === 200) {
-				localStorage.setItem("access_token", response.data.access_token);
-				localStorage.setItem("username", response.data.username);
-				localStorage.setItem("first_name", response.data.first_name);
-				localStorage.setItem("last_name", response.data.last_name);
-				this.setState({loggedIn: true});
-			}
+			localStorage.setItem("access_token", response.data.access_token);
+			localStorage.setItem("username", response.data.username);
+			localStorage.setItem("first_name", response.data.first_name);
+			localStorage.setItem("last_name", response.data.last_name);
+			this.setState({loggedIn: true});
 		}).catch(error => {
 			NotificationManager.error(error.response.data.message);
 		})
