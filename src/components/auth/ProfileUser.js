@@ -27,11 +27,15 @@ class ProfileUser extends Component {
 
 	resetPassword = (event) => {
 		event.preventDefault();
+
+		let confirm = window.confirm("This action will reset your password! Proceed?");
+		if (!confirm) return;
+
 		axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
 		axios.post(`${apiUrl}/auth/reset-password`).then(response => {
 			NotificationManager.success(response.data.message);
 			NotificationManager.info(response.data.new_password);
-			window.confirm('Save the new password: ' + response.data.new_password);
+			alert('Save the new password: ' + response.data.new_password);
 			localStorage.removeItem("access_token");
 			clearUser();
 			window.location = '/auth/login';
