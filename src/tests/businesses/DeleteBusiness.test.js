@@ -17,7 +17,7 @@ describe('<DeleteBusiness />', () => {
 			message: "Business deleted"
 		});
 
-		global.confirm = () => true
+		global.confirm = () => true;
 		let spyDeleteBusiness = jest.spyOn(deleteBusinessComponent.instance(), 'componentDidMount');
 		await deleteBusinessComponent.instance().componentDidMount({confirm: () => {} });
 		expect(spyDeleteBusiness).toHaveBeenCalled();
