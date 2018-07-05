@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { NotificationManager } from 'react-notifications';
-import 'react-notifications/lib/notifications.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../../static/css/style.css';
 import axios from "axios";
 import { apiUrl } from '../../App'
 import { isLoggedIn } from '../../utils/Helpers';
@@ -13,15 +10,15 @@ class ReviewBusiness extends Component {
 		super(props);
 		this.state = {
 			business: {},
+			id: this.props.id,
 			loggedIn: isLoggedIn(),
       reviewed: false
 		}
 	}
 
   componentDidMount() {
-		const id = this.props.match.params.id;
 		axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
-    axios.get(`${apiUrl}/businesses/${id}`).then(response => {
+    axios.get(`${apiUrl}/businesses/${this.state.id}`).then(response => {
 			this.setState({
 				business: response.data
 			});
@@ -30,13 +27,13 @@ class ReviewBusiness extends Component {
 
 	reviewBusiness = (event) => {
 		event.preventDefault();
-		const id = this.props.match.params.id;
+
 		let review = {
 			name: event.target.elements.name.value,
 			description: event.target.elements.description.value
 		}
 		axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
-		axios.post(`${apiUrl}/businesses/${id}/reviews`, JSON.stringify(review), {
+		axios.post(`${apiUrl}/businesses/${this.state.id}/reviews`, JSON.stringify(review), {
       headers: {'Content-Type': 'application/json'}
 		}).then(response => {
 			NotificationManager.success(response.data.message);
@@ -51,36 +48,44 @@ class ReviewBusiness extends Component {
 			return (<Redirect to="/auth/login"/>);
 		}
 
-		if (this.state.reviewed) {
-			return (<Redirect to={'/businesses/show/' + this.props.match.params.id} />)
-		}
-
 		return (
-			<main role="main" className="container-fluid other-bg">
-				<br /><br /><br /><br />
-				<div className="row col-md-12">
-					<div className="col-md-2" />
-					<div className="col-md-8 weconnect-div">
-						<form className="weconnect-form" onSubmit={this.reviewBusiness}>
-							<div className="form-group">
-								<label className="control-label col-md-12" style={{textAlign: 'center'}}>Review business</label>
-                <h1 className="display-4">{this.state.business.name}</h1>
-							  <p>{this.state.business.description}</p>
+			<div className="modal fade modal-backdrop" id={`reviewBusinessModal${this.state.id}`}>
+				<div className="modal-dialog">
+					<div className="modal-content">
+						<div className="modal-header">
+							<h4 className="modal-title">WeConnect</h4>
+							<button type="button" className="close" data-dismiss="modal">×</button>
+						</div>
+						<div className="modal-body">
+							<div style={{overflowY: "auto", height: "auto" }}>
+								<form onSubmit={this.reviewBusiness}>
+									<div className="card" style={{width: 'auto', marginBottom: 10, marginLeft: 20, marginRight:20}} >
+										<h5 className="card-header">Review business</h5>
+										<div className="card-body">
+											<h1 className="display-5">{this.state.business.name}</h1>
+											<p>{this.state.business.description}</p><br />
+											<div className="card-text weconnect-form">
+												<div className="form-group">
+													<input type="text" className="form-control" placeholder="Review name" id="name" name="name" required />
+												</div>
+												<div className="form-group">
+													<textarea className="form-control" placeholder="Description" id="description" name="description" cols={28} rows={3} defaultValue={""} />
+												</div>
+												<div className="form-group">
+													<input type="submit" className="btn btn-default weconnect-btn" id="review" name="review" defaultValue="Submit Review" />
+												</div>
+											</div>
+										</div>
+									</div>
+								</form>
 							</div>
-							<div className="form-group">
-								<input type="text" className="form-control" placeholder="Review name" id="name" name="name" required />
-							</div>
-							<div className="form-group">
-								<textarea className="form-control" placeholder="Description" id="description" name="description" cols={28} rows={3} defaultValue={""} />
-							</div>
-							<div className="form-group">
-								<input type="submit" className="btn btn-default weconnect-btn" id="review" name="review" defaultValue="Submit Review" />
-							</div>
-						</form>
+						</div>
+						<div className="modal-footer">
+							<button type="button" className="btn btn-danger" data-dismiss="modal">Close</button>
+						</div>
 					</div>
-					<div className="col-md-2" />
 				</div>
-			</main>
+			</div>
 		);
 	}
 }

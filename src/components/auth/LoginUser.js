@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { NotificationManager } from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../../static/css/style.css';
 import axios from "axios";
 import { apiUrl } from '../../App'
 import { isLoggedIn } from '../../utils/Helpers';

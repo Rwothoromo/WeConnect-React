@@ -1,6 +1,4 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../../static/css/style.css';
 
 const Footer = () => (
 	<footer className="footer">

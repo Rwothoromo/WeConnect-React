@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { NotificationManager } from 'react-notifications';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../../static/css/style.css';
 import axios from "axios";
 import { apiUrl } from '../../App';
 import { isLoggedIn, clearUser } from '../../utils/Helpers';
