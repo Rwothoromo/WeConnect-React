@@ -1,5 +1,15 @@
 import React, { Component } from 'react';
 
+/**
+ * Generate a list of review cards for a business
+ * 
+ * @param {object} props Component props
+ * @param {object} props.reviews_list Contains list of businesses
+ * 
+ * ```html
+ * <ReviewCards reviews_list={this.state.reviews_list} />
+ * ```
+ */
 class ReviewCards extends Component {
   render() {
     const reviews_list = this.props.reviews_list;

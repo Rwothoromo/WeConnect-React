@@ -18,6 +18,10 @@ WeConnect brings businesses and users together, and allows users to review busin
 
 View on [Heroku](https://weconnect-react-rwothoromo.herokuapp.com/)
 
+## Documentation
+
+[Component documentation for this project](./DOCUMENTATION.md)
+
 ## Setup
 
 * Run `git clone` this repository and `cd` into the project root.

@@ -17,6 +17,13 @@ import ReviewBusiness from './components/businesses/ReviewBusiness';
 
 export const apiUrl = process.env.REACT_APP_BACKEND_HOST || 'http://127.0.0.1:5000/api/v2'
 
+/**
+ * All routes used in the application
+ * 
+ * ```html
+ * <Routes />
+ * ```
+ */
 const Routes = () => (
 	<Router>
 		<div>
@@ -35,6 +42,14 @@ const Routes = () => (
 	</Router>
 )
 
+/**
+ * Application entry point.
+ * Places all content within the `Layout`
+ * 
+ * ```html
+ * <App />
+ * ```
+ */
 class App extends Component {
 	render() {
 		return (

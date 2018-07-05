@@ -6,6 +6,13 @@ import axios from "axios";
 import { apiUrl } from '../../App'
 import { isLoggedIn } from '../../utils/Helpers';
 
+/**
+ * Form for registering a business
+ * 
+ * ```html
+ * <RegisterBusiness />
+ * ```
+ */
 class RegisterBusiness extends Component {
 	constructor() {
 		super();
@@ -17,6 +24,8 @@ class RegisterBusiness extends Component {
 
 	registerBusiness = (event) => {
 		event.preventDefault();
+	
+		// Create a business object from user input
 		let business = {
 			name: event.target.elements.name.value,
 			description: event.target.elements.description.value,

@@ -4,9 +4,16 @@ import UserTabs from './UserTabs';
 import VisitorTabs from './VisitorTabs';
 import { isLoggedIn } from '../../utils/Helpers';
 
+/**
+ * Header
+ * 
+ * ```html
+ * <Header />
+ * ```
+ */
 class Header extends Component {
-	constructor(props) {
-		super(props);
+	constructor() {
+		super();
 		this.state = {
 			loggedIn: isLoggedIn()
 		}

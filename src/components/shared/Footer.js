@@ -1,5 +1,12 @@
 import React from 'react';
 
+/**
+ * Footer
+ * 
+ * ```html
+ * <Footer />
+ * ```
+ */
 const Footer = () => (
 	<footer className="footer">
 		<div className="container">

@@ -5,6 +5,16 @@ import axios from "axios";
 import { apiUrl } from '../../App'
 import { isLoggedIn } from '../../utils/Helpers';
 
+/**
+ * Form for reviewing a business
+ * 
+ * @param {object} props Component props
+ * @param {integer} props.id Business id
+ * 
+ * ```html
+ * <ReviewBusiness id={1} />
+ * ```
+ */
 class ReviewBusiness extends Component {
 	constructor(props) {
 		super(props);

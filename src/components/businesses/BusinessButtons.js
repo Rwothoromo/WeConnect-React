@@ -2,6 +2,16 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faStar } from '@fortawesome/free-solid-svg-icons';
 
+/**
+ * Generate `View` and `Review` buttons for non-business owners
+ * 
+ * @param {object} props Component props
+ * @param {integer} props.business_id Business id
+ * 
+ * ```html
+ * <BusinessButtons business_id={1} />
+ * ```
+ */
 const BusinessButtons = (props) => {
   let { business_id } = props;
 

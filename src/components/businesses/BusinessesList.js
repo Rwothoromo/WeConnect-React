@@ -12,6 +12,13 @@ import BusinessSearch from './BusinessSearch';
 import BusinessCards from './BusinessCards';
 import BusinessModals from './BusinessModals';
 
+/**
+ * List all businesses in a searchable, paginated display
+ * 
+ * ```html
+ * <BusinessesList />
+ * ```
+ */
 class BusinessesList extends Component {
 	constructor() {
 		super();
@@ -24,6 +31,7 @@ class BusinessesList extends Component {
 	}
 
 	componentDidMount() {
+		// Query and return businesses, and paginate them.
 		axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
 		axios.get(`${apiUrl}/businesses?limit=3`).then(response => {
 			this.setState({
@@ -33,12 +41,13 @@ class BusinessesList extends Component {
 			});
 		}).catch(error => {
 			NotificationManager.error(error.response.data.message);
-			return (<Redirect to="/businesses/register"/>);
 		});
 	}
 
 	searchBusinesses = (event) => {
+		// Search for businesses by name, category and/or location.
 		event.preventDefault();
+
 		let q = event.target.elements.q.value
 		let	category = event.target.elements.category.value
 		let location = event.target.elements.location.value
@@ -58,6 +67,7 @@ class BusinessesList extends Component {
 	}
 
 	handlePageChange = (event, page) => {
+		// Query and return businesses for the requested page.
 		event.preventDefault();
 
 		axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');

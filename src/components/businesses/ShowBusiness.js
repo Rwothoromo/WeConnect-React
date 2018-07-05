@@ -5,6 +5,16 @@ import { apiUrl } from '../../App';
 import { isLoggedIn } from '../../utils/Helpers';
 import ReviewCards from './ReviewCards';
 
+/**
+ * Display a business' information and reviews
+ * 
+ * @param {object} props Component props
+ * @param {integer} props.id Business id
+ * 
+ * ```html
+ * <ShowBusiness id={1} />
+ * ```
+ */
 class ShowBusiness extends Component {
 	constructor(props) {
 		super(props);

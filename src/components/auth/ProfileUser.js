@@ -4,9 +4,16 @@ import axios from "axios";
 import { apiUrl } from '../../App';
 import { isLoggedIn, clearUser } from '../../utils/Helpers';
 
+/**
+ * User profile page with password reset button
+ * 
+ * ```html
+ * <ProfileUser />
+ * ```
+ */
 class ProfileUser extends Component {
-	constructor(props) {
-		super(props);
+	constructor() {
+		super();
 		this.state = {
 			username: '',
 			first_name: '',

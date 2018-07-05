@@ -1,10 +1,19 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
 import { NotificationManager } from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
 import axios from "axios";
 import { apiUrl } from '../../App';
 
+/**
+ * Form for deleting a business
+ * 
+ * @param {object} props Component props
+ * @param {integer} props.id Business id
+ * 
+ * ```html
+ * <DeleteBusiness id={1} />
+ * ```
+ */
 class DeleteBusiness extends Component {
 	constructor(props) {
 		super(props);

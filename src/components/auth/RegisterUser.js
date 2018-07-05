@@ -6,6 +6,13 @@ import axios from "axios";
 import { apiUrl } from '../../App';
 import { contains } from '../../utils/Helpers';
 
+/**
+ * Form for user registration
+ * 
+ * ```html
+ * <RegisterUser />
+ * ```
+ */
 class RegisterUser extends Component {
 	constructor() {
 		super();
@@ -27,6 +34,7 @@ class RegisterUser extends Component {
 		} else if (!contains(accepted, passwordStrength.innerHTML)) {
 			NotificationManager.error("Please use a stronger password!");
 		} else {
+			// Create a user object from user input
 			let user = {
 				first_name: event.target.elements.first_name.value,
 				last_name: event.target.elements.last_name.value,
