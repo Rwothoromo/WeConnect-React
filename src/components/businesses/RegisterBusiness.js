@@ -50,7 +50,7 @@ class RegisterBusiness extends Component {
 		}
 
 		return (
-			<div className="modal fade modal-backdrop" id="registerBusinessModal">
+			<div className="modal fade" id="registerBusinessModal">
 				<div className="modal-dialog">
 					<div className="modal-content">
 						<div className="modal-header">
