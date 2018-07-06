@@ -16,12 +16,11 @@ describe('<RegisterBusiness />', () => {
 		});
 	});
 	
-	it('deletes a business', async () => {
+	it('adds a business', async () => {
 		mock.onPost(`${apiUrl}/businesses`).reply(201, {
 			message: "Business added"
 		})
 		const form = wrapper.find('form')
-		console.log(form)
 		form.simulate('submit')
 	});
 });

@@ -7,9 +7,8 @@ describe('<BusinessSearch />', () => {
     
     const wrapper = mount(<BusinessSearch searchBusinesses={searchBusinesses}/>);
 
-    it('calls', () => {
+    it('calls the search function', () => {
         let spy = jest.spyOn(wrapper.props(), 'searchBusinesses');
-        console.log(wrapper.props())
         wrapper.find("input[name='q']").simulate('change', {target: {value: 'andela'}})
         wrapper.find("input[name='category']").simulate('change', {target: {value: 'category'}})
         wrapper.find("input[name='location']").simulate('change', {target: {value: 'location'}})
