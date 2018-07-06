@@ -11,6 +11,7 @@ import Paginator from '../shared/Paginator';
 import BusinessSearch from './BusinessSearch';
 import BusinessCards from './BusinessCards';
 import BusinessModals from './BusinessModals';
+import RegisterBusiness from './RegisterBusiness';
 
 /**
  * List all businesses in a searchable, paginated display
@@ -94,6 +95,7 @@ class BusinessesList extends Component {
 		return (
 			<main role="main" className="container-fluid other-bg">
 				<br /><br /><br /><br />
+				<RegisterBusiness />
 				<BusinessModals />
 				<div className="row col-md-12">
 					<div className="col-md-3" />
