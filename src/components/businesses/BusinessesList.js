@@ -93,24 +93,26 @@ class BusinessesList extends Component {
 		let user = decode(localStorage.getItem("access_token"));
 
 		return (
-			<main role="main" className="container-fluid other-bg">
-				<br /><br /><br /><br />
+			<div>
+				<main role="main" className="container-fluid other-bg">
+					<br /><br /><br /><br />
+					<div className="row col-md-12">
+						<div className="col-md-3" />
+						<div className="col-md-6 weconnect-div">
+							<BusinessSearch searchBusinesses={this.searchBusinesses} />
+							<button title="Add business" type="button" className="btn btn-primary btn-sm" style={{marginBottom: 10, marginLeft: 20}}
+								data-toggle="modal" data-target="#registerBusinessModal">
+								Add a business <FontAwesomeIcon icon={faPlus} />
+							</button>
+							<BusinessCards user={user} businesses_list={this.state.businesses_list} />
+							<Paginator prev_page={this.state.prev_page} next_page={this.state.next_page} handlePageChange={this.handlePageChange} />
+						</div>
+						<div className="col-md-3" />
+					</div>
+				</main>
 				<RegisterBusiness />
 				<BusinessModals />
-				<div className="row col-md-12">
-					<div className="col-md-3" />
-					<div className="col-md-6 weconnect-div">
-						<BusinessSearch searchBusinesses={this.searchBusinesses} />
-						<button title="Add business" type="button" className="btn btn-primary btn-sm" style={{marginBottom: 10, marginLeft: 20}}
-							data-toggle="modal" data-target="#registerBusinessModal" data-backdrop="false">
-							Add a business <FontAwesomeIcon icon={faPlus} />
-						</button>
-						<BusinessCards user={user} businesses_list={this.state.businesses_list} />
-						<Paginator prev_page={this.state.prev_page} next_page={this.state.next_page} handlePageChange={this.handlePageChange} />
-					</div>
-					<div className="col-md-3" />
-				</div>
-			</main>
+		</div>
 		);
 	}
 }

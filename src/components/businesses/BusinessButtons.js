@@ -18,12 +18,12 @@ const BusinessButtons = (props) => {
 	return (
     <ul className="list-inline">
       <li className="list-inline-item">
-        <button title="View" className="btn btn-primary btn-sm" data-toggle="modal" data-target={`#viewBusinessModal${business_id}`} data-backdrop="false">
+        <button title="View" className="btn btn-primary btn-sm" data-toggle="modal" data-target={`#viewBusinessModal${business_id}`}>
           View <FontAwesomeIcon icon={faEye} />
         </button>
       </li>
       <li className="list-inline-item">
-        <button title="Review" className="btn btn-info btn-sm" data-toggle="modal" data-target={`#reviewBusinessModal${business_id}`} data-backdrop="false">
+        <button title="Review" className="btn btn-info btn-sm" data-toggle="modal" data-target={`#reviewBusinessModal${business_id}`}>
           Review <FontAwesomeIcon icon={faStar} />
         </button>
       </li>
