@@ -1,30 +1,27 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
 import { NotificationManager } from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
 import axios from "axios";
-import { apiUrl } from '../../App'
-import { isLoggedIn } from '../../utils/Helpers';
+import { apiUrl } from '../../App';
 
 /**
  * Form for registering a business
  * 
+ * @param {object} props Component props
+ * @param {function} props.showUpdatedBusinesses Form callback function
+ * 
  * ```html
- * <RegisterBusiness />
+ * <RegisterBusiness showUpdatedBusinesses={this.showUpdatedBusinesses}/>
  * ```
  */
 class RegisterBusiness extends Component {
-	constructor() {
-		super();
-		this.state = {
-			loggedIn: isLoggedIn(),
-			registered: false
-		}
+	constructor(props) {
+		super(props);
 	}
 
 	registerBusiness = (event) => {
 		event.preventDefault();
-	
+
 		// Create a business object from user input
 		let business = {
 			name: event.target.elements.name.value,
@@ -37,18 +34,13 @@ class RegisterBusiness extends Component {
       headers: {'Content-Type': 'application/json'}
 		}).then(response => {
 			NotificationManager.success(response.data.message);
-			this.setState({registered: true});
-			window.location.reload();
+			this.props.showUpdatedBusinesses();
 		}).catch(error => {
 			NotificationManager.error(error.response.data.message);
 		});
 	}
 
 	render() {
-		if (!this.state.loggedIn) {
-			return (<Redirect to="/auth/login"/>);
-		}
-
 		return (
 			<div className="modal fade" id="registerBusinessModal">
 				<div className="modal-dialog">

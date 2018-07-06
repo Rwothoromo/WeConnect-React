@@ -7,7 +7,7 @@ import React, { Component } from 'react';
  * @param {object} props.reviews_list Contains list of businesses
  * 
  * ```html
- * <ReviewCards reviews_list={this.state.reviews_list} />
+ * <ReviewCards reviews_list={this.props.reviews_list} />
  * ```
  */
 class ReviewCards extends Component {
@@ -17,8 +17,8 @@ class ReviewCards extends Component {
       <div>
         <h1 className="display-6">&nbsp;&nbsp;Reviews ({reviews_list.length})</h1>
         {
-          reviews_list.map((review, index) => 
-            <div key={index} className="card" style={{width: 'auto', marginBottom: 10, marginLeft: 20, marginRight:20}} >
+          reviews_list.map(review => 
+            <div key={review.id} className="card" style={{width: 'auto', marginBottom: 10, marginLeft: 20, marginRight:20}} >
               <h5 className="card-header">{review.name}</h5>
               <div className="card-body weconnect-form">
                 <p className="card-text">

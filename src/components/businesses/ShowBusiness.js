@@ -1,40 +1,30 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
 import axios from "axios";
 import { apiUrl } from '../../App';
-import { isLoggedIn } from '../../utils/Helpers';
 import ReviewCards from './ReviewCards';
 
 /**
  * Display a business' information and reviews
  * 
  * @param {object} props Component props
- * @param {integer} props.id Business id
+ * @param {object} props.business Business object
  * 
  * ```html
- * <ShowBusiness id={1} />
+ * <ShowBusiness business={business} />
  * ```
  */
 class ShowBusiness extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			business: {},
-			reviews_list: [],
-			id: this.props.id,
-			loggedIn: isLoggedIn()
+			reviews_list: []
 		}
 	}
 
-	componentDidMount() {
+	componentDidMount = () => {
+		console.log("$$$$$$$",this.props.business.id)
 		axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
-    axios.get(`${apiUrl}/businesses/${this.state.id}`).then(response => {
-			this.setState({
-				business: response.data
-			});
-		});
-
-		axios.get(`${apiUrl}/businesses/${this.state.id}/reviews`).then(response => {
+    axios.get(`${apiUrl}/businesses/${this.props.business.id}/reviews`).then(response => {
 			this.setState({
 				reviews_list: response.data
 			})
@@ -42,12 +32,8 @@ class ShowBusiness extends Component {
 	}
 
 	render() {
-		if (!this.state.loggedIn) {
-			return (<Redirect to="/auth/login"/>);
-		}
-
 		return (
-			<div className="modal fade" id={`viewBusinessModal${this.state.id}`}>
+			<div className="modal fade" id={`viewBusinessModal${this.props.business.id}`}>
 				<div className="modal-dialog">
 					<div className="modal-content">
 						<div className="modal-header">
@@ -56,8 +42,8 @@ class ShowBusiness extends Component {
 						</div>
 						<div className="modal-body">
 							<div style={{overflowY: "auto", height: "auto" }}>
-								<h1 className="display-4">{this.state.business.name}</h1>
-								<p>{this.state.business.description}</p><br />
+								<h1 className="display-4">{this.props.business.name}</h1>
+								<p>{this.props.business.description}</p><br />
 								<ReviewCards reviews_list={this.state.reviews_list} />
 							</div>
 						</div>

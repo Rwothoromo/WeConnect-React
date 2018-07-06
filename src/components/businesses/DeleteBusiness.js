@@ -8,29 +8,25 @@ import { apiUrl } from '../../App';
  * Form for deleting a business
  * 
  * @param {object} props Component props
- * @param {integer} props.id Business id
+ * @param {object} props.business Business object
+ * @param {function} props.showUpdatedBusinesses Form callback function
  * 
  * ```html
- * <DeleteBusiness id={1} />
+ * <DeleteBusiness business={business} showUpdatedBusinesses={this.props.showUpdatedBusinesses} />
  * ```
  */
 class DeleteBusiness extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			id: this.props.id,
-			deleted: false
-		}
 	}
 
 	deleteBusiness = (event) => {
 		event.preventDefault();
 
 		axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
-    axios.delete(`${apiUrl}/businesses/${this.state.id}`).then(response => {
-			this.setState({deleted: true});
+    axios.delete(`${apiUrl}/businesses/${this.props.business.id}`).then(response => {
 			NotificationManager.success(response.data.message);
-			window.location.reload();
+			this.props.showUpdatedBusinesses();
 		}).catch(error => {
 			NotificationManager.error(error.response.data.message);
 		});
@@ -38,7 +34,7 @@ class DeleteBusiness extends Component {
 
 	render() {
 		return (
-			<div className="modal fade" id={`deleteBusinessModal${this.state.id}`}>
+			<div className="modal fade" id={`deleteBusinessModal${this.props.business.id}`}>
 				<div className="modal-dialog">
 					<div className="modal-content">
 						<div className="modal-header">
@@ -50,7 +46,7 @@ class DeleteBusiness extends Component {
 								<h5 className="card-header">Delete business</h5>
 								<div className="card-body">
 									<div className="card-text">
-									This action will completely delete the business! Proceed?
+									This action will completely delete the business <b>{this.props.business.name}</b>! Proceed?
 									</div>
 								</div>
 							</div>
