@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
 import { NotificationManager } from 'react-notifications';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../../static/css/style.css';
 import axios from "axios";
 import { apiUrl } from '../../App';
 import { isLoggedIn, clearUser } from '../../utils/Helpers';
 
+/**
+ * User profile page with password reset button
+ * 
+ * ```html
+ * <ProfileUser />
+ * ```
+ */
 class ProfileUser extends Component {
-	constructor(props) {
-		super(props);
+	constructor() {
+		super();
 		this.state = {
 			username: '',
 			first_name: '',

@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
 import { NotificationManager } from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../../static/css/style.css';
 import axios from "axios";
 import { apiUrl } from '../../App'
 import { isLoggedIn } from '../../utils/Helpers';
 
+/**
+ * Form for user login
+ * 
+ * ```html
+ * <LoginUser />
+ * ```
+ */
 class LoginUser extends Component {
 	constructor() {
 		super();
@@ -18,6 +23,7 @@ class LoginUser extends Component {
 	loginUser = (event) => {
 		event.preventDefault();
 
+		// Create a user object from user input
 		let user = {
 			username: event.target.elements.username.value,
 			password: event.target.elements.password.value

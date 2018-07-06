@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'jquery/dist/jquery.min.js';
-import 'bootstrap/dist/js/bootstrap.min.js';
-import '../../static/css/style.css';
 
+/**
+ * Navigation menu options for a visitor to the site
+ * 
+ * ```html
+ * <VisitorTabs />
+ * ```
+ */
 class VisitorTabs extends Component {
 	render() {
 		return (

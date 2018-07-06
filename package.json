@@ -3,10 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.0-14",
+    "@fortawesome/free-solid-svg-icons": "^5.1.0-11",
+    "@fortawesome/react-fontawesome": "0.1.0-11",
     "axios": "^0.18.0",
     "bootstrap": "^4.1.1",
+    "i": "^0.3.6",
     "jquery": "^3.3.1",
     "jwt-decode": "^2.2.0",
+    "npm": "^6.1.0",
     "popper.js": "^1.14.3",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
@@ -21,7 +26,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "coverage": "react-scripts test --env=jsdom --coverage --collectCoverageFrom=src/**/*js --collectCoverageFrom=!src/index.js"
+    "coverage": "react-scripts test --env=jsdom --coverage --collectCoverageFrom=src/**/*js --collectCoverageFrom=!src/index.js",
+    "doc": "react-doc-generator ./ -o DOCUMENTATION.md"
   },
   "devDependencies": {
     "axios-mock-adapter": "^1.15.0",
@@ -32,6 +38,7 @@
     "eslint-config-airbnb": "^17.0.0",
     "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
-    "eslint-plugin-react": "^7.10.0"
+    "eslint-plugin-react": "^7.10.0",
+    "react-doc-generator": "^1.2.5"
   }
 }

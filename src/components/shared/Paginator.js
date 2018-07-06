@@ -1,5 +1,16 @@
 import React from 'react';
 
+/**
+ * Generate `Prev` and `Next` buttons for a paginated list
+ * @param {object} props Component props
+ * @param {integer} props.prev_page Id for the previous page
+ * @param {integer} props.next_page Id for the next page
+ * @param {function} props.handlePageChange Paginator callback function
+ * 
+ * ```html
+ * <Paginator prev_page={1} next_page={2} handlePageChange={this.handlePageChange} />
+ * ```
+ */
 const Paginator = (props) => {
   const { prev_page, next_page, handlePageChange } = props;
   const prev = [];
@@ -7,7 +18,7 @@ const Paginator = (props) => {
 
   if (prev_page) {
     prev.push(
-      <li key={prev_page} className="page-item">
+      <li style={{marginLeft: 20}} key={prev_page} className="page-item">
         <button className="page-link" 
           onClick={(event) => { handlePageChange(event, prev_page); }}>
           Prev
@@ -16,7 +27,7 @@ const Paginator = (props) => {
     );
   } else {
     prev.push(
-      <li key={null} className="page-item disabled">
+      <li key={null} style={{marginLeft: 20}} className="page-item disabled">
         <button className="page-link">Prev</button>
       </li>
     );

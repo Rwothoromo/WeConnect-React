@@ -121,3 +121,8 @@ footer {
     font-weight: 700;
     color: #f8f8f8;
 }
+
+.modal
+{
+    opacity:0.97 !important;
+}

@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../../static/css/style.css';
-
 import logo from '../../static/img/logo.PNG'
 import UserTabs from './UserTabs';
 import VisitorTabs from './VisitorTabs';
 import { isLoggedIn } from '../../utils/Helpers';
 
+/**
+ * Header
+ * 
+ * ```html
+ * <Header />
+ * ```
+ */
 class Header extends Component {
-	constructor(props) {
-		super(props);
+	constructor() {
+		super();
 		this.state = {
 			loggedIn: isLoggedIn()
 		}

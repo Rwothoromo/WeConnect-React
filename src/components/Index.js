@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../static/css/style.css';
 
+/**
+ * Main page content
+ * 
+ * ```html
+ * <Index />
+ * ```
+ */
 class Index extends Component {
   render() {
 		return (

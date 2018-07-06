@@ -1,13 +1,25 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../../static/css/style.css';
 import axios from "axios";
 import { apiUrl } from '../../App';
+import decode from 'jwt-decode';
 import { NotificationManager } from 'react-notifications';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { isLoggedIn } from '../../utils/Helpers';
 import Paginator from '../shared/Paginator';
+import BusinessSearch from './BusinessSearch';
+import BusinessCards from './BusinessCards';
+import BusinessModals from './BusinessModals';
+import RegisterBusiness from './RegisterBusiness';
 
+/**
+ * List all businesses in a searchable, paginated display
+ * 
+ * ```html
+ * <BusinessesList />
+ * ```
+ */
 class BusinessesList extends Component {
 	constructor() {
 		super();
@@ -20,8 +32,9 @@ class BusinessesList extends Component {
 	}
 
 	componentDidMount() {
+		// Query and return businesses, and paginate them.
 		axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
-		axios.get(`${apiUrl}/businesses?limit=5`).then(response => {
+		axios.get(`${apiUrl}/businesses?limit=3`).then(response => {
 			this.setState({
 				businesses_list: response.data.businesses,
 				next_page: response.data.next_page,
@@ -29,12 +42,13 @@ class BusinessesList extends Component {
 			});
 		}).catch(error => {
 			NotificationManager.error(error.response.data.message);
-			window.location = '/businesses/register';
 		});
 	}
 
 	searchBusinesses = (event) => {
+		// Search for businesses by name, category and/or location.
 		event.preventDefault();
+
 		let q = event.target.elements.q.value
 		let	category = event.target.elements.category.value
 		let location = event.target.elements.location.value
@@ -54,10 +68,11 @@ class BusinessesList extends Component {
 	}
 
 	handlePageChange = (event, page) => {
+		// Query and return businesses for the requested page.
 		event.preventDefault();
 
 		axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
-		axios.get(`${apiUrl}/businesses?limit=5&page=${page}`, {
+		axios.get(`${apiUrl}/businesses?limit=3&page=${page}`, {
 			headers: {'Content-Type': 'application/json'}
 		}).then(response => {
 			this.setState({
@@ -75,65 +90,25 @@ class BusinessesList extends Component {
 			return (<Redirect to="/auth/login"/>);
 		}
 
-		let businesses = this.state.businesses_list.map((business, index) => {
-			return (
-				<tr key={index}>
-					<td>{business.name}</td>
-					<td>{business.description}</td>
-					<td>{business.category_name}</td>
-					<td>{business.location_name}</td>
-					<td align="center">
-						<a href={'/businesses/show/' + business.id} className="btn btn-info btn-sm">View</a>
-					</td>
-				</tr>
-			);
-		});
+		let user = decode(localStorage.getItem("access_token"));
 
 		return (
 			<main role="main" className="container-fluid other-bg">
 				<br /><br /><br /><br />
+				<RegisterBusiness />
+				<BusinessModals />
 				<div className="row col-md-12">
-					<div className="col-md-2" />
-					<div className="col-md-8 weconnect-div">
-						<form className="weconnect-form" onSubmit={this.searchBusinesses}>
-							<div className="row col-md-12">
-								<div className="col-md-3">
-									<input type="text" className="form-control" placeholder="Business name" id="q" name="q" defaultValue="" />
-								</div>
-								<div className="col-md-3">
-									<input type="text" className="form-control" placeholder="Category" id="category" name="category" defaultValue="" />
-								</div>
-								<div className="col-md-3">
-									<input type="text" className="form-control" placeholder="Location" id="location" name="location" defaultValue="" />
-								</div>
-								<div className="col-md-3">
-									<input type="submit" className="btn btn-success" defaultValue="Search" />
-								</div>
-							</div>
-						</form>
-						<br />
-						<div className="table-responsive">
-							<table className="table table-striped table-bordered table-hover table-condensed">
-								<thead>
-									<tr>
-										<th>Name</th>
-										<th>Description</th>
-										<th>Category</th>
-										<th>Location</th>
-										<th>View</th>
-									</tr>
-								</thead>
-								<tbody>
-									{businesses}
-								</tbody>
-							</table>
-						</div>
-						<Paginator 
-							prev_page={this.state.prev_page} 
-							next_page={this.state.next_page} 
-							handlePageChange={this.handlePageChange} />
+					<div className="col-md-3" />
+					<div className="col-md-6 weconnect-div">
+						<BusinessSearch searchBusinesses={this.searchBusinesses} />
+						<button title="Add business" type="button" className="btn btn-primary btn-sm" style={{marginBottom: 10, marginLeft: 20}}
+							data-toggle="modal" data-target="#registerBusinessModal" data-backdrop="false">
+							Add a business <FontAwesomeIcon icon={faPlus} />
+						</button>
+						<BusinessCards user={user} businesses_list={this.state.businesses_list} />
+						<Paginator prev_page={this.state.prev_page} next_page={this.state.next_page} handlePageChange={this.handlePageChange} />
 					</div>
-					<div className="col-md-2" />
+					<div className="col-md-3" />
 				</div>
 			</main>
 		);

@@ -1,5 +1,12 @@
 import decode from 'jwt-decode';
 
+/**
+ * Check if a user is logged in
+ * 
+ * ```js
+ * isLoggedIn()
+ * ```
+ */
 export function isLoggedIn() {
 	if (localStorage.getItem("access_token") !== null) {
 		let token = decode(localStorage.getItem("access_token"));
@@ -13,6 +20,16 @@ export function isLoggedIn() {
 	return false;
 }
 
+/**
+ * Check if a list contains a specific item
+ * 
+ * @param {array} listVar The list/haystack
+ * @param {object} aVar The item/needle to find
+ * 
+ * ```js
+ * contains(listVar, aVar)
+ * ```
+ */
 export function contains(listVar, aVar) {
 	var i;
 	for (i=0; i<listVar.length; i++) {
@@ -23,6 +40,13 @@ export function contains(listVar, aVar) {
 	return false;
 }
 
+/**
+ * Clear user data from the local storage
+ * 
+ * ```js
+ * clearUser()
+ * ```
+ */
 export function clearUser() {
 	localStorage.removeItem("username");
 	localStorage.removeItem("first_name");

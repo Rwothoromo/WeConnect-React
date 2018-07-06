@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import 'react-notifications/lib/notifications.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../../static/css/style.css';
 import axios from "axios";
 import { apiUrl } from '../../App';
 import { isLoggedIn, clearUser } from '../../utils/Helpers';
 
+/**
+ * Logout user
+ * 
+ * ```html
+ * <LogoutUser />
+ * ```
+ */
 class LogoutUser extends Component {
 	constructor() {
 		super();

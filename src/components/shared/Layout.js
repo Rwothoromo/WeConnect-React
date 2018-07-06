@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../../static/css/style.css';
 
 import Header from './Header';
 import Footer from './Footer';
 
+/**
+ * The `Layout` for the entire application.
+ * All content is placed between the `Header` and `Footer`
+ * 
+ * ```html
+ * <Layout />
+ * ```
+ */
 class Layout extends Component {
 	render() {
 		return (
