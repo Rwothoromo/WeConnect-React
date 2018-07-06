@@ -34,7 +34,14 @@ class BusinessModals extends Component {
   }
 
   render() {
-    if (!this.state.businesses_list) return;
+    if (!this.state.businesses_list) {
+      return(
+        <div>
+          <RegisterBusiness />
+        </div>
+      );
+    }
+
     const businesses_list = this.state.businesses_list;
     return (
       <div>
