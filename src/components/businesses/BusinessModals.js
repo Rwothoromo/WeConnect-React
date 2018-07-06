@@ -34,7 +34,6 @@ class BusinessModals extends Component {
 
   render() {
     if (!this.state.businesses_list) {
-      alert();
       return(
         <div>
           <RegisterBusiness />
