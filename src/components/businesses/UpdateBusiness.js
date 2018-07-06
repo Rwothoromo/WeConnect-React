@@ -57,6 +57,7 @@ class UpdateBusiness extends Component {
 		}).then(response => {
 			NotificationManager.success(response.data.message);
 			this.setState({updated: true});
+			window.location.reload();
 		}).catch(error => {
 			NotificationManager.error(error.response.data.message);
 		})

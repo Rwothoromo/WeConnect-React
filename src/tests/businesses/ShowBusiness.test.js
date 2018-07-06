@@ -7,7 +7,7 @@ import Axios from 'axios';
 import { apiUrl } from '../../App';
 
 describe('<ShowBusiness />', () => {
-	const wrapper = shallow(<MemoryRouter><ShowBusiness match={{params: {id: 2}}} /></MemoryRouter>);
+	const wrapper = shallow(<MemoryRouter><ShowBusiness id={2} /></MemoryRouter>);
 	const mock = new MockAdapter(Axios);
 
 	it('shows a businesses', async () => {
