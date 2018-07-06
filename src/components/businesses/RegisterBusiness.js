@@ -7,11 +7,10 @@ import { apiUrl } from '../../App';
 /**
  * Form for registering a business
  * 
- * @param {object} props Component props
  * @param {function} props.showUpdatedBusinesses Form callback function
  * 
  * ```html
- * <RegisterBusiness showUpdatedBusinesses={this.showUpdatedBusinesses}/>
+ * <RegisterBusiness showUpdatedBusinesses={showUpdatedBusinesses}/>
  * ```
  */
 class RegisterBusiness extends Component {

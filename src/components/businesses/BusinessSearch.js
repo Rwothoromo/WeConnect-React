@@ -5,11 +5,10 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 /**
  * Form for business search
  * 
- * @param {object} props Component props
  * @param {function} props.searchBusinesses Form submit callback function
  * 
  * ```html
- * <BusinessSearch searchBusinesses={this.searchBusinesses} />
+ * <BusinessSearch searchBusinesses={searchBusinesses} />
  * ```
  */
 const BusinessSearch = (props) => {

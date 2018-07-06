@@ -7,13 +7,8 @@ import RegisterUser from './components/auth/RegisterUser';
 import LoginUser from './components/auth/LoginUser';
 import ProfileUser from './components/auth/ProfileUser';
 import Layout from './components/shared/Layout';
-import RegisterBusiness from './components/businesses/RegisterBusiness';
 import BusinessesList from './components/businesses/BusinessesList';
-import ShowBusiness from './components/businesses/ShowBusiness';
-import UpdateBusiness from './components/businesses/UpdateBusiness';
 import LogoutUser from './components/auth/LogoutUser';
-import DeleteBusiness from './components/businesses/DeleteBusiness';
-import ReviewBusiness from './components/businesses/ReviewBusiness';
 
 export const apiUrl = process.env.REACT_APP_BACKEND_HOST || 'http://127.0.0.1:5000/api/v2'
 

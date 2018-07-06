@@ -3,11 +3,10 @@ import React, { Component } from 'react';
 /**
  * Generate a list of review cards for a business
  * 
- * @param {object} props Component props
- * @param {object} props.reviews_list Contains list of businesses
+ * @param {object} props.reviews_list Contains list of business reviews
  * 
  * ```html
- * <ReviewCards reviews_list={this.props.reviews_list} />
+ * <ReviewCards reviews_list={reviews_list} />
  * ```
  */
 class ReviewCards extends Component {
