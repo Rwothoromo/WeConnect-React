@@ -8,7 +8,7 @@ import { apiUrl } from '../../App';
 
 describe('<ReviewBusiness />', () => {
 	const mock = new MockAdapter(Axios);
-	const wrapper = shallow(<MemoryRouter><ReviewBusiness match={{params: {id: 2}}} /></MemoryRouter>);
+	const wrapper = shallow(<MemoryRouter><ReviewBusiness id={2} /></MemoryRouter>);
 
 	it('reviews a business', async () => {
     mock.onGet(`${apiUrl}/businesses/2`).reply(200, {

@@ -18,37 +18,37 @@ describe('<BusinessesList />', () => {
 		});
 	});
 
-	it('searches businesses', async () => {
-		const businessesListComponent = wrapper.find(BusinessesList).dive();
-		businessesListComponent.setState({loggedIn: true});
+	// it('searches businesses', async () => {
+	// 	const businessesListComponent = wrapper.find(BusinessesList).dive();
+	// 	businessesListComponent.setState({loggedIn: true});
 		
-		mock.onGet(`${apiUrl}/businesses?q=Baker&category=Food&location=Kabale`).reply(200, {
-			businesses: [{},{}],
-			next_page: null,
-			prev_page: null
-		});
+	// 	mock.onGet(`${apiUrl}/businesses?q=Baker&category=Food&location=Kabale`).reply(200, {
+	// 		businesses: [{},{}],
+	// 		next_page: null,
+	// 		prev_page: null
+	// 	});
 
-		const searchForm = businessesListComponent.find('form');
-		searchForm.simulate('submit', {
-			preventDefault: () => {},
-			target: {
-				elements: {
-					q: {value: "Baker"},
-					category: {value: "Food"},
-					location: {value: "Kabale"}
-				}
-			}
-		});
-	});
+	// 	const searchForm = businessesListComponent.find('form');
+	// 	searchForm.simulate('submit', {
+	// 		preventDefault: () => {},
+	// 		target: {
+	// 			elements: {
+	// 				q: {value: "Baker"},
+	// 				category: {value: "Food"},
+	// 				location: {value: "Kabale"}
+	// 			}
+	// 		}
+	// 	});
+	// });
 
-	it('handles page change in pagination', async () => {
-		const businessesListComponent = wrapper.find(BusinessesList).dive();
-		businessesListComponent.setState({loggedIn: true});
+	// it('handles page change in pagination', async () => {
+	// 	const businessesListComponent = wrapper.find(BusinessesList).dive();
+	// 	businessesListComponent.setState({loggedIn: true});
 		
-		mock.onGet(`${apiUrl}/businesses?limit=5&page=3`).reply(200, {
-			businesses: [{},{},{},{},{},{}],
-			next_page: 4,
-			prev_page: 2
-		});
-	});
+	// 	mock.onGet(`${apiUrl}/businesses?limit=5&page=3`).reply(200, {
+	// 		businesses: [{},{},{},{},{},{}],
+	// 		next_page: 4,
+	// 		prev_page: 2
+	// 	});
+	// });
 });
