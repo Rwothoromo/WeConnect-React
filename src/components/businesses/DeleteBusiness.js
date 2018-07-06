@@ -38,7 +38,7 @@ class DeleteBusiness extends Component {
 
 	render() {
 		return (
-			<div className="modal fade modal-backdrop" id={`deleteBusinessModal${this.state.id}`}>
+			<div className="modal fade" id={`deleteBusinessModal${this.state.id}`}>
 				<div className="modal-dialog">
 					<div className="modal-content">
 						<div className="modal-header">

@@ -60,7 +60,7 @@ class ReviewBusiness extends Component {
 		}
 
 		return (
-			<div className="modal fade modal-backdrop" id={`reviewBusinessModal${this.state.id}`}>
+			<div className="modal fade" id={`reviewBusinessModal${this.state.id}`}>
 				<div className="modal-dialog">
 					<div className="modal-content">
 						<div className="modal-header">

@@ -18,17 +18,17 @@ const BusinessOwnerButtons = (props) => {
 	return (
     <ul className="list-inline">
       <li className="list-inline-item">
-        <button title="View" type="button" className="btn btn-primary btn-sm" data-toggle="modal" data-target={`#viewBusinessModal${business_id}`} data-backdrop="false">
+        <button title="View" type="button" className="btn btn-primary btn-sm" data-toggle="modal" data-target={`#viewBusinessModal${business_id}`}>
           View <FontAwesomeIcon icon={faEye} />
         </button>
       </li>
       <li className="list-inline-item">
-        <button title="Edit" type="button" className="btn btn-info btn-sm" data-toggle="modal" data-target={`#updateBusinessModal${business_id}`} data-backdrop="false">
+        <button title="Edit" type="button" className="btn btn-info btn-sm" data-toggle="modal" data-target={`#updateBusinessModal${business_id}`}>
           Edit <FontAwesomeIcon icon={faEdit} />
         </button>
       </li>
       <li className="list-inline-item">
-        <button title="Delete" type="button" className="btn btn-danger btn-sm" data-toggle="modal" data-target={`#deleteBusinessModal${business_id}`} data-backdrop="false">
+        <button title="Delete" type="button" className="btn btn-danger btn-sm" data-toggle="modal" data-target={`#deleteBusinessModal${business_id}`}>
           Delete <FontAwesomeIcon icon={faTrash} />
         </button>
       </li>

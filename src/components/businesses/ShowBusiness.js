@@ -47,7 +47,7 @@ class ShowBusiness extends Component {
 		}
 
 		return (
-			<div className="modal fade modal-backdrop" id={`viewBusinessModal${this.state.id}`}>
+			<div className="modal fade" id={`viewBusinessModal${this.state.id}`}>
 				<div className="modal-dialog">
 					<div className="modal-content">
 						<div className="modal-header">
