@@ -15,22 +15,8 @@ describe('<RegisterUser />', () => {
 			message: "User added"
 		});
 
-		// global.document = {getElementsByClassName: () => {
-		// 	return({value: "mango"})
-		// }}
 		const registerUserComponent = wrapper.find(RegisterUser);
 		const registerForm = registerUserComponent.find('form');
-		const inputs = registerForm.find('input');//input[name="password"]
-		// console.log(inputs.get(3));
-		// registerForm.simulate('submit', {
-		// 	preventDefault: () => {},
-		// 	target: {
-		// 		elements: {
-		// 			first_name: {value: "elijah"},//"elijah",
-		// 			last_name: {value: "rwothoromo"},//"rwothoromo",
-		// 			username: {value: "rwothoromo"}//"rwothoromo"
-		// 		}
-		// 	}
-		// });
+		const inputs = registerForm.find('input');
 	});
 });

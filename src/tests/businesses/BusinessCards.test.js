@@ -7,7 +7,7 @@ describe('<BusinessesList />', () => {
     const wrapper = mount(<BusinessCards user={{sub: 1}} businesses_list ={[{business: {id: 1}}]}/>);
     expect(wrapper).toHaveLength(1);
   })
-  it(' correctly', async () => {
+  it('renders with user buttons correctly', async () => {
     const wrapper = mount(<BusinessCards user={{sub: 1}} businesses_list ={[{business: {id: 1, created_by: 1}}]}/>);
     expect(wrapper).toHaveLength(1);
   })
