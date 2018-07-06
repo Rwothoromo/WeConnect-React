@@ -1,5 +1,16 @@
 import React from 'react';
 
+/**
+ * Generate `Prev` and `Next` buttons for a paginated list
+ * @param {object} props Component props
+ * @param {integer} props.prev_page Id for the previous page
+ * @param {integer} props.next_page Id for the next page
+ * @param {function} props.handlePageChange Paginator callback function
+ * 
+ * ```html
+ * <Paginator prev_page={1} next_page={2} handlePageChange={this.handlePageChange} />
+ * ```
+ */
 const Paginator = (props) => {
   const { prev_page, next_page, handlePageChange } = props;
   const prev = [];

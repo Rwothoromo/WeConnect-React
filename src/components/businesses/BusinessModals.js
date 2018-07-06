@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
 import axios from "axios";
 import { apiUrl } from '../../App';
 import { NotificationManager } from 'react-notifications';
@@ -9,6 +8,13 @@ import RegisterBusiness from './RegisterBusiness';
 import ReviewBusiness from './ReviewBusiness';
 import DeleteBusiness from './DeleteBusiness';
 
+/**
+ * Generate `View`, `Review`, `Edit` and `Delete` modals for businesses
+ * 
+ * ```html
+ * <BusinessModals />
+ * ```
+ */
 class BusinessModals extends Component {
   constructor() {
 		super();
@@ -18,6 +24,7 @@ class BusinessModals extends Component {
   }
 
   componentDidMount() {
+    // Query businesses to use in generating `Div modals`
 		axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
 		axios.get(`${apiUrl}/businesses`).then(response => {
 			this.setState({
@@ -25,7 +32,6 @@ class BusinessModals extends Component {
 			});
 		}).catch(error => {
 			NotificationManager.error(error.response.data.message);
-			return (<Redirect to="/businesses/register"/>);
 		});
   }
 

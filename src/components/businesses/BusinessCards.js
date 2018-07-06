@@ -2,6 +2,17 @@ import React, { Component } from 'react';
 import BusinessOwnerButtons from './BusinessOwnerButtons';
 import BusinessButtons from './BusinessButtons';
 
+/**
+ * Generate a list of business cards
+ * 
+ * @param {object} props Component props
+ * @param {object} props.user Contains user data
+ * @param {object} props.businesses_list Contains list of businesses
+ * 
+ * ```html
+ * <BusinessCards user={user} businesses_list={this.state.businesses_list} />
+ * ```
+ */
 class BusinessCards extends Component {
   render() {
     const businesses_list = this.props.businesses_list;

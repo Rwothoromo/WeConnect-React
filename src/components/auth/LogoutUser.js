@@ -5,6 +5,13 @@ import axios from "axios";
 import { apiUrl } from '../../App';
 import { isLoggedIn, clearUser } from '../../utils/Helpers';
 
+/**
+ * Logout user
+ * 
+ * ```html
+ * <LogoutUser />
+ * ```
+ */
 class LogoutUser extends Component {
 	constructor() {
 		super();

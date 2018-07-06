@@ -2,6 +2,16 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
+/**
+ * Form for business search
+ * 
+ * @param {object} props Component props
+ * @param {function} props.searchBusinesses Form submit callback function
+ * 
+ * ```html
+ * <BusinessSearch searchBusinesses={this.searchBusinesses} />
+ * ```
+ */
 const BusinessSearch = (props) => {
   const { searchBusinesses } = props;
 

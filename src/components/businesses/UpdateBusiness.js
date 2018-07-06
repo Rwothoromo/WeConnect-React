@@ -5,6 +5,16 @@ import axios from "axios";
 import { apiUrl } from '../../App';
 import { isLoggedIn } from '../../utils/Helpers';
 
+/**
+ * Form for updating a business
+ * 
+ * @param {object} props Component props
+ * @param {integer} props.id Business id
+ * 
+ * ```html
+ * <UpdateBusiness id={1} />
+ * ```
+ */
 class UpdateBusiness extends Component {
 	constructor(props) {
 		super(props);
@@ -33,6 +43,8 @@ class UpdateBusiness extends Component {
 
 	updateBusiness = (event) => {
 		event.preventDefault();
+
+		// Create a business object from user input
 		let business = {
 			name: event.target.elements.name.value,
 			description: event.target.elements.description.value,

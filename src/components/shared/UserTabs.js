@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
 
+/**
+ * Navigation menu options for a logged in user
+ * 
+ * ```html
+ * <UserTabs />
+ * ```
+ */
 class UserTabs extends Component {
 	render() {
 		return (

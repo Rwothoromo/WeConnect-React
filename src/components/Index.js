@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
 
+/**
+ * Main page content
+ * 
+ * ```html
+ * <Index />
+ * ```
+ */
 class Index extends Component {
   render() {
 		return (
