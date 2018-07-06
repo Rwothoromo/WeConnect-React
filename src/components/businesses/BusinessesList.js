@@ -86,9 +86,7 @@ class BusinessesList extends Component {
 	}
 
 	render() {
-		if (!this.state.loggedIn) {
-			return (<Redirect to="/auth/login"/>);
-		}
+		if (!this.state.loggedIn) { return (<Redirect to="/auth/login"/>); }
 
 		let user = decode(localStorage.getItem("access_token"));
 
