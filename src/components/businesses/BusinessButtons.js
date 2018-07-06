@@ -6,24 +6,24 @@ import { faEye, faStar } from '@fortawesome/free-solid-svg-icons';
  * Generate `View` and `Review` buttons for non-business owners
  * 
  * @param {object} props Component props
- * @param {integer} props.business_id Business id
+ * @param {integer} props.business Business
  * 
  * ```html
- * <BusinessButtons business_id={1} />
+ * <BusinessButtons business={this.props.business} />
  * ```
  */
 const BusinessButtons = (props) => {
-  let { business_id } = props;
+  let { business } = props;
 
 	return (
     <ul className="list-inline">
       <li className="list-inline-item">
-        <button title="View" className="btn btn-primary btn-sm" data-toggle="modal" data-target={`#viewBusinessModal${business_id}`}>
+        <button title="View" className="btn btn-primary btn-sm" data-toggle="modal" data-target={`#viewBusinessModal${business.id}`}>
           View <FontAwesomeIcon icon={faEye} />
         </button>
       </li>
       <li className="list-inline-item">
-        <button title="Review" className="btn btn-info btn-sm" data-toggle="modal" data-target={`#reviewBusinessModal${business_id}`}>
+        <button title="Review" className="btn btn-info btn-sm" data-toggle="modal" data-target={`#reviewBusinessModal${business.id}`}>
           Review <FontAwesomeIcon icon={faStar} />
         </button>
       </li>

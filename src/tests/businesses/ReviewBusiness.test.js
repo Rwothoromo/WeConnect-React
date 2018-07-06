@@ -1,17 +1,17 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import ReviewBusiness from '../../components/businesses/ReviewBusiness';
 import MockAdapter from 'axios-mock-adapter';
 import Axios from 'axios';
 import { apiUrl } from '../../App';
 
 describe('<ReviewBusiness />', () => {
+	
 	const mock = new MockAdapter(Axios);
-	const wrapper = shallow(<MemoryRouter><ReviewBusiness id={2} /></MemoryRouter>);
 
-	it('reviews a business', async () => {
-    mock.onGet(`${apiUrl}/businesses/2`).reply(200, {
+	it('shows a businesses', async () => {
+		mock.onGet(`${apiUrl}/businesses/2`).reply(200, {
 			business: {
         author: "Edwin Kato",
         category: 2,
@@ -27,22 +27,16 @@ describe('<ReviewBusiness />', () => {
       }
 		});
 
-		mock.onPost(`${apiUrl}/businesses/2/reviews`).reply(201, {
-			message: "Business review added"
+		mock.onGet(`${apiUrl}/businesses/2/reviews`).reply(200, {
+			reviews_list:  [{}, {}],
+			message: "review"
 		});
-
-		const ReviewBusinessComponent = wrapper.find(ReviewBusiness).dive();
-		ReviewBusinessComponent.setState({loggedIn: true});
-
-		const reviewForm = ReviewBusinessComponent.find('form');
-		reviewForm.simulate('submit', {
-			preventDefault: () => {},
-			target: {
-				elements: {
-					name: "Fair rates",
-					description: "I did not feel cheated on my purchase"
-				}
-			}
+		mock.onPost(`${apiUrl}/businesses/2/reviews`).reply(200, {
+			reviews_list:  [{}, {}],
+			message: "review"
 		});
+		const wrapper = mount(<ReviewBusiness showUpdatedBusinesses={()=>{}} business={{id: 2}} />);
+		let form = wrapper.find('form')
+		form.simulate('submit');
 	});
 });

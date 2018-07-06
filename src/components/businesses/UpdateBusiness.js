@@ -1,44 +1,22 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
 import { NotificationManager } from 'react-notifications';
 import axios from "axios";
 import { apiUrl } from '../../App';
-import { isLoggedIn } from '../../utils/Helpers';
 
 /**
  * Form for updating a business
  * 
  * @param {object} props Component props
- * @param {integer} props.id Business id
+ * @param {object} props.business Business object
+ * @param {function} props.showUpdatedBusinesses Form callback function
  * 
  * ```html
- * <UpdateBusiness id={1} />
+ * <UpdateBusiness business={business} showUpdatedBusinesses={this.props.showUpdatedBusinesses} />
  * ```
  */
 class UpdateBusiness extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			business: {},
-			id: this.props.id,
-			loggedIn: isLoggedIn(),
-			description: '',
-			updated: false
-		};
-	}
-
-	componentDidMount() {
-		axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
-    axios.get(`${apiUrl}/businesses/${this.state.id}`).then(response => {
-			this.setState({
-				business: response.data,
-				description: response.data.description
-			});
-		});
-	}
-
-	handleDescriptionChange = (event) => {
-    this.setState({description: event.target.description});
 	}
 
 	updateBusiness = (event) => {
@@ -52,24 +30,19 @@ class UpdateBusiness extends Component {
 			location: event.target.elements.location.value
 		}
 		axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
-		axios.put(`${apiUrl}/businesses/${this.state.id}`, JSON.stringify(business), {
+		axios.put(`${apiUrl}/businesses/${this.props.business.id}`, JSON.stringify(business), {
       headers: {'Content-Type': 'application/json'}
 		}).then(response => {
 			NotificationManager.success(response.data.message);
-			this.setState({updated: true});
-			window.location.reload();
+			this.props.showUpdatedBusinesses();
 		}).catch(error => {
 			NotificationManager.error(error.response.data.message);
 		})
 	}
 
 	render() {
-		if (!this.state.loggedIn) {
-			return (<Redirect to="/auth/login" />);
-		}
-
 		return (
-			<div className="modal fade" id={`updateBusinessModal${this.state.id}`}>
+			<div className="modal fade" id={`updateBusinessModal${this.props.business.id}`}>
 				<div className="modal-dialog">
 					<div className="modal-content">
 						<div className="modal-header">
@@ -88,19 +61,19 @@ class UpdateBusiness extends Component {
 												</div>
 												<div className="form-group">
 													<label>Name:</label>
-													<input type="text" className="form-control" placeholder="Business name" id="name" name="name" defaultValue={this.state.business.name} required />
+													<input type="text" className="form-control" placeholder="Business name" id="name" name="name" defaultValue={this.props.business.name} required />
 												</div>
 												<div className="form-group">
 													<label>Description:</label>
-													<textarea className="form-control" placeholder="Description" id="description" name="description" cols={28} rows={3} value={this.state.description} onChange={this.handleDescriptionChange} />
+													<textarea className="form-control" placeholder="Description" id="description" name="description" cols={28} rows={3} defaultValue={this.props.business.description} />
 												</div>
 												<div className="form-group">
 													<label>Category:</label>
-													<input type="text" className="form-control" placeholder="Category" id="category" name="category" defaultValue={this.state.business.category_name} required />
+													<input type="text" className="form-control" placeholder="Category" id="category" name="category" defaultValue={this.props.business.category_name} required />
 												</div>
 												<div className="form-group">
 													<label>Location:</label>
-													<input type="text" className="form-control" placeholder="Location" id="location" name="location" defaultValue={this.state.business.location_name} required />
+													<input type="text" className="form-control" placeholder="Location" id="location" name="location" defaultValue={this.props.business.location_name} required />
 												</div>
 												<div className="form-group">
 													<input type="submit" className="btn btn-default weconnect-btn" id="update" name="update" defaultValue="Update" />

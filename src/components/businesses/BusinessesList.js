@@ -24,6 +24,7 @@ class BusinessesList extends Component {
 	constructor() {
 		super();
 		this.state = {
+			businesses: [],
 			businesses_list: [],
 			next_page: null,
 			prev_page: null,
@@ -31,7 +32,17 @@ class BusinessesList extends Component {
 		}
 	}
 
-	componentDidMount() {
+	getAllBusinesses = () => {
+		// Query and return all businesses
+		axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
+		axios.get(`${apiUrl}/businesses`).then(response => {
+			this.setState({
+				businesses: response.data.businesses
+			});
+		}).catch(error => {});
+	}
+
+	componentDidMount = () => {
 		// Query and return businesses, and paginate them.
 		axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
 		axios.get(`${apiUrl}/businesses?limit=3`).then(response => {
@@ -40,9 +51,23 @@ class BusinessesList extends Component {
 				next_page: response.data.next_page,
 				prev_page: response.data.prev_page
 			});
+			this.getAllBusinesses();
 		}).catch(error => {
 			NotificationManager.error(error.response.data.message);
 		});
+	}
+
+	showUpdatedBusinesses = () => {
+		// Query and return businesses after an update, and paginate them.
+		axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
+		axios.get(`${apiUrl}/businesses?limit=3`).then(response => {
+			this.setState({
+				businesses_list: response.data.businesses,
+				next_page: response.data.next_page,
+				prev_page: response.data.prev_page
+			});
+			this.getAllBusinesses();
+		}).catch(error => {});
 	}
 
 	searchBusinesses = (event) => {
@@ -62,6 +87,7 @@ class BusinessesList extends Component {
 				next_page: response.data.next_page,
 				prev_page: response.data.prev_page
 			});
+			this.getAllBusinesses();
 		}).catch(error => {
 			NotificationManager.error(error.response.data.message);
 		})
@@ -80,6 +106,7 @@ class BusinessesList extends Component {
 				next_page: response.data.next_page,
 				prev_page: response.data.prev_page
 			});
+			this.getAllBusinesses();
 		}).catch(error => {
 			NotificationManager.error(error.response.data.message);
 		})
@@ -108,8 +135,8 @@ class BusinessesList extends Component {
 						<div className="col-md-3" />
 					</div>
 				</main>
-				<RegisterBusiness />
-				<BusinessModals />
+				<RegisterBusiness showUpdatedBusinesses={this.showUpdatedBusinesses}/>
+				<BusinessModals businesses={this.state.businesses} showUpdatedBusinesses={this.showUpdatedBusinesses} />
 		</div>
 		);
 	}
