@@ -30,9 +30,7 @@ class BusinessModals extends Component {
 			this.setState({
 				businesses_list: response.data.businesses
 			});
-		}).catch(error => {
-			NotificationManager.error(error.response.data.message);
-		});
+		}).catch(error => {});
   }
 
   render() {
