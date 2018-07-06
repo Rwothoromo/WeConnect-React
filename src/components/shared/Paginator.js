@@ -19,7 +19,7 @@ const Paginator = (props) => {
   if (prev_page) {
     prev.push(
       <li style={{marginLeft: 20}} key={prev_page} className="page-item">
-        <button className="page-link" 
+        <button className="page-link"   id="prev_page"
           onClick={(event) => { handlePageChange(event, prev_page); }}>
           Prev
         </button>
@@ -36,7 +36,7 @@ const Paginator = (props) => {
   if (next_page) {
     next.push(
       <li key={next_page} className="page-item">
-        <button className="page-link" 
+        <button className="page-link" id="next_page"
           onClick={(event) => { handlePageChange(event, next_page); }}>
           Next
         </button>

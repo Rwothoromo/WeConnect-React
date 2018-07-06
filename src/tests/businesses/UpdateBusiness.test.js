@@ -34,7 +34,6 @@ describe('<UpdateBusiness />', () => {
 		const updateBusinessComponent = wrapper;
 		let uspy = jest.spyOn(updateBusinessComponent.instance(), 'updateBusiness');
 		updateBusinessComponent.instance().forceUpdate();
-		console.log(updateBusinessComponent.instance())
 		updateBusinessComponent.find("input[name='name']").simulate('change', {target: {value: 'andela'}})
 		updateBusinessComponent.find("input[name='category']").simulate('change', {target: {value: 'category'}})
 		updateBusinessComponent.find("input[name='location']").simulate('change', {target: {value: 'location'}})
