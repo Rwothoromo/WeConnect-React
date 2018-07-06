@@ -6,12 +6,11 @@ import { apiUrl } from '../../App';
 /**
  * Form for reviewing a business
  * 
- * @param {object} props Component props
  * @param {object} props.business Business object
  * @param {function} props.showUpdatedBusinesses Form callback function
  * 
  * ```html
- * <ReviewBusiness business={business} showUpdatedBusinesses={this.props.showUpdatedBusinesses} />
+ * <ReviewBusiness business={business} showUpdatedBusinesses={showUpdatedBusinesses} />
  * ```
  */
 class ReviewBusiness extends Component {

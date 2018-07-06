@@ -6,12 +6,11 @@ import { apiUrl } from '../../App';
 /**
  * Form for updating a business
  * 
- * @param {object} props Component props
  * @param {object} props.business Business object
  * @param {function} props.showUpdatedBusinesses Form callback function
  * 
  * ```html
- * <UpdateBusiness business={business} showUpdatedBusinesses={this.props.showUpdatedBusinesses} />
+ * <UpdateBusiness business={business} showUpdatedBusinesses={showUpdatedBusinesses} />
  * ```
  */
 class UpdateBusiness extends Component {
