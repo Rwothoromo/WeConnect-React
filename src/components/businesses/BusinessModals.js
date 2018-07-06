@@ -3,7 +3,6 @@ import axios from "axios";
 import { apiUrl } from '../../App';
 import ShowBusiness from './ShowBusiness';
 import UpdateBusiness from './UpdateBusiness';
-import RegisterBusiness from './RegisterBusiness';
 import ReviewBusiness from './ReviewBusiness';
 import DeleteBusiness from './DeleteBusiness';
 
@@ -33,13 +32,7 @@ class BusinessModals extends Component {
   }
 
   render() {
-    if (!this.state.businesses_list) {
-      return(
-        <div>
-          <RegisterBusiness />
-        </div>
-      );
-    }
+    if (!this.state.businesses_list) return;
 
     const businesses_list = this.state.businesses_list;
     return (
@@ -47,7 +40,6 @@ class BusinessModals extends Component {
         {
           businesses_list.map((business, index) => 
             <div key={index}>
-              <RegisterBusiness />
               <ShowBusiness id={business.id} />
               <UpdateBusiness id={business.id} />
               <ReviewBusiness id={business.id} />
