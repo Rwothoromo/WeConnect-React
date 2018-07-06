@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from "axios";
 import { apiUrl } from '../../App';
-import { NotificationManager } from 'react-notifications';
 import ShowBusiness from './ShowBusiness';
 import UpdateBusiness from './UpdateBusiness';
 import RegisterBusiness from './RegisterBusiness';
@@ -34,7 +33,15 @@ class BusinessModals extends Component {
   }
 
   render() {
-    if (!this.state.businesses_list) return;
+    if (!this.state.businesses_list) {
+      alert();
+      return(
+        <div>
+          <RegisterBusiness />
+        </div>
+      );
+    }
+
     const businesses_list = this.state.businesses_list;
     return (
       <div>
