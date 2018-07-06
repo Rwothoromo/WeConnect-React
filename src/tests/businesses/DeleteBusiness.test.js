@@ -7,7 +7,7 @@ import Axios from 'axios';
 import { apiUrl } from '../../App';
 
 describe('<DeleteBusiness />', () => {
-	const wrapper = shallow(<MemoryRouter><DeleteBusiness match={{params: {id: 2}}} /></MemoryRouter>);
+	const wrapper = shallow(<MemoryRouter><DeleteBusiness id={2} /></MemoryRouter>);
 	const mock = new MockAdapter(Axios);
 
 	it('deletes a business', async () => {
@@ -17,9 +17,8 @@ describe('<DeleteBusiness />', () => {
 			message: "Business deleted"
 		});
 
-		global.confirm = () => true;
-		let spyDeleteBusiness = jest.spyOn(deleteBusinessComponent.instance(), 'componentDidMount');
-		await deleteBusinessComponent.instance().componentDidMount({confirm: () => {} });
+		let spyDeleteBusiness = jest.spyOn(deleteBusinessComponent.instance(), 'deleteBusiness');
+		await deleteBusinessComponent.instance().deleteBusiness({preventDefault: () => {} });
 		expect(spyDeleteBusiness).toHaveBeenCalled();
 	});
 });
