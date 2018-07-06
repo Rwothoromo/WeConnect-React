@@ -9,7 +9,7 @@ import { faEye, faStar } from '@fortawesome/free-solid-svg-icons';
  * @param {integer} props.business Business
  * 
  * ```html
- * <BusinessButtons business={this.props.business} />
+ * <BusinessButtons business={business} />
  * ```
  */
 const BusinessButtons = (props) => {
