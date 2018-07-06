@@ -38,6 +38,7 @@ class RegisterBusiness extends Component {
 		}).then(response => {
 			NotificationManager.success(response.data.message);
 			this.setState({registered: true});
+			window.location.reload();
 		}).catch(error => {
 			NotificationManager.error(error.response.data.message);
 		});
