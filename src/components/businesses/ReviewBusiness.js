@@ -1,39 +1,23 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
 import { NotificationManager } from 'react-notifications';
 import axios from "axios";
-import { apiUrl } from '../../App'
-import { isLoggedIn } from '../../utils/Helpers';
+import { apiUrl } from '../../App';
 
 /**
  * Form for reviewing a business
  * 
  * @param {object} props Component props
- * @param {integer} props.id Business id
+ * @param {object} props.business Business object
+ * @param {function} props.showUpdatedBusinesses Form callback function
  * 
  * ```html
- * <ReviewBusiness id={1} />
+ * <ReviewBusiness business={business} showUpdatedBusinesses={this.props.showUpdatedBusinesses} />
  * ```
  */
 class ReviewBusiness extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			business: {},
-			id: this.props.id,
-			loggedIn: isLoggedIn(),
-      reviewed: false
-		}
 	}
-
-  componentDidMount() {
-		axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
-    axios.get(`${apiUrl}/businesses/${this.state.id}`).then(response => {
-			this.setState({
-				business: response.data
-			});
-		});
-  }
 
 	reviewBusiness = (event) => {
 		event.preventDefault();
@@ -43,24 +27,19 @@ class ReviewBusiness extends Component {
 			description: event.target.elements.description.value
 		}
 		axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
-		axios.post(`${apiUrl}/businesses/${this.state.id}/reviews`, JSON.stringify(review), {
+		axios.post(`${apiUrl}/businesses/${this.props.business.id}/reviews`, JSON.stringify(review), {
       headers: {'Content-Type': 'application/json'}
 		}).then(response => {
 			NotificationManager.success(response.data.message);
-			this.setState({reviewed: true});
-			window.location.reload();
+			this.props.showUpdatedBusinesses();
 		}).catch(error => {
 			NotificationManager.error(error.response.data.message);
 		})
 	}
 
 	render() {
-		if (!this.state.loggedIn) {
-			return (<Redirect to="/auth/login"/>);
-		}
-
 		return (
-			<div className="modal fade" id={`reviewBusinessModal${this.state.id}`}>
+			<div className="modal fade" id={`reviewBusinessModal${this.props.business.id}`}>
 				<div className="modal-dialog">
 					<div className="modal-content">
 						<div className="modal-header">
@@ -73,8 +52,8 @@ class ReviewBusiness extends Component {
 									<div className="card" style={{width: 'auto', marginBottom: 10, marginLeft: 20, marginRight:20}} >
 										<h5 className="card-header">Review business</h5>
 										<div className="card-body">
-											<h1 className="display-5">{this.state.business.name}</h1>
-											<p>{this.state.business.description}</p><br />
+											<h1 className="display-5">{this.props.business.name}</h1>
+											<p>{this.props.business.description}</p><br />
 											<div className="card-text weconnect-form">
 												<div className="form-group">
 													<input type="text" className="form-control" placeholder="Review name" id="name" name="name" required />

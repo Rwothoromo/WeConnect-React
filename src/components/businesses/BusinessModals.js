@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import axios from "axios";
-import { apiUrl } from '../../App';
 import ShowBusiness from './ShowBusiness';
 import UpdateBusiness from './UpdateBusiness';
 import ReviewBusiness from './ReviewBusiness';
@@ -14,36 +12,23 @@ import DeleteBusiness from './DeleteBusiness';
  * ```
  */
 class BusinessModals extends Component {
-  constructor() {
-		super();
-		this.state = {
-			businesses_list: []
-		}
-  }
-
-  componentDidMount() {
-    // Query businesses to use in generating `Div modals`
-		axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
-		axios.get(`${apiUrl}/businesses`).then(response => {
-			this.setState({
-				businesses_list: response.data.businesses
-			});
-		}).catch(error => {});
+  constructor(props) {
+		super(props);
   }
 
   render() {
-    if (!this.state.businesses_list) return;
+    if (!this.props.businesses) return;
 
-    const businesses_list = this.state.businesses_list;
+    const businesses = this.props.businesses;
     return (
       <div>
         {
-          businesses_list.map((business, index) => 
-            <div key={index}>
-              <ShowBusiness id={business.id} />
-              <UpdateBusiness id={business.id} />
-              <ReviewBusiness id={business.id} />
-              <DeleteBusiness id={business.id} />
+          businesses.map(business => 
+            <div key={business.id}>
+              <ShowBusiness business={business} />
+              <UpdateBusiness business={business} showUpdatedBusinesses={this.props.showUpdatedBusinesses} />
+              <ReviewBusiness business={business} showUpdatedBusinesses={this.props.howUpdatedBusinesses} />
+              <DeleteBusiness business={business} showUpdatedBusinesses={this.props.showUpdatedBusinesses} />
             </div>
           )
         }

@@ -22,7 +22,7 @@ class ProfileUser extends Component {
 		}
 	}
 
-	componentDidMount() {
+	componentDidMount = () => {
 		this.setState({
 			username: localStorage.getItem("username"),
 			first_name: localStorage.getItem("first_name"),

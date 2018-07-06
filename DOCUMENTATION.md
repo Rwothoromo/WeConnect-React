@@ -96,7 +96,7 @@ Generate `View` and `Review` buttons for non-business owners
 @param {integer} props.business_id Business id
 
 ```html
-<BusinessButtons business_id={1} />
+<BusinessButtons business_id={this.props.id} />
 ```   
 
 
@@ -114,7 +114,7 @@ Generate a list of business cards
 @param {object} props.businesses_list Contains list of businesses
 
 ```html
-<BusinessCards user={user} businesses_list={this.state.businesses_list} />
+<BusinessCards user={this.props.user} businesses_list={this.props.businesses_list} />
 ```   
 
 
@@ -127,8 +127,11 @@ Generate a list of business cards
 
 Generate `View`, `Review`, `Edit` and `Delete` modals for businesses
 
+@param {array} props.businesses_list List of businesses
+@param {function} props.showUpdatedBusinesses Form callback function
+
 ```html
-<BusinessModals />
+<BusinessModals businesses_list={this.props.businesses_list} showUpdatedBusinesses={this.props.showUpdatedBusinesses}/>
 ```   
 
 
@@ -145,7 +148,7 @@ Generate `View`, `Edit` and `Delete` buttons for business owners
 @param {integer} props.business_id Business id
 
 ```html
-<BusinessOwnerButtons business_id={1} />
+<BusinessOwnerButtons business_id={this.props.id} />
 ```   
 
 
@@ -190,10 +193,11 @@ List all businesses in a searchable, paginated display
 Form for deleting a business
 
 @param {object} props Component props
-@param {integer} props.id Business id
+@param {object} props.business Business object
+@param {function} props.showUpdatedBusinesses Form callback function
 
 ```html
-<DeleteBusiness id={1} />
+<DeleteBusiness business={business} showUpdatedBusinesses={this.props.showUpdatedBusinesses} />
 ```   
 
 
@@ -206,8 +210,11 @@ Form for deleting a business
 
 Form for registering a business
 
+@param {object} props Component props
+@param {function} props.showUpdatedBusinesses Form callback function
+
 ```html
-<RegisterBusiness />
+<RegisterBusiness showUpdatedBusinesses={this.showUpdatedBusinesses}/>
 ```   
 
 
@@ -221,10 +228,11 @@ Form for registering a business
 Form for reviewing a business
 
 @param {object} props Component props
-@param {integer} props.id Business id
+@param {object} props.business Business object
+@param {function} props.showUpdatedBusinesses Form callback function
 
 ```html
-<ReviewBusiness id={1} />
+<ReviewBusiness business={business} showUpdatedBusinesses={this.props.showUpdatedBusinesses} />
 ```   
 
 
@@ -241,7 +249,7 @@ Generate a list of review cards for a business
 @param {object} props.reviews_list Contains list of businesses
 
 ```html
-<ReviewCards reviews_list={this.state.reviews_list} />
+<ReviewCards reviews_list={this.props.reviews_list} />
 ```   
 
 
@@ -255,10 +263,10 @@ Generate a list of review cards for a business
 Display a business' information and reviews
 
 @param {object} props Component props
-@param {integer} props.id Business id
+@param {object} props.business Business object
 
 ```html
-<ShowBusiness id={1} />
+<ShowBusiness business={business} />
 ```   
 
 
@@ -272,10 +280,11 @@ Display a business' information and reviews
 Form for updating a business
 
 @param {object} props Component props
-@param {integer} props.id Business id
+@param {object} props.business Business object
+@param {function} props.showUpdatedBusinesses Form callback function
 
 ```html
-<UpdateBusiness id={1} />
+<UpdateBusiness business={business} showUpdatedBusinesses={this.props.showUpdatedBusinesses} />
 ```   
 
 
