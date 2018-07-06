@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from "axios";
 import { apiUrl } from '../../App';
-import { NotificationManager } from 'react-notifications';
 import ShowBusiness from './ShowBusiness';
 import UpdateBusiness from './UpdateBusiness';
 import RegisterBusiness from './RegisterBusiness';
