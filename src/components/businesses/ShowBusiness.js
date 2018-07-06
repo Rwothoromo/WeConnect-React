@@ -22,7 +22,6 @@ class ShowBusiness extends Component {
 	}
 
 	componentDidMount = () => {
-		console.log("$$$$$$$",this.props.business.id)
 		axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
     axios.get(`${apiUrl}/businesses/${this.props.business.id}/reviews`).then(response => {
 			this.setState({

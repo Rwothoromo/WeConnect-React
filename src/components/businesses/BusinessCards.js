@@ -35,7 +35,7 @@ class BusinessCards extends Component {
         }
       </div>
     );
-	}
+	} 
 }
 
 export default BusinessCards;
