@@ -48,6 +48,7 @@ class ReviewBusiness extends Component {
 		}).then(response => {
 			NotificationManager.success(response.data.message);
 			this.setState({reviewed: true});
+			window.location.reload();
 		}).catch(error => {
 			NotificationManager.error(error.response.data.message);
 		})
