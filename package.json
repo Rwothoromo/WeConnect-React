@@ -1,44 +1,44 @@
 {
-  "name": "weconnect-react",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.0-14",
-    "@fortawesome/free-solid-svg-icons": "^5.1.0-11",
-    "@fortawesome/react-fontawesome": "0.1.0-11",
-    "axios": "^0.18.0",
-    "bootstrap": "^4.1.1",
-    "i": "^0.3.6",
-    "jquery": "^3.3.1",
-    "jwt-decode": "^2.2.0",
-    "npm": "^6.1.0",
-    "popper.js": "^1.14.3",
-    "react": "^16.3.2",
-    "react-dom": "^16.3.2",
-    "react-notifications": "^1.4.3",
-    "react-password-strength": "^2.3.1",
-    "react-router-dom": "^4.2.2",
-    "react-scripts": "1.1.4",
-    "sinon": "^6.0.1"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "coverage": "react-scripts test --env=jsdom --coverage --collectCoverageFrom=src/**/*js --collectCoverageFrom=!src/index.js",
-    "doc": "react-doc-generator ./ -o DOCUMENTATION.md"
-  },
-  "devDependencies": {
-    "axios-mock-adapter": "^1.15.0",
-    "coveralls": "^3.0.1",
-    "enzyme": "^3.3.0",
-    "enzyme-adapter-react-16": "^1.1.1",
-    "eslint": "^4.19.1",
-    "eslint-config-airbnb": "^17.0.0",
-    "eslint-plugin-import": "^2.13.0",
-    "eslint-plugin-jsx-a11y": "^6.0.3",
-    "eslint-plugin-react": "^7.10.0",
-    "react-doc-generator": "^1.2.5"
-  }
+	"name": "weconnect-react",
+	"version": "0.1.0",
+	"private": true,
+	"dependencies": {
+		"@fortawesome/fontawesome-svg-core": "^1.2.0-14",
+		"@fortawesome/free-solid-svg-icons": "^5.1.0-11",
+		"@fortawesome/react-fontawesome": "0.1.0-11",
+		"axios": "^0.18.0",
+		"bootstrap": "^4.1.1",
+		"i": "^0.3.6",
+		"jquery": "^3.3.1",
+		"jwt-decode": "^2.2.0",
+		"npm": "^6.1.0",
+		"popper.js": "^1.14.3",
+		"react": "^16.3.2",
+		"react-dom": "^16.3.2",
+		"react-notifications": "^1.4.3",
+		"react-password-strength": "^2.3.1",
+		"react-router-dom": "^4.2.2",
+		"react-scripts": "1.1.4",
+		"sinon": "^6.0.1"
+	},
+	"scripts": {
+		"start": "react-scripts start",
+		"build": "react-scripts build",
+		"test": "react-scripts test --env=jsdom",
+		"eject": "react-scripts eject",
+		"coverage": "react-scripts test --env=jsdom --coverage --collectCoverageFrom=src/**/*js --collectCoverageFrom=!src/index.js",
+		"doc": "react-doc-generator ./ -o DOCUMENTATION.md"
+	},
+	"devDependencies": {
+		"axios-mock-adapter": "^1.15.0",
+		"coveralls": "^3.0.1",
+		"enzyme": "^3.3.0",
+		"enzyme-adapter-react-16": "^1.1.1",
+		"eslint": "^4.19.1",
+		"eslint-config-airbnb": "^17.0.0",
+		"eslint-plugin-import": "^2.13.0",
+		"eslint-plugin-jsx-a11y": "^6.0.3",
+		"eslint-plugin-react": "^7.10.0",
+		"react-doc-generator": "^1.2.5"
+	}
 }

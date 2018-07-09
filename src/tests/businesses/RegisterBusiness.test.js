@@ -1,5 +1,4 @@
 import React from 'react';
-import { MemoryRouter } from 'react-router-dom';
 import { mount } from 'enzyme';
 import RegisterBusiness from '../../components/businesses/RegisterBusiness';
 import MockAdapter from 'axios-mock-adapter';

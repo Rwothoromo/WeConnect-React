@@ -12,28 +12,28 @@ import DeleteBusiness from './DeleteBusiness';
  * ```
  */
 class BusinessModals extends Component {
-  constructor(props) {
+	constructor(props) {
 		super(props);
-  }
+	}
 
-  render() {
-    if (!this.props.businesses) return;
+	render() {
+		if (!this.props.businesses) return;
 
-    const businesses = this.props.businesses;
-    return (
-      <div>
-        {
-          businesses.map(business => 
-            <div key={business.id}>
-              <ShowBusiness business={business} />
-              <UpdateBusiness business={business} showUpdatedBusinesses={this.props.showUpdatedBusinesses} />
-              <ReviewBusiness business={business} showUpdatedBusinesses={this.props.howUpdatedBusinesses} />
-              <DeleteBusiness business={business} showUpdatedBusinesses={this.props.showUpdatedBusinesses} />
-            </div>
-          )
-        }
-      </div>
-    );
+		const businesses = this.props.businesses;
+		return (
+			<div>
+				{
+					businesses.map(business => 
+						<div key={business.id}>
+							<ShowBusiness business={business} />
+							<UpdateBusiness business={business} showUpdatedBusinesses={this.props.showUpdatedBusinesses} />
+							<ReviewBusiness business={business} showUpdatedBusinesses={this.props.howUpdatedBusinesses} />
+							<DeleteBusiness business={business} showUpdatedBusinesses={this.props.showUpdatedBusinesses} />
+						</div>
+					)
+				}
+			</div>
+		);
 	}
 }
 
