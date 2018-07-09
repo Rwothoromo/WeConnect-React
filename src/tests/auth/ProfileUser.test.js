@@ -9,10 +9,6 @@ describe('<ProfileUser />', () => {
 	const mock = new MockAdapter(Axios);
 	const wrapper = shallow(<ProfileUser />);
 
-	it('renders without crashing', () => {
-		expect(wrapper.find('h2').text()).toContain('User Profile');
-	});
-
 	it('resets user password', async () => {
 		mock.onPost(`${apiUrl}/auth/reset-password`).reply(200, {
 			message: "User password reset",
