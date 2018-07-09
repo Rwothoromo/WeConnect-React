@@ -7,8 +7,11 @@ import DeleteBusiness from './DeleteBusiness';
 /**
  * Generate `View`, `Review`, `Edit` and `Delete` modals for businesses
  * 
+ * @param {object} props.businesses Contains business list
+ * @param {function} props.showUpdatedBusinesses Business list update function
+ * 
  * ```html
- * <BusinessModals />
+ * <BusinessModals businesses={businesses} showUpdatedBusinesses={showUpdatedBusinesses} />
  * ```
  */
 class BusinessModals extends Component {

@@ -1,7 +1,7 @@
 Components
 ----------
 
-**src/App.js**
+**src\App.js**
 
 ### 1. App
 
@@ -16,7 +16,7 @@ Places all content within the `Layout`
 
 
 -----
-**src/components/Index.js**
+**src\components\Index.js**
 
 ### 1. Index
 
@@ -30,7 +30,7 @@ Main page content
 
 
 -----
-**src/components/auth/LoginUser.js**
+**src\components\auth\LoginUser.js**
 
 ### 1. LoginUser
 
@@ -44,7 +44,7 @@ Form for user login
 
 
 -----
-**src/components/auth/LogoutUser.js**
+**src\components\auth\LogoutUser.js**
 
 ### 1. LogoutUser
 
@@ -58,7 +58,7 @@ Logout user
 
 
 -----
-**src/components/auth/ProfileUser.js**
+**src\components\auth\ProfileUser.js**
 
 ### 1. ProfileUser
 
@@ -72,7 +72,7 @@ User profile page with password reset button
 
 
 -----
-**src/components/auth/RegisterUser.js**
+**src\components\auth\RegisterUser.js**
 
 ### 1. RegisterUser
 
@@ -86,93 +86,90 @@ Form for user registration
 
 
 -----
-**src/components/businesses/BusinessButtons.js**
+**src\components\businesses\BusinessButtons.js**
 
 ### 1. BusinessButtons
 
 Generate `View` and `Review` buttons for non-business owners
 
 @param {object} props Component props
-@param {integer} props.business_id Business id
+@param {integer} props.business Business
 
 ```html
-<BusinessButtons business_id={this.props.id} />
+<BusinessButtons business={business} />
 ```   
 
 
 
 
 -----
-**src/components/businesses/BusinessCards.js**
+**src\components\businesses\BusinessCards.js**
 
 ### 1. BusinessCards
 
 Generate a list of business cards
 
-@param {object} props Component props
 @param {object} props.user Contains user data
 @param {object} props.businesses_list Contains list of businesses
 
 ```html
-<BusinessCards user={this.props.user} businesses_list={this.props.businesses_list} />
+<BusinessCards user={user} businesses_list={businesses_list} />
 ```   
 
 
 
 
 -----
-**src/components/businesses/BusinessModals.js**
+**src\components\businesses\BusinessModals.js**
 
 ### 1. BusinessModals
 
 Generate `View`, `Review`, `Edit` and `Delete` modals for businesses
 
-@param {array} props.businesses_list List of businesses
-@param {function} props.showUpdatedBusinesses Form callback function
+@param {object} props.businesses Contains business list
+@param {function} props.showUpdatedBusinesses Business list update function
 
 ```html
-<BusinessModals businesses_list={this.props.businesses_list} showUpdatedBusinesses={this.props.showUpdatedBusinesses}/>
+<BusinessModals businesses={businesses} showUpdatedBusinesses={showUpdatedBusinesses} />
 ```   
 
 
 
 
 -----
-**src/components/businesses/BusinessOwnerButtons.js**
+**src\components\businesses\BusinessOwnerButtons.js**
 
 ### 1. BusinessOwnerButtons
 
 Generate `View`, `Edit` and `Delete` buttons for business owners
 
-@param {object} props Component props
-@param {integer} props.business_id Business id
+@param {object} props.business Business
 
 ```html
-<BusinessOwnerButtons business_id={this.props.id} />
+<BusinessOwnerButtons business={business} />
 ```   
 
 
 
 
 -----
-**src/components/businesses/BusinessSearch.js**
+**src\components\businesses\BusinessSearch.js**
 
 ### 1. BusinessSearch
 
 Form for business search
 
-@param {object} props Component props
 @param {function} props.searchBusinesses Form submit callback function
 
 ```html
-<BusinessSearch searchBusinesses={this.searchBusinesses} />
+<BusinessSearch searchBusinesses={searchBusinesses} />
 ```   
 
 
 
 
 -----
-**src/components/businesses/BusinessesList.js**
+**src\components\businesses\BusinessesList.js**
 
 ### 1. BusinessesList
 
@@ -186,77 +183,73 @@ List all businesses in a searchable, paginated display
 
 
 -----
-**src/components/businesses/DeleteBusiness.js**
+**src\components\businesses\DeleteBusiness.js**
 
 ### 1. DeleteBusiness
 
 Form for deleting a business
 
-@param {object} props Component props
 @param {object} props.business Business object
 @param {function} props.showUpdatedBusinesses Form callback function
 
 ```html
-<DeleteBusiness business={business} showUpdatedBusinesses={this.props.showUpdatedBusinesses} />
+<DeleteBusiness business={business} showUpdatedBusinesses={showUpdatedBusinesses} />
 ```   
 
 
 
 
 -----
-**src/components/businesses/RegisterBusiness.js**
+**src\components\businesses\RegisterBusiness.js**
 
 ### 1. RegisterBusiness
 
 Form for registering a business
 
-@param {object} props Component props
 @param {function} props.showUpdatedBusinesses Form callback function
 
 ```html
-<RegisterBusiness showUpdatedBusinesses={this.showUpdatedBusinesses}/>
+<RegisterBusiness showUpdatedBusinesses={showUpdatedBusinesses}/>
 ```   
 
 
 
 
 -----
-**src/components/businesses/ReviewBusiness.js**
+**src\components\businesses\ReviewBusiness.js**
 
 ### 1. ReviewBusiness
 
 Form for reviewing a business
 
-@param {object} props Component props
 @param {object} props.business Business object
 @param {function} props.showUpdatedBusinesses Form callback function
 
 ```html
-<ReviewBusiness business={business} showUpdatedBusinesses={this.props.showUpdatedBusinesses} />
+<ReviewBusiness business={business} showUpdatedBusinesses={showUpdatedBusinesses} />
 ```   
 
 
 
 
 -----
-**src/components/businesses/ReviewCards.js**
+**src\components\businesses\ReviewCards.js**
 
 ### 1. ReviewCards
 
 Generate a list of review cards for a business
 
-@param {object} props Component props
-@param {object} props.reviews_list Contains list of businesses
+@param {object} props.reviews_list Contains list of business reviews
 
 ```html
-<ReviewCards reviews_list={this.props.reviews_list} />
+<ReviewCards reviews_list={reviews_list} />
 ```   
 
 
 
 
 -----
-**src/components/businesses/ShowBusiness.js**
+**src\components\businesses\ShowBusiness.js**
 
 ### 1. ShowBusiness
 
@@ -273,25 +266,24 @@ Display a business' information and reviews
 
 
 -----
-**src/components/businesses/UpdateBusiness.js**
+**src\components\businesses\UpdateBusiness.js**
 
 ### 1. UpdateBusiness
 
 Form for updating a business
 
-@param {object} props Component props
 @param {object} props.business Business object
 @param {function} props.showUpdatedBusinesses Form callback function
 
 ```html
-<UpdateBusiness business={business} showUpdatedBusinesses={this.props.showUpdatedBusinesses} />
+<UpdateBusiness business={business} showUpdatedBusinesses={showUpdatedBusinesses} />
 ```   
 
 
 
 
 -----
-**src/components/shared/Footer.js**
+**src\components\shared\Footer.js**
 
 ### 1. Footer
 
@@ -305,7 +297,7 @@ Footer
 
 
 -----
-**src/components/shared/Header.js**
+**src\components\shared\Header.js**
 
 ### 1. Header
 
@@ -319,7 +311,7 @@ Header
 
 
 -----
-**src/components/shared/Layout.js**
+**src\components\shared\Layout.js**
 
 ### 1. Layout
 
@@ -334,7 +326,7 @@ All content is placed between the `Header` and `Footer`
 
 
 -----
-**src/components/shared/Paginator.js**
+**src\components\shared\Paginator.js**
 
 ### 1. Paginator
 
@@ -352,7 +344,7 @@ Generate `Prev` and `Next` buttons for a paginated list
 
 
 -----
-**src/components/shared/UserTabs.js**
+**src\components\shared\UserTabs.js**
 
 ### 1. UserTabs
 
@@ -366,7 +358,7 @@ Navigation menu options for a logged in user
 
 
 -----
-**src/components/shared/VisitorTabs.js**
+**src\components\shared\VisitorTabs.js**
 
 ### 1. VisitorTabs
 

@@ -5,12 +5,11 @@ import BusinessButtons from './BusinessButtons';
 /**
  * Generate a list of business cards
  * 
- * @param {object} props Component props
  * @param {object} props.user Contains user data
  * @param {object} props.businesses_list Contains list of businesses
  * 
  * ```html
- * <BusinessCards user={this.props.user} businesses_list={this.props.businesses_list} />
+ * <BusinessCards user={user} businesses_list={businesses_list} />
  * ```
  */
 class BusinessCards extends Component {
