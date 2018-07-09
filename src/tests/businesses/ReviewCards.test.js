@@ -4,7 +4,7 @@ import ReviewCards from '../../components/businesses/ReviewCards';
 
 describe('<BusinessesList />', () => {
 	it('it renders correctly', async () => {
-    const wrapper = mount(<ReviewCards reviews_list ={[{review: {id: 1}}]}/>);
-    expect(wrapper).toHaveLength(1);
-  })
+		const wrapper = mount(<ReviewCards reviews_list ={[{review: {id: 1}}]}/>);
+		expect(wrapper).toHaveLength(1);
+	})
 });
