@@ -1,6 +1,5 @@
 import React from 'react';
-import { MemoryRouter } from 'react-router-dom';
-import { shallow, mount } from 'enzyme';
+import { mount } from 'enzyme';
 import DeleteBusiness from '../../components/businesses/DeleteBusiness';
 import MockAdapter from 'axios-mock-adapter';
 import Axios from 'axios';
