@@ -22,22 +22,38 @@ describe('<UpdateBusiness />', () => {
 		updated_at:"Thu, 28 Jun 2018 14:33:42 GMT"
 	}
 	
-	const wrapper = mount(
-			<UpdateBusiness business={business} showUpdatedBusinesses={showUpdatedBusinesses}/>);
+	const wrapper = mount(<UpdateBusiness business={business} showUpdatedBusinesses={showUpdatedBusinesses}/>);
 
-	it('calls', async () => {
-		
+	it('updates a business', async () => {
 		mock.onPut(`${apiUrl}/businesses/2`).reply(200, {
-			message: "Cakes and confectionary"
+			message: "Business updated"
 		});
+
 		const updateBusinessComponent = wrapper;
-		let uspy = jest.spyOn(updateBusinessComponent.instance(), 'updateBusiness');
+		let spyUpdateBusiness = jest.spyOn(updateBusinessComponent.instance(), 'updateBusiness');
+
 		updateBusinessComponent.instance().forceUpdate();
 		updateBusinessComponent.find("input[name='name']").simulate('change', {target: {value: 'andela'}})
 		updateBusinessComponent.find("input[name='category']").simulate('change', {target: {value: 'category'}})
 		updateBusinessComponent.find("input[name='location']").simulate('change', {target: {value: 'location'}})
 		updateBusinessComponent.find("textarea[name='description']").simulate('change', {target: {value: 'description'}})
+
 		await updateBusinessComponent.find("form").simulate('submit', {preventDefault: ()=> {}})
-		expect(uspy).toHaveBeenCalled();
+		expect(spyUpdateBusiness).toHaveBeenCalled();
+	});
+
+	it('fails if the category or location are blank', async () => {
+		mock.onPut(`${apiUrl}/businesses/2`).reply(400, {
+			message: "category must be a string of maximum 50 characters"
+		});
+
+		const updateBusinessComponent = wrapper;
+		let spyUpdateBusiness = jest.spyOn(updateBusinessComponent.instance(), 'updateBusiness');
+
+		updateBusinessComponent.instance().forceUpdate();
+		updateBusinessComponent.find("input[name='name']").simulate('change', {target: {value: 'andela'}})
+
+		await updateBusinessComponent.find("form").simulate('submit', {preventDefault: ()=> {}})
+		expect(spyUpdateBusiness).toHaveBeenCalled();
 	});
 });

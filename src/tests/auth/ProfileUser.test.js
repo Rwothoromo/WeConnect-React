@@ -19,7 +19,18 @@ describe('<ProfileUser />', () => {
 			new_password: "new_password"
 		});
 
+		wrapper.setState({loggedIn: true});
 		global.confirm = () => true;
+		let spyResetPassword = jest.spyOn(wrapper.instance(), 'resetPassword');
+		await wrapper.instance().resetPassword({
+			preventDefault: () => {},
+			clearUser: () => {}
+		});
+		expect(spyResetPassword).toHaveBeenCalled();
+	});
+
+	it('cancels user password reset', async () => {
+		global.confirm = () => false;
 		let spyResetPassword = jest.spyOn(wrapper.instance(), 'resetPassword');
 		await wrapper.instance().resetPassword({
 			preventDefault: () => {},

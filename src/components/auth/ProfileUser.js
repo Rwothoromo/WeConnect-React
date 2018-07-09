@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import { NotificationManager } from 'react-notifications';
 import axios from "axios";
 import { apiUrl } from '../../App';
@@ -48,9 +49,7 @@ class ProfileUser extends Component {
 	}
 
   render() {
-		if (!this.state.loggedIn) {
-	  	window.location = "/";
-		}
+		if (!this.state.loggedIn) { return (<Redirect to="/auth/login"/>); }
 
 		return (
 			<main role="main" className="container-fluid home-bg">
