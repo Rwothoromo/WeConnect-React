@@ -6,7 +6,7 @@ import Axios from 'axios';
 import { apiUrl } from '../../App';
 
 describe('<ShowBusiness />', () => {
-	const wrapper = mount(<ShowBusiness showUpdatedBusinesses={()=>{}} business={{id: 2}} />);
+	const wrapper = mount(<ShowBusiness showUpdatedBusinesses={() => {}} business={{id: 2}} />);
 	const mock = new MockAdapter(Axios);
 
 	it('shows a businesses', async () => {

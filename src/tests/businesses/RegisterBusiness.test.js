@@ -7,7 +7,7 @@ import { apiUrl } from '../../App';
 
 describe('<RegisterBusiness />', () => {
 	const mock = new MockAdapter(Axios);
-	const wrapper = mount(<RegisterBusiness showUpdatedBusinesses={()=>{}} business={ {id: 2}} />);
+	const wrapper = mount(<RegisterBusiness showUpdatedBusinesses={() => {}} business={ {id: 2}} />);
 
 	it('registers a business', () => {
 		mock.onPost(`${apiUrl}/businesses`).reply(201, {

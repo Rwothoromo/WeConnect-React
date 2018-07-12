@@ -34,7 +34,7 @@ describe('<ReviewBusiness />', () => {
 			reviews_list:  [{}, {}],
 			message: "review"
 		});
-		const wrapper = mount(<ReviewBusiness showUpdatedBusinesses={()=>{}} business={{id: 2}} />);
+		const wrapper = mount(<ReviewBusiness showUpdatedBusinesses={() => {}} business={{id: 2}} />);
 		let form = wrapper.find('form')
 		form.simulate('submit');
 	});
