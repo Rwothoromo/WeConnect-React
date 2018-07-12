@@ -10,7 +10,7 @@ describe('<Paginator />', () => {
 				handlePageChange={jest.fn()}
 			/>);
 		let spy = jest.spyOn(wrapper.props(), 'handlePageChange')
-		wrapper.find('button#prev_page').simulate('click', {preventDefault: ()=>{}})
+		wrapper.find('button#prev_page').simulate('click', {preventDefault: () => {}})
 		expect(spy).toHaveBeenCalled();
 	})
 
@@ -21,7 +21,7 @@ describe('<Paginator />', () => {
 				handlePageChange={jest.fn()}
 			/>);
 		let spy = jest.spyOn(wrapper.props(), 'handlePageChange')
-		wrapper.find('button#next_page').simulate('click', {preventDefault: ()=>{}})
+		wrapper.find('button#next_page').simulate('click', {preventDefault: () => {}})
 		expect(spy).toHaveBeenCalled();
 	});
 })

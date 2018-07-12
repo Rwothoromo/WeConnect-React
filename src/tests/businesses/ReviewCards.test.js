@@ -3,7 +3,7 @@ import React from 'react'
 import ReviewCards from '../../components/businesses/ReviewCards';
 
 describe('<BusinessesList />', () => {
-	it('it renders correctly', async () => {
+	it('renders correctly', async () => {
 		const wrapper = mount(<ReviewCards reviews_list ={[{review: {id: 1}}]}/>);
 		expect(wrapper).toHaveLength(1);
 	})

@@ -3,7 +3,7 @@ import { mount } from 'enzyme';
 import BusinessSearch from '../../components/businesses/BusinessSearch';
 
 describe('<BusinessSearch />', () => {
-	let searchBusinesses = jest.fn(()=>{})
+	let searchBusinesses = jest.fn(() => {})
 	
 	const wrapper = mount(<BusinessSearch searchBusinesses={searchBusinesses}/>);
 
