@@ -11,7 +11,7 @@ describe('<DeleteBusiness />', () => {
 		message: "Business deleted"
 	});
 	
-	const wrapper = mount(<DeleteBusiness showUpdatedBusinesses={()=>{}} business={ {id: 2}} />);
+	const wrapper = mount(<DeleteBusiness showUpdatedBusinesses={() => {}} business={ {id: 2}} />);
 	
 
 	it('deletes a business', async () => {

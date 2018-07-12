@@ -26,9 +26,7 @@ class DeleteBusiness extends Component {
     axios.delete(`${apiUrl}/businesses/${this.props.business.id}`).then(response => {
 			NotificationManager.success(response.data.message);
 			this.props.showUpdatedBusinesses();
-		}).catch(error => {
-			NotificationManager.error(error.response.data.message);
-		});
+		}).catch(error => {});
 	}
 
 	render() {
