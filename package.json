@@ -23,7 +23,7 @@
 		"react-notifications": "^1.4.3",
 		"react-password-strength": "^2.3.1",
 		"react-router-dom": "^4.2.2",
-		"react-scripts": "1.1.4",
+		"react-scripts": "^3.3.0",
 		"sinon": "^6.0.1"
 	},
 	"scripts": {
@@ -44,6 +44,9 @@
 		"eslint-plugin-import": "^2.13.0",
 		"eslint-plugin-jsx-a11y": "^6.0.3",
 		"eslint-plugin-react": "^7.10.0",
-		"react-doc-generator": "^1.2.5"
+		"lodash.template": ">=4.5.0",
+		"mem": ">=4.0.0",
+		"react-doc-generator": "^1.2.5",
+		"webpack-dev-server": ">=3.1.11"
 	}
 }
