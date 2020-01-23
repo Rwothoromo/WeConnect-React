@@ -36,9 +36,11 @@ View on [Heroku](https://weconnect-react-rwothoromo.herokuapp.com/)
 * Run `npm run coverage` on command prompt to generate coverage reports
 
 ## Builds
+
 * Run `npm run build` on command prompt
 * Run `npm install -g serve` to serve the app on a static server
 * Run `serve -s build` and view the app on `http://localhost:5000`
 
 ## API
+
 Visit [WeConnect-App](https://github.com/Rwothoromo/WeConnect-App)
