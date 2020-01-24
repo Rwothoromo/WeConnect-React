@@ -1,47 +1,56 @@
 {
-	"name": "weconnect-react",
-	"version": "0.1.0",
-	"private": true,
-	"engines": {
-		"npm": "6.4.1",
-		"node": "8.17.0"
-	},
-	"dependencies": {
-		"@fortawesome/fontawesome-svg-core": "^1.2.0-14",
-		"@fortawesome/free-solid-svg-icons": "^5.1.0-11",
-		"@fortawesome/react-fontawesome": "0.1.0-11",
-		"axios": "^0.18.1",
-		"bootstrap": "^4.4.1",
-		"i": "^0.3.6",
-		"jquery": "^3.4.1",
-		"jsonwebtoken": "^8.3.0",
-		"jwt-decode": "^2.2.0",
-		"npm": "^6.13.6",
-		"popper.js": "^1.14.3",
-		"react": "^16.3.2",
-		"react-dom": "^16.12.0",
-		"react-notifications": "^1.4.3",
-		"react-password-strength": "^2.3.1",
-		"react-router-dom": "^4.2.2",
-		"react-scripts": "^3.3.0",
-		"sinon": "^6.0.1"
-	},
-	"scripts": {
-		"start": "react-scripts start",
-		"build": "react-scripts build",
-		"test": "react-scripts test --env=jsdom",
-		"eject": "react-scripts eject",
-		"coverage": "react-scripts test --env=jsdom --coverage --collectCoverageFrom=src/**/*js --collectCoverageFrom=!src/index.js",
-		"doc": "react-doc-generator ./ -o DOCUMENTATION.md"
-	},
-	"devDependencies": {
-		"axios-mock-adapter": "^1.15.0",
-		"coveralls": "^3.0.1",
-		"enzyme": "^3.3.0",
-		"enzyme-adapter-react-16": "^1.1.1",
-		"lodash.template": ">=4.5.0",
-		"mem": ">=4.0.0",
-		"react-doc-generator": "^1.2.5",
-		"webpack-dev-server": ">=3.1.11"
-	}
+  "name": "weconnect-react",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.26",
+    "@fortawesome/free-solid-svg-icons": "^5.12.0",
+    "@fortawesome/react-fontawesome": "^0.1.8",
+    "@popperjs/core": "^2.0.0",
+    "axios": "^0.19.2",
+    "bootstrap": "^4.4.1",
+    "core-js": "^3.6.4",
+    "jquery": "^3.4.1",
+    "jsonwebtoken": "^8.5.1",
+    "jwt-decode": "^2.2.0",
+    "node": "^13.6.0",
+    "popper.js": "^1.16.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-notifications": "^1.4.3",
+    "react-password-strength": "^2.4.0",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "^3.3.0",
+    "sinon": "^8.1.1",
+    "typescript": "^3.7.5"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "coverage": "react-scripts test --env=jsdom --coverage --collectCoverageFrom=src/**/*js --collectCoverageFrom=!src/index.js",
+    "doc": "react-doc-generator ./ -o DOCUMENTATION.md"
+  },
+  "devDependencies": {
+    "axios-mock-adapter": "^1.17.0",
+    "coveralls": "^3.0.9",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "lodash.template": "^4.5.0",
+    "mem": "^6.0.1",
+    "react-doc-generator": "^1.2.5"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
 }
