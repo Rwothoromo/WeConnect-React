@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import { NotificationManager } from 'react-notifications';
 import axios from "axios";
 import { apiUrl } from '../../App';
-import { isLoggedIn, clearUser } from '../../utils/Helpers';
+import { isLoggedIn, clearUser } from '../utils/Helpers';
 
 /**
  * User profile page with password reset button
@@ -19,7 +19,7 @@ class ProfileUser extends Component {
 			username: '',
 			first_name: '',
 			last_name: '',
-			loggedIn: isLoggedIn()
+			loggedIn: isLoggedIn(localStorage)
 		}
 	}
 

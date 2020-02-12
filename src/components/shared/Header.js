@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from '../../static/img/logo.PNG'
 import UserTabs from './UserTabs';
 import VisitorTabs from './VisitorTabs';
-import { isLoggedIn } from '../../utils/Helpers';
+import { isLoggedIn } from '../utils/Helpers';
 
 /**
  * Header
@@ -23,7 +23,7 @@ class Header extends Component {
 		return (
 			<header className="header">
 				<nav className="navbar navbar-expand-md navbar-light bg-light fixed-top">
-					<a className="navbar-brand" href="">
+					<a className="navbar-brand" href="#!">
 						<img src={logo} alt="Logo" />
 					</a>
 					<button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">

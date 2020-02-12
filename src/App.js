@@ -14,7 +14,7 @@ export const apiUrl = process.env.REACT_APP_BACKEND_HOST || 'http://127.0.0.1:50
 
 /**
  * All routes used in the application
- * 
+ *
  * ```html
  * <Routes />
  * ```
@@ -35,7 +35,7 @@ const Routes = () => (
 /**
  * Application entry point.
  * Places all content within the `Layout`
- * 
+ *
  * ```html
  * <App />
  * ```

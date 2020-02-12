@@ -6,7 +6,7 @@ import decode from 'jwt-decode';
 import { NotificationManager } from 'react-notifications';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import { isLoggedIn } from '../../utils/Helpers';
+import { isLoggedIn } from '../utils/Helpers';
 import Paginator from '../shared/Paginator';
 import BusinessSearch from './BusinessSearch';
 import BusinessCards from './BusinessCards';

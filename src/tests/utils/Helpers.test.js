@@ -1,4 +1,4 @@
-import { isLoggedIn, contains } from '../../utils/Helpers';
+import { isLoggedIn, contains } from '../utils/Helpers';
 
 describe('Helper - isLoggedIn', () => {
 	const jwt = require('jsonwebtoken');

@@ -4,7 +4,7 @@ import ReactPasswordStrength from 'react-password-strength';
 import { NotificationManager } from 'react-notifications';
 import axios from "axios";
 import { apiUrl } from '../../App';
-import { contains } from '../../utils/Helpers';
+import { contains } from '../utils/Helpers';
 
 /**
  * Form for user registration

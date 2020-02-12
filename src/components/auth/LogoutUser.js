@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import 'react-notifications/lib/notifications.css';
 import axios from "axios";
 import { apiUrl } from '../../App';
-import { isLoggedIn, clearUser } from '../../utils/Helpers';
+import { isLoggedIn, clearUser } from '../utils/Helpers';
 
 /**
  * Logout user
