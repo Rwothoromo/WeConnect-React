@@ -4,10 +4,9 @@ import { faEye, faStar } from '@fortawesome/free-solid-svg-icons';
 
 /**
  * Generate `View` and `Review` buttons for non-business owners
- * 
- * @param {object} props Component props
- * @param {integer} props.business Business
- * 
+ *
+ * @param {object} props.business Component props containing Business
+ *
  * ```html
  * <BusinessButtons business={business} />
  * ```

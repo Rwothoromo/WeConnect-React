@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 /**
  * Navigation menu options for a visitor to the site
- * 
+ *
  * ```html
  * <VisitorTabs />
  * ```

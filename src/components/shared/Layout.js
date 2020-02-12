@@ -6,7 +6,7 @@ import Footer from './Footer';
 /**
  * The `Layout` for the entire application.
  * All content is placed between the `Header` and `Footer`
- * 
+ *
  * ```html
  * <Layout />
  * ```
@@ -15,9 +15,9 @@ class Layout extends Component {
 	render() {
 		return (
 			<div>
-				<Header/>
+				<Header />
 				{this.props.children}
-				<Footer/>
+				<Footer />
 			</div>
 		);
 	}

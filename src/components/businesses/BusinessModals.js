@@ -6,10 +6,10 @@ import DeleteBusiness from './DeleteBusiness';
 
 /**
  * Generate `View`, `Review`, `Edit` and `Delete` modals for businesses
- * 
+ *
  * @param {object} props.businesses Contains business list
  * @param {function} props.showUpdatedBusinesses Business list update function
- * 
+ *
  * ```html
  * <BusinessModals businesses={businesses} showUpdatedBusinesses={showUpdatedBusinesses} />
  * ```
@@ -26,7 +26,7 @@ class BusinessModals extends Component {
 		return (
 			<div>
 				{
-					businesses.map(business => 
+					businesses.map(business =>
 						<div key={business.id}>
 							<ShowBusiness business={business} />
 							<UpdateBusiness business={business} showUpdatedBusinesses={this.props.showUpdatedBusinesses} />

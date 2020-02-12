@@ -4,9 +4,9 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 /**
  * Form for business search
- * 
- * @param {function} props.searchBusinesses Form submit callback function
- * 
+ *
+ * @param {function} props.searchBusinesses Form submit callback function searchBusinesses
+ *
  * ```html
  * <BusinessSearch searchBusinesses={searchBusinesses} />
  * ```
@@ -18,13 +18,13 @@ const BusinessSearch = (props) => {
 		<form className="weconnect-form" onSubmit={(event) => { searchBusinesses(event); }}>
 			<ul className="list-inline">
 				<li className="list-inline-item">
-						<input type="text" style={{width: 180}} className="form-control" placeholder="Business" id="q" name="q" defaultValue="" />
+					<input type="text" style={{ width: 180 }} className="form-control" placeholder="Business" id="q" name="q" defaultValue="" />
 				</li>
 				<li className="list-inline-item">
-						<input type="text" style={{width: 180}} className="form-control" placeholder="Category" id="category" name="category" defaultValue="" />
+					<input type="text" style={{ width: 180 }} className="form-control" placeholder="Category" id="category" name="category" defaultValue="" />
 				</li>
 				<li className="list-inline-item">
-						<input type="text" style={{width: 180}} className="form-control" placeholder="Location" id="location" name="location" defaultValue="" />
+					<input type="text" style={{ width: 180 }} className="form-control" placeholder="Location" id="location" name="location" defaultValue="" />
 				</li>
 				<li className="list-inline-item">
 					<button title="Search" className="btn btn-success">

@@ -2,7 +2,7 @@ import React from 'react';
 
 /**
  * Footer
- * 
+ *
  * ```html
  * <Footer />
  * ```
@@ -10,7 +10,7 @@ import React from 'react';
 const Footer = () => (
 	<footer className="footer">
 		<div className="container">
-			<p className="copyright text-muted small" style={{textAlign: 'center'}}>
+			<p className="copyright text-muted small" style={{ textAlign: 'center' }}>
 				Copyright © 2018. All Rights Reserved
 			</p>
 		</div>

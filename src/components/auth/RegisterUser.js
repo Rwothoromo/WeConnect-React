@@ -8,7 +8,7 @@ import { contains } from '../../utils/Helpers';
 
 /**
  * Form for user registration
- * 
+ *
  * ```html
  * <RegisterUser />
  * ```
@@ -41,11 +41,11 @@ class RegisterUser extends Component {
 				username: event.target.elements.username.value,
 				password: password
 			}
-      axios.post(`${apiUrl}/auth/register`, JSON.stringify(user), {
-        headers: {'Content-Type': 'application/json'}
+			axios.post(`${apiUrl}/auth/register`, JSON.stringify(user), {
+				headers: { 'Content-Type': 'application/json' }
 			}).then(response => {
 				NotificationManager.success(response.data.message);
-				this.setState({registered: true});
+				this.setState({ registered: true });
 			}).catch(error => {
 				NotificationManager.error(error.response.data.message);
 			})
@@ -54,7 +54,7 @@ class RegisterUser extends Component {
 
 	render() {
 		if (this.state.registered) {
-			return (<Redirect to="/auth/login"/>)
+			return (<Redirect to="/auth/login" />)
 		}
 		return (
 			<main role="main" className="container-fluid home-bg">
@@ -63,9 +63,9 @@ class RegisterUser extends Component {
 					<div className="col-md-6">
 						<p className="home-title">WeConnect</p>
 						<p className="home-body">
-						<br /> Welcome to WeConnect!
+							<br /> Welcome to WeConnect!
 						<br />
-						<br /> WeConnect brings businesses
+							<br /> WeConnect brings businesses
 						<br /> and users together, and allows
 						<br /> users to review businesses.
 						</p>
@@ -73,7 +73,7 @@ class RegisterUser extends Component {
 					<div className="col-md-6">
 						<form className="weconnect-form" id="register-user" onSubmit={this.registerUser}>
 							<div className="form-group">
-								<label className="control-label col-md-12" style={{textAlign: 'center'}}>Register</label>
+								<label className="control-label col-md-12" style={{ textAlign: 'center' }}>Register</label>
 							</div>
 							<div className="form-group">
 								<input type="text" className="form-control" placeholder="First name" id="first_name" name="first_name" required />
@@ -91,7 +91,7 @@ class RegisterUser extends Component {
 									minScore={2}
 									scoreWords={['weak', 'okay', 'good', 'strong', 'stronger']}
 									inputProps={{ type: "password", placeholder: "Password", id: "password", name: "password", required: "required", autoComplete: "off", className: "form-control" }}
-									/>
+								/>
 							</div>
 							<div className="form-group">
 								<ReactPasswordStrength id="confirm_password_div"
@@ -100,7 +100,7 @@ class RegisterUser extends Component {
 									minScore={2}
 									scoreWords={['weak', 'okay', 'good', 'strong', 'stronger']}
 									inputProps={{ type: "password", placeholder: "Confirm password", id: "confirm_password", name: "confirm_password", required: "required", autoComplete: "off", className: "form-control" }}
-									/>
+								/>
 							</div>
 							<div className="form-group">
 								<input type="submit" className="btn btn-default weconnect-btn" id="register" name="register" defaultValue="Sign up" />

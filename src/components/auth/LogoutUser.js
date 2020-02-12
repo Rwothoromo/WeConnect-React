@@ -7,7 +7,7 @@ import { isLoggedIn, clearUser } from '../../utils/Helpers';
 
 /**
  * Logout user
- * 
+ *
  * ```html
  * <LogoutUser />
  * ```
@@ -23,7 +23,7 @@ class LogoutUser extends Component {
 	componentDidMount = () => {
 		axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
 		axios.post(`${apiUrl}/auth/logout`).then(response => {
-			this.setState({loggedIn: false});
+			this.setState({ loggedIn: false });
 			localStorage.removeItem("access_token");
 			clearUser();
 			window.location = "/auth/login";
@@ -31,7 +31,7 @@ class LogoutUser extends Component {
 	}
 
 	render() {
-		return (<Redirect to="/"/>);
+		return (<Redirect to="/" />);
 	}
 }
 

@@ -15,7 +15,7 @@ import RegisterBusiness from './RegisterBusiness';
 
 /**
  * List all businesses in a searchable, paginated display
- * 
+ *
  * ```html
  * <BusinessesList />
  * ```
@@ -39,7 +39,7 @@ class BusinessesList extends Component {
 			this.setState({
 				businesses: response.data.businesses
 			});
-		}).catch(error => {});
+		}).catch(error => { });
 	}
 
 	componentDidMount = () => {
@@ -67,7 +67,7 @@ class BusinessesList extends Component {
 				prev_page: response.data.prev_page
 			});
 			this.getAllBusinesses();
-		}).catch(error => {});
+		}).catch(error => { });
 	}
 
 	searchBusinesses = (event) => {
@@ -75,12 +75,12 @@ class BusinessesList extends Component {
 		event.preventDefault();
 
 		let q = event.target.elements.q.value
-		let	category = event.target.elements.category.value
+		let category = event.target.elements.category.value
 		let location = event.target.elements.location.value
-	
+
 		axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
 		axios.get(`${apiUrl}/businesses?q=${q}&category=${category}&location=${location}`, {
-			headers: {'Content-Type': 'application/json'}
+			headers: { 'Content-Type': 'application/json' }
 		}).then(response => {
 			this.setState({
 				businesses_list: response.data.businesses,
@@ -99,7 +99,7 @@ class BusinessesList extends Component {
 
 		axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
 		axios.get(`${apiUrl}/businesses?limit=3&page=${page}`, {
-			headers: {'Content-Type': 'application/json'}
+			headers: { 'Content-Type': 'application/json' }
 		}).then(response => {
 			this.setState({
 				businesses_list: response.data.businesses,
@@ -113,7 +113,7 @@ class BusinessesList extends Component {
 	}
 
 	render() {
-		if (!this.state.loggedIn) { return (<Redirect to="/auth/login"/>); }
+		if (!this.state.loggedIn) { return (<Redirect to="/auth/login" />); }
 
 		let user = decode(localStorage.getItem("access_token"));
 
@@ -125,7 +125,7 @@ class BusinessesList extends Component {
 						<div className="col-md-3" />
 						<div className="col-md-6 weconnect-div">
 							<BusinessSearch searchBusinesses={this.searchBusinesses} />
-							<button title="Add business" type="button" className="btn btn-primary btn-sm" style={{marginBottom: 10, marginLeft: 20}}
+							<button title="Add business" type="button" className="btn btn-primary btn-sm" style={{ marginBottom: 10, marginLeft: 20 }}
 								data-toggle="modal" data-target="#registerBusinessModal">
 								Add a business <FontAwesomeIcon icon={faPlus} />
 							</button>
@@ -135,9 +135,9 @@ class BusinessesList extends Component {
 						<div className="col-md-3" />
 					</div>
 				</main>
-				<RegisterBusiness showUpdatedBusinesses={this.showUpdatedBusinesses}/>
+				<RegisterBusiness showUpdatedBusinesses={this.showUpdatedBusinesses} />
 				<BusinessModals businesses={this.state.businesses} showUpdatedBusinesses={this.showUpdatedBusinesses} />
-		</div>
+			</div>
 		);
 	}
 }

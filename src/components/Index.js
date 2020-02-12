@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 
 /**
  * Main page content
- * 
+ *
  * ```html
  * <Index />
  * ```
  */
 class Index extends Component {
-  render() {
+	render() {
 		return (
 			<main role="main" className="container-fluid home-bg">
 				<br /><br /><br /><br />
@@ -24,7 +24,7 @@ class Index extends Component {
 				</div>
 			</main>
 		);
-  }
+	}
 }
 
 export default Index;

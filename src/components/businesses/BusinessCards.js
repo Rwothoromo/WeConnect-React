@@ -4,10 +4,10 @@ import BusinessButtons from './BusinessButtons';
 
 /**
  * Generate a list of business cards
- * 
+ *
  * @param {object} props.user Contains user data
  * @param {object} props.businesses_list Contains list of businesses
- * 
+ *
  * ```html
  * <BusinessCards user={user} businesses_list={businesses_list} />
  * ```
@@ -19,8 +19,8 @@ class BusinessCards extends Component {
 		return (
 			<div>
 				{
-					businesses_list.map(business => 
-						<div key={business.id} className="card" style={{width: 'auto', marginBottom: 10, marginLeft: 20, marginRight:20}} >
+					businesses_list.map(business =>
+						<div key={business.id} className="card" style={{ width: 'auto', marginBottom: 10, marginLeft: 20, marginRight: 20 }} >
 							<h5 className="card-header">{business.name}</h5>
 							<div className="card-body">
 								<p className="card-text">
@@ -34,7 +34,7 @@ class BusinessCards extends Component {
 				}
 			</div>
 		);
-	} 
+	}
 }
 
 export default BusinessCards;

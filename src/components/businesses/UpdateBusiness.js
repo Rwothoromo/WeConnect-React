@@ -5,10 +5,10 @@ import { apiUrl } from '../../App';
 
 /**
  * Form for updating a business
- * 
+ *
  * @param {object} props.business Business object
  * @param {function} props.showUpdatedBusinesses Form callback function
- * 
+ *
  * ```html
  * <UpdateBusiness business={business} showUpdatedBusinesses={showUpdatedBusinesses} />
  * ```
@@ -30,7 +30,7 @@ class UpdateBusiness extends Component {
 		}
 		axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
 		axios.put(`${apiUrl}/businesses/${this.props.business.id}`, JSON.stringify(business), {
-      headers: {'Content-Type': 'application/json'}
+			headers: { 'Content-Type': 'application/json' }
 		}).then(response => {
 			NotificationManager.success(response.data.message);
 			this.props.showUpdatedBusinesses();
@@ -49,14 +49,14 @@ class UpdateBusiness extends Component {
 							<button type="button" className="close" data-dismiss="modal">×</button>
 						</div>
 						<div className="modal-body">
-							<div style={{overflowY: "auto", height: "auto" }}>
+							<div style={{ overflowY: "auto", height: "auto" }}>
 								<form onSubmit={this.updateBusiness}>
-									<div className="card" style={{width: 'auto', marginBottom: 10, marginLeft: 20, marginRight:20}} >
+									<div className="card" style={{ width: 'auto', marginBottom: 10, marginLeft: 20, marginRight: 20 }} >
 										<h5 className="card-header">Update business</h5>
 										<div className="card-body">
 											<div className="card-text weconnect-form">
 												<div className="form-group">
-													<label className="control-label col-md-12" style={{textAlign: 'center'}}></label>
+													<label className="control-label col-md-12" style={{ textAlign: 'center' }}></label>
 												</div>
 												<div className="form-group">
 													<label>Name:</label>
@@ -94,4 +94,3 @@ class UpdateBusiness extends Component {
 }
 
 export default UpdateBusiness;
-  

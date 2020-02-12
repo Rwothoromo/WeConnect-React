@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 
 /**
  * Generate a list of review cards for a business
- * 
+ *
  * @param {object} props.reviews_list Contains list of business reviews
- * 
+ *
  * ```html
  * <ReviewCards reviews_list={reviews_list} />
  * ```
@@ -16,8 +16,8 @@ class ReviewCards extends Component {
 			<div>
 				<h1 className="display-6">&nbsp;&nbsp;Reviews ({reviews_list.length})</h1>
 				{
-					reviews_list.map(review => 
-						<div key={review.id} className="card" style={{width: 'auto', marginBottom: 10, marginLeft: 20, marginRight:20}} >
+					reviews_list.map(review =>
+						<div key={review.id} className="card" style={{ width: 'auto', marginBottom: 10, marginLeft: 20, marginRight: 20 }} >
 							<h5 className="card-header">{review.name}</h5>
 							<div className="card-body weconnect-form">
 								<p className="card-text">

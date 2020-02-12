@@ -6,7 +6,7 @@ import { isLoggedIn } from '../../utils/Helpers';
 
 /**
  * Header
- * 
+ *
  * ```html
  * <Header />
  * ```

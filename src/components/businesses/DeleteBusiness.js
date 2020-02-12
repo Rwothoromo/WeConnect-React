@@ -6,10 +6,10 @@ import { apiUrl } from '../../App';
 
 /**
  * Form for deleting a business
- * 
+ *
  * @param {object} props.business Business object
  * @param {function} props.showUpdatedBusinesses Form callback function
- * 
+ *
  * ```html
  * <DeleteBusiness business={business} showUpdatedBusinesses={showUpdatedBusinesses} />
  * ```
@@ -23,10 +23,10 @@ class DeleteBusiness extends Component {
 		event.preventDefault();
 
 		axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
-    axios.delete(`${apiUrl}/businesses/${this.props.business.id}`).then(response => {
+		axios.delete(`${apiUrl}/businesses/${this.props.business.id}`).then(response => {
 			NotificationManager.success(response.data.message);
 			this.props.showUpdatedBusinesses();
-		}).catch(error => {});
+		}).catch(error => { });
 	}
 
 	render() {
@@ -39,11 +39,11 @@ class DeleteBusiness extends Component {
 							<button type="button" className="close" data-dismiss="modal">×</button>
 						</div>
 						<div className="modal-body">
-							<div className="card" style={{width: 'auto', marginBottom: 10, marginLeft: 20, marginRight:20}} >
+							<div className="card" style={{ width: 'auto', marginBottom: 10, marginLeft: 20, marginRight: 20 }} >
 								<h5 className="card-header">Delete business</h5>
 								<div className="card-body">
 									<div className="card-text">
-									This action will completely delete the business <b>{this.props.business.name}</b>! Proceed?
+										This action will completely delete the business <b>{this.props.business.name}</b>! Proceed?
 									</div>
 								</div>
 							</div>

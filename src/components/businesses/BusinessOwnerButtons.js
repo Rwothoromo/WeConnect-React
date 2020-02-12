@@ -4,9 +4,9 @@ import { faEye, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 /**
  * Generate `View`, `Edit` and `Delete` buttons for business owners
- * 
- * @param {object} props.business Business
- * 
+ *
+ * @param {object} props.business Component props containing Business
+ *
  * ```html
  * <BusinessOwnerButtons business={business} />
  * ```

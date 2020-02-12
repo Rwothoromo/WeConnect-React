@@ -5,10 +5,9 @@ import ReviewCards from './ReviewCards';
 
 /**
  * Display a business' information and reviews
- * 
- * @param {object} props Component props
- * @param {object} props.business Business object
- * 
+ *
+ * @param {object} props.business  Component props containing Business
+ *
  * ```html
  * <ShowBusiness business={business} />
  * ```
@@ -23,11 +22,11 @@ class ShowBusiness extends Component {
 
 	componentDidMount = () => {
 		axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
-    axios.get(`${apiUrl}/businesses/${this.props.business.id}/reviews`).then(response => {
+		axios.get(`${apiUrl}/businesses/${this.props.business.id}/reviews`).then(response => {
 			this.setState({
 				reviews_list: response.data
 			})
-		}).catch(error => {});
+		}).catch(error => { });
 	}
 
 	render() {
@@ -40,7 +39,7 @@ class ShowBusiness extends Component {
 							<button type="button" className="close" data-dismiss="modal">×</button>
 						</div>
 						<div className="modal-body">
-							<div style={{overflowY: "auto", height: "auto" }}>
+							<div style={{ overflowY: "auto", height: "auto" }}>
 								<h1 className="display-4">{this.props.business.name}</h1>
 								<p>{this.props.business.description}</p><br />
 								<ReviewCards reviews_list={this.state.reviews_list} />
@@ -57,4 +56,3 @@ class ShowBusiness extends Component {
 }
 
 export default ShowBusiness;
-  

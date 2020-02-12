@@ -5,24 +5,24 @@ Enzyme.configure({ adapter: new Adapter() });
 
 class LocalStorageMock {
 	constructor() {
-	  this.store = {}
+		this.store = {}
 	}
-  
+
 	clear() {
-	  this.store = {}
+		this.store = {}
 	}
-  
+
 	getItem(key) {
-	  return this.store[key] || null
+		return this.store[key] || null
 	}
-  
+
 	setItem(key, value) {
-	  this.store[key] = value
+		this.store[key] = value
 	}
-  
+
 	removeItem(key) {
-	  delete this.store[key]
+		delete this.store[key]
 	}
 }
-  
+
 global.localStorage = new LocalStorageMock

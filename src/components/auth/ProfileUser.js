@@ -7,7 +7,7 @@ import { isLoggedIn, clearUser } from '../../utils/Helpers';
 
 /**
  * User profile page with password reset button
- * 
+ *
  * ```html
  * <ProfileUser />
  * ```
@@ -48,8 +48,8 @@ class ProfileUser extends Component {
 		});
 	}
 
-  render() {
-		if (!this.state.loggedIn) { return (<Redirect to="/auth/login"/>); }
+	render() {
+		if (!this.state.loggedIn) { return (<Redirect to="/auth/login" />); }
 
 		return (
 			<main role="main" className="container-fluid home-bg">
@@ -63,13 +63,13 @@ class ProfileUser extends Component {
 							<div className="text-left table-responsive">
 								<table className="table h4">
 									<tr>
-										<th style={{textAlign: 'right'}}>Name:</th><td>{this.state.first_name} {this.state.last_name}</td>
+										<th style={{ textAlign: 'right' }}>Name:</th><td>{this.state.first_name} {this.state.last_name}</td>
 									</tr>
 									<tr>
-										<th style={{textAlign: 'right'}}>Username:</th><td>{this.state.username}</td>
+										<th style={{ textAlign: 'right' }}>Username:</th><td>{this.state.username}</td>
 									</tr>
 									<tr>
-										<th colSpan={2} style={{textAlign: 'right'}}><button className="btn btn-warning btn-sm" onClick={this.resetPassword}>Reset password</button></th>
+										<th colSpan={2} style={{ textAlign: 'right' }}><button className="btn btn-warning btn-sm" onClick={this.resetPassword}>Reset password</button></th>
 									</tr>
 								</table>
 							</div>
@@ -79,7 +79,7 @@ class ProfileUser extends Component {
 				</div>
 			</main>
 		);
-  }
+	}
 }
 
 export default ProfileUser;

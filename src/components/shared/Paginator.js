@@ -6,7 +6,7 @@ import React from 'react';
  * @param {integer} props.prev_page Id for the previous page
  * @param {integer} props.next_page Id for the next page
  * @param {function} props.handlePageChange Paginator callback function
- * 
+ *
  * ```html
  * <Paginator prev_page={1} next_page={2} handlePageChange={this.handlePageChange} />
  * ```
@@ -18,8 +18,8 @@ const Paginator = (props) => {
 
 	if (prev_page) {
 		prev.push(
-			<li style={{marginLeft: 20}} key={prev_page} className="page-item">
-				<button className="page-link"   id="prev_page"
+			<li style={{ marginLeft: 20 }} key={prev_page} className="page-item">
+				<button className="page-link" id="prev_page"
 					onClick={(event) => { handlePageChange(event, prev_page); }}>
 					Prev
 				</button>
@@ -27,7 +27,7 @@ const Paginator = (props) => {
 		);
 	} else {
 		prev.push(
-			<li key={null} style={{marginLeft: 20}} className="page-item disabled">
+			<li key={null} style={{ marginLeft: 20 }} className="page-item disabled">
 				<button className="page-link">Prev</button>
 			</li>
 		);

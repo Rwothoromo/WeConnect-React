@@ -7,7 +7,7 @@ import { isLoggedIn } from '../../utils/Helpers';
 
 /**
  * Form for user login
- * 
+ *
  * ```html
  * <LoginUser />
  * ```
@@ -28,15 +28,15 @@ class LoginUser extends Component {
 			username: event.target.elements.username.value,
 			password: event.target.elements.password.value
 		}
-    axios.post(`${apiUrl}/auth/login`, JSON.stringify(user), {
-			headers: {'Content-Type': 'application/json'}
+		axios.post(`${apiUrl}/auth/login`, JSON.stringify(user), {
+			headers: { 'Content-Type': 'application/json' }
 		}).then(response => {
 			NotificationManager.success(response.data.message);
 			localStorage.setItem("access_token", response.data.access_token);
 			localStorage.setItem("username", response.data.username);
 			localStorage.setItem("first_name", response.data.first_name);
 			localStorage.setItem("last_name", response.data.last_name);
-			this.setState({loggedIn: true});
+			this.setState({ loggedIn: true });
 		}).catch(error => {
 			NotificationManager.error(error.response.data.message);
 		})
@@ -53,9 +53,9 @@ class LoginUser extends Component {
 					<div className="col-md-6">
 						<p className="home-title">WeConnect</p>
 						<p className="home-body">
-						<br /> Welcome to WeConnect!
+							<br /> Welcome to WeConnect!
 						<br />
-						<br /> WeConnect brings businesses
+							<br /> WeConnect brings businesses
 						<br /> and users together, and allows
 						<br /> users to review businesses.
 						</p>
@@ -63,7 +63,7 @@ class LoginUser extends Component {
 					<div className="col-md-6">
 						<form className="weconnect-form" onSubmit={this.loginUser}>
 							<div className="form-group">
-								<label className="control-label col-md-12" style={{textAlign: 'center'}}>Login</label>
+								<label className="control-label col-md-12" style={{ textAlign: 'center' }}>Login</label>
 							</div>
 							<div className="form-group">
 								<input type="text" className="form-control" placeholder="Username" required autoFocus id="username" name="username" />

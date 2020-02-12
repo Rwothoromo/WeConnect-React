@@ -5,10 +5,10 @@ import { apiUrl } from '../../App';
 
 /**
  * Form for reviewing a business
- * 
+ *
  * @param {object} props.business Business object
  * @param {function} props.showUpdatedBusinesses Form callback function
- * 
+ *
  * ```html
  * <ReviewBusiness business={business} showUpdatedBusinesses={showUpdatedBusinesses} />
  * ```
@@ -27,7 +27,7 @@ class ReviewBusiness extends Component {
 		}
 		axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
 		axios.post(`${apiUrl}/businesses/${this.props.business.id}/reviews`, JSON.stringify(review), {
-      headers: {'Content-Type': 'application/json'}
+			headers: { 'Content-Type': 'application/json' }
 		}).then(response => {
 			NotificationManager.success(response.data.message);
 			this.props.showUpdatedBusinesses();
@@ -46,9 +46,9 @@ class ReviewBusiness extends Component {
 							<button type="button" className="close" data-dismiss="modal">×</button>
 						</div>
 						<div className="modal-body">
-							<div style={{overflowY: "auto", height: "auto" }}>
+							<div style={{ overflowY: "auto", height: "auto" }}>
 								<form onSubmit={this.reviewBusiness}>
-									<div className="card" style={{width: 'auto', marginBottom: 10, marginLeft: 20, marginRight:20}} >
+									<div className="card" style={{ width: 'auto', marginBottom: 10, marginLeft: 20, marginRight: 20 }} >
 										<h5 className="card-header">Review business</h5>
 										<div className="card-body">
 											<h1 className="display-5">{this.props.business.name}</h1>

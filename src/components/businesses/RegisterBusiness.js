@@ -6,9 +6,9 @@ import { apiUrl } from '../../App';
 
 /**
  * Form for registering a business
- * 
- * @param {function} props.showUpdatedBusinesses Form callback function
- * 
+ *
+ * @param {function} props.showUpdatedBusinesses Form callback function showUpdatedBusinesses
+ *
  * ```html
  * <RegisterBusiness showUpdatedBusinesses={showUpdatedBusinesses}/>
  * ```
@@ -30,7 +30,7 @@ class RegisterBusiness extends Component {
 		}
 		axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
 		axios.post(`${apiUrl}/businesses`, JSON.stringify(business), {
-      headers: {'Content-Type': 'application/json'}
+			headers: { 'Content-Type': 'application/json' }
 		}).then(response => {
 			NotificationManager.success(response.data.message);
 			this.props.showUpdatedBusinesses();
@@ -49,9 +49,9 @@ class RegisterBusiness extends Component {
 							<button type="button" className="close" data-dismiss="modal">×</button>
 						</div>
 						<div className="modal-body">
-							<div style={{overflowY: "auto", height: "auto" }}>
+							<div style={{ overflowY: "auto", height: "auto" }}>
 								<form onSubmit={this.registerBusiness}>
-								<div className="card" style={{width: 'auto', marginBottom: 10, marginLeft: 20, marginRight:20}} >
+									<div className="card" style={{ width: 'auto', marginBottom: 10, marginLeft: 20, marginRight: 20 }} >
 										<h5 className="card-header">Register business</h5>
 										<div className="card-body">
 											<div className="card-text weconnect-form">
@@ -87,4 +87,3 @@ class RegisterBusiness extends Component {
 }
 
 export default RegisterBusiness;
-  
