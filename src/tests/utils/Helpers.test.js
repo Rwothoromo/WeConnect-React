@@ -1,3 +1,5 @@
+/*jshint esversion: 6 */
+
 import { isLoggedIn, contains } from '../utils/Helpers';
 
 describe('Helper - isLoggedIn', () => {

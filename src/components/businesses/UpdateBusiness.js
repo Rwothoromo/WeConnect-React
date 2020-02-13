@@ -1,44 +1,55 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { NotificationManager } from 'react-notifications';
 import { updateBusiness } from '../utils/Helpers';
+import Button from 'react-bootstrap/Button';
 
 /**
  * Form for updating a business
  *
- * @param {object} props.business Business object
- * @param {function} props.showUpdatedBusinesses Form callback function
+ * @param {object} business Business object
  *
  * ```html
- * <UpdateBusiness business={business} showUpdatedBusinesses={showUpdatedBusinesses} />
+ * <UpdateBusiness business={business}/ >
  * ```
  */
-const UpdateBusiness = (props) => {
+const UpdateBusiness = ({ business, isUpdateModalOpen }) => {
 
-	const onUpdate = (event) => {
+	const [isOpen, setIsOpen] = useState(true);
+	useEffect(() => {
+		setIsOpen(isUpdateModalOpen)
+	}, [isUpdateModalOpen])
+	const onUpdate = async (event) => {
 		event.preventDefault();
+		NotificationManager.success("Alas!");
 
-		if (props) {
-			// Create a business object from user input
-			let business = {
-				name: event.target.elements.name.value,
-				description: event.target.elements.description.value,
-				category: event.target.elements.category.value,
-				location: event.target.elements.location.value
-			}
-
-			updateBusiness(props, business);
+		// Create a business object from user input
+		let updatedBusiness = {
+			name: event.target.elements.name.value,
+			description: event.target.elements.description.value,
+			category: event.target.elements.category.value,
+			location: event.target.elements.location.value
 		}
-		else {
-			// retry
+		try {
+			NotificationManager.success("Alas again!");
+			const response = await updateBusiness(business.id, updatedBusiness);
+			NotificationManager.success("Alas Now!");
+			console.log(business, updateBusiness)
+			// close modal
+			setIsOpen(false);
+			NotificationManager.success(response.data.message);
+		} catch (error) {
+			NotificationManager.error(error.response.data.message);
+			setIsOpen(false);
 		}
 	}
-
 	return (
-		<div className="modal fade" id={`updateBusinessModal${props.business.id}`}>
+		isOpen &&
+		<div className="modal fade" id={`updateBusinessModal${business.id}`}>
 			<div className="modal-dialog">
 				<div className="modal-content">
 					<div className="modal-header">
 						<h4 className="modal-title">WeConnect</h4>
-						<button type="button" className="close" data-dismiss="modal">×</button>
+						<Button className="close" data-dismiss="modal">×</Button>
 					</div>
 					<div className="modal-body">
 						<div style={{ overflowY: "auto", height: "auto" }}>
@@ -52,19 +63,19 @@ const UpdateBusiness = (props) => {
 											</div>
 											<div className="form-group">
 												<label>Name:</label>
-												<input type="text" className="form-control" placeholder="Business name" id="name" name="name" defaultValue={props.business.name} required />
+												<input type="text" className="form-control" placeholder="Business name" id="name" name="name" defaultValue={business.name} required />
 											</div>
 											<div className="form-group">
 												<label>Description:</label>
-												<textarea className="form-control" placeholder="Description" id="description" name="description" cols={28} rows={3} defaultValue={props.business.description} />
+												<textarea className="form-control" placeholder="Description" id="description" name="description" cols={28} rows={3} defaultValue={business.description} />
 											</div>
 											<div className="form-group">
 												<label>Category:</label>
-												<input type="text" className="form-control" placeholder="Category" id="category" name="category" defaultValue={props.business.category_name} required />
+												<input type="text" className="form-control" placeholder="Category" id="category" name="category" defaultValue={business.category_name} required />
 											</div>
 											<div className="form-group">
 												<label>Location:</label>
-												<input type="text" className="form-control" placeholder="Location" id="location" name="location" defaultValue={props.business.location_name} required />
+												<input type="text" className="form-control" placeholder="Location" id="location" name="location" defaultValue={business.location_name} required />
 											</div>
 											<div className="form-group">
 												<input type="submit" className="btn btn-default weconnect-btn" id="update" name="update" defaultValue="Update" />
@@ -76,7 +87,7 @@ const UpdateBusiness = (props) => {
 						</div>
 					</div>
 					<div className="modal-footer">
-						<button type="button" className="btn btn-danger" data-dismiss="modal">Close</button>
+						<Button className="btn btn-danger" data-dismiss="modal">Close</Button>
 					</div>
 				</div>
 			</div>

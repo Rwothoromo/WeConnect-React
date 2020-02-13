@@ -1,14 +1,14 @@
 import React from 'react';
 import { reviewBusiness } from '../utils/Helpers';
+import Button from 'react-bootstrap/Button';
 
 /**
  * Form for reviewing a business
  *
  * @param {object} props.business Business object
- * @param {function} props.showUpdatedBusinesses Form callback function
  *
  * ```html
- * <ReviewBusiness business={business} showUpdatedBusinesses={showUpdatedBusinesses} />
+ * <ReviewBusiness business={business}/ >
  * ```
  */
 const ReviewBusiness = (props) => {
@@ -36,7 +36,7 @@ const ReviewBusiness = (props) => {
 				<div className="modal-content">
 					<div className="modal-header">
 						<h4 className="modal-title">WeConnect</h4>
-						<button type="button" className="close" data-dismiss="modal">×</button>
+						<Button className="close" data-dismiss="modal">×</Button>
 					</div>
 					<div className="modal-body">
 						<div style={{ overflowY: "auto", height: "auto" }}>
@@ -63,7 +63,7 @@ const ReviewBusiness = (props) => {
 						</div>
 					</div>
 					<div className="modal-footer">
-						<button type="button" className="btn btn-danger" data-dismiss="modal">Close</button>
+						<Button className="btn btn-danger" data-dismiss="modal">Close</Button>
 					</div>
 				</div>
 			</div>

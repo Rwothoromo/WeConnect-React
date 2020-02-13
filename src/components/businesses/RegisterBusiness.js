@@ -1,5 +1,6 @@
 import React from 'react';
 import { registerBusiness } from '../utils/Helpers';
+import Button from 'react-bootstrap/Button';
 
 /**
  * Form for registering a business
@@ -7,7 +8,7 @@ import { registerBusiness } from '../utils/Helpers';
  * @param {function} props.showUpdatedBusinesses Form callback function showUpdatedBusinesses
  *
  * ```html
- * <RegisterBusiness showUpdatedBusinesses={showUpdatedBusinesses}/>
+ * <RegisterBusiness showUpdatedBusinesses={showUpdatedBusinesses}/ >
  * ```
  */
 const RegisterBusiness = (props) => {
@@ -37,7 +38,7 @@ const RegisterBusiness = (props) => {
 				<div className="modal-content">
 					<div className="modal-header">
 						<h4 className="modal-title">WeConnect</h4>
-						<button type="button" className="close" data-dismiss="modal">×</button>
+						<Button className="close" data-dismiss="modal">×</Button>
 					</div>
 					<div className="modal-body">
 						<div style={{ overflowY: "auto", height: "auto" }}>
@@ -68,7 +69,7 @@ const RegisterBusiness = (props) => {
 						</div>
 					</div>
 					<div className="modal-footer">
-						<button type="button" className="btn btn-danger" data-dismiss="modal">Close</button>
+						<Button className="btn btn-danger" data-dismiss="modal">Close</Button>
 					</div>
 				</div>
 			</div>

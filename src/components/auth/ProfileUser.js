@@ -4,6 +4,7 @@ import { NotificationManager } from 'react-notifications';
 import axios from "axios";
 import { apiUrl } from '../../App';
 import { isLoggedIn, clearUser } from '../utils/Helpers';
+import Button from 'react-bootstrap/Button';
 
 /**
  * User profile page with password reset button
@@ -69,7 +70,7 @@ class ProfileUser extends Component {
 										<th style={{ textAlign: 'right' }}>Username:</th><td>{this.state.username}</td>
 									</tr>
 									<tr>
-										<th colSpan={2} style={{ textAlign: 'right' }}><button className="btn btn-warning btn-sm" onClick={this.resetPassword}>Reset password</button></th>
+										<th colSpan={2} style={{ textAlign: 'right' }}><Button className="btn btn-warning btn-sm" onClick={this.resetPassword}>Reset password</Button></th>
 									</tr>
 								</table>
 							</div>

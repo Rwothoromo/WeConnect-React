@@ -22,12 +22,12 @@ export const apiUrl = process.env.REACT_APP_BACKEND_HOST || 'http://127.0.0.1:50
 const Routes = () => (
 	<Router>
 		<div>
-			<Route exact strict path={"/"} component={Index}/>
-			<Route exact strict path={"/auth/register"} component={RegisterUser}/>
-			<Route exact strict path={"/auth/login"} component={LoginUser}/>
-			<Route exact strict path={"/auth/profile"} component={ProfileUser}/>
-			<Route exact strict path={"/auth/logout"} component={LogoutUser}/>
-			<Route exact strict path={"/businesses"} component={BusinessesList}/>
+			<Route exact strict path={"/"} component={Index}/ >
+			<Route exact strict path={"/auth/register"} component={RegisterUser}/ >
+			<Route exact strict path={"/auth/login"} component={LoginUser}/ >
+			<Route exact strict path={"/auth/profile"} component={ProfileUser}/ >
+			<Route exact strict path={"/auth/logout"} component={LogoutUser}/ >
+			<Route exact strict path={"/businesses"} component={BusinessesList}/ >
 		</div>
 	</Router>
 )

@@ -1,15 +1,15 @@
 import React from 'react';
 import 'react-notifications/lib/notifications.css';
 import { deleteBusiness } from '../utils/Helpers';
+import Button from 'react-bootstrap/Button';
 
 /**
  * Form for deleting a business
  *
  * @param {object} props.business Business object
- * @param {function} props.showUpdatedBusinesses Form callback function
  *
  * ```html
- * <DeleteBusiness business={business} showUpdatedBusinesses={showUpdatedBusinesses} />
+ * <DeleteBusiness business={business}/ >
  * ```
  */
 const DeleteBusiness = (props) => {
@@ -28,7 +28,7 @@ const DeleteBusiness = (props) => {
 				<div className="modal-content">
 					<div className="modal-header">
 						<h4 className="modal-title">WeConnect</h4>
-						<button type="button" className="close" data-dismiss="modal">×</button>
+						<Button className="close" data-dismiss="modal">×</Button>
 					</div>
 					<div className="modal-body">
 						<div className="card" style={{ width: 'auto', marginBottom: 10, marginLeft: 20, marginRight: 20 }} >
@@ -41,8 +41,8 @@ const DeleteBusiness = (props) => {
 						</div>
 					</div>
 					<div className="modal-footer">
-						<button type="button" className="btn btn-danger" onClick={onDelete} data-dismiss="modal">Delete</button>
-						<button type="button" className="btn btn-info" data-dismiss="modal">Close</button>
+						<Button className="btn btn-danger" onClick={onDelete} data-dismiss="modal">Delete</Button>
+						<Button className="btn btn-info" data-dismiss="modal">Close</Button>
 					</div>
 				</div>
 			</div>

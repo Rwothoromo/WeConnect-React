@@ -1,3 +1,5 @@
+/*jshint esversion: 6 */
+
 import decode from 'jwt-decode';
 import { NotificationManager } from 'react-notifications';
 import axios from "axios";
@@ -66,7 +68,6 @@ export const clearUser = () => {
 /**
  * Register a business
  *
- * @param {object} props Containing the Form callback function
  * @param {object} business Containing the Business object
  *
  * ```js
@@ -75,13 +76,12 @@ export const clearUser = () => {
  *
  * @returns {None} Null
  */
-export const registerBusiness = (props, business) => {
-	axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
+export const registerBusiness = (business) => {
+	axios.defaults.headers.common.Authorization = 'Bearer ' + localStorage.getItem('access_token');
 	axios.post(`${apiUrl}/businesses`, JSON.stringify(business), {
 		headers: { 'Content-Type': 'application/json' }
 	}).then(response => {
 		NotificationManager.success(response.data.message);
-		props.showUpdatedBusinesses();
 	}).catch(error => {
 		NotificationManager.error(error.response.data.message);
 	});
@@ -99,16 +99,16 @@ export const registerBusiness = (props, business) => {
  *
  * @returns {None} Null
  */
-export const updateBusiness = (props, business) => {
-	axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
-	axios.put(`${apiUrl}/businesses/${props.business.id}`, JSON.stringify(business), {
+export const updateBusiness = (id, business) => {
+	console.log("bloody: ", id);
+	axios.defaults.headers.common.Authorization = 'Bearer ' + localStorage.getItem('access_token');
+	return axios.put(`${apiUrl}/businesses/${id}`, JSON.stringify(business), {
 		headers: { 'Content-Type': 'application/json' }
 	}).then(response => {
-		NotificationManager.success(response.data.message);
-		props.showUpdatedBusinesses();
+		return response;
 	}).catch(error => {
-		NotificationManager.error(error.response.data.message);
-	})
+		throw error;
+	});
 }
 
 /**
@@ -123,13 +123,12 @@ export const updateBusiness = (props, business) => {
  * @returns {None} Null
  */
 export const deleteBusiness = (props) => {
-	axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
+	axios.defaults.headers.common.Authorization = 'Bearer ' + localStorage.getItem('access_token');
 	axios.delete(`${apiUrl}/businesses/${props.business.id}`).then(response => {
 		NotificationManager.success(response.data.message);
-		props.showUpdatedBusinesses();
 	}).catch(error => {
 		NotificationManager.error(error.response.data.message);
-	})
+	});
 }
 
 /**
@@ -145,11 +144,10 @@ export const deleteBusiness = (props) => {
  * @returns {None} Null
  */
 export const reviewBusiness = (props, review) => {
-	axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
+	axios.defaults.headers.common.Authorization = 'Bearer ' + localStorage.getItem('access_token');
 	axios.post(`${apiUrl}/businesses/${props.business.id}/reviews`, JSON.stringify(review), {
 		headers: { 'Content-Type': 'application/json' }
 	}).then(response => {
 		NotificationManager.success(response.data.message);
-		props.showUpdatedBusinesses();
-	}).catch()
+	}).catch();
 }

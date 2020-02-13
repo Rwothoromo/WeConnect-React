@@ -4,8 +4,8 @@ import BusinessSearch from '../../components/businesses/BusinessSearch';
 
 describe('<BusinessSearch />', () => {
 	let searchBusinesses = jest.fn(() => {})
-	
-	const wrapper = mount(<BusinessSearch searchBusinesses={searchBusinesses}/>);
+
+	const wrapper = mount(<BusinessSearch searchBusinesses={searchBusinesses}/ >);
 
 	it('calls the search function', () => {
 		let spy = jest.spyOn(wrapper.props(), 'searchBusinesses');

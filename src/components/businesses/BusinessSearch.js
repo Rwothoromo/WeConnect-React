@@ -1,6 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import Button from 'react-bootstrap/Button';
 
 /**
  * Form for business search
@@ -27,9 +28,9 @@ const BusinessSearch = (props) => {
 					<input type="text" style={{ width: 180 }} className="form-control" placeholder="Location" id="location" name="location" defaultValue="" />
 				</li>
 				<li className="list-inline-item">
-					<button title="Search" className="btn btn-success">
+					<Button title="Search" className="btn btn-success">
 						<FontAwesomeIcon icon={faSearch} />
-					</button>
+					</Button>
 				</li>
 			</ul>
 		</form>

@@ -12,6 +12,7 @@ import BusinessSearch from './BusinessSearch';
 import BusinessCards from './BusinessCards';
 import BusinessModals from './BusinessModals';
 import RegisterBusiness from './RegisterBusiness';
+import Button from 'react-bootstrap/Button';
 
 /**
  * List all businesses in a searchable, paginated display
@@ -28,6 +29,7 @@ class BusinessesList extends Component {
 			businesses_list: [],
 			next_page: null,
 			prev_page: null,
+			isUpdateModalOpen: true,
 			loggedIn: isLoggedIn()
 		}
 	}
@@ -40,6 +42,12 @@ class BusinessesList extends Component {
 				businesses: response.data.businesses
 			});
 		}).catch(error => { });
+	}
+
+	handleUpdateModal = () => {
+		this.setState(state => ({
+			isUpdateModalOpen: !state.isUpdateModalOpen
+		}))
 	}
 
 	componentDidMount = () => {
@@ -125,18 +133,26 @@ class BusinessesList extends Component {
 						<div className="col-md-3" />
 						<div className="col-md-6 weconnect-div">
 							<BusinessSearch searchBusinesses={this.searchBusinesses} />
-							<button title="Add business" type="button" className="btn btn-primary btn-sm" style={{ marginBottom: 10, marginLeft: 20 }}
+							<Button title="Add business" className="btn btn-primary btn-sm" style={{ marginBottom: 10, marginLeft: 20 }}
 								data-toggle="modal" data-target="#registerBusinessModal">
 								Add a business <FontAwesomeIcon icon={faPlus} />
-							</button>
-							<BusinessCards user={user} businesses_list={this.state.businesses_list} />
+							</Button>
+							<BusinessCards
+								user={user}
+								businesses_list={this.state.businesses_list}
+								handleUpdateModal={this.handleUpdateModal}
+							/>
 							<Paginator prev_page={this.state.prev_page} next_page={this.state.next_page} handlePageChange={this.handlePageChange} />
 						</div>
 						<div className="col-md-3" />
 					</div>
 				</main>
 				<RegisterBusiness showUpdatedBusinesses={this.showUpdatedBusinesses} />
-				<BusinessModals businesses={this.state.businesses} showUpdatedBusinesses={this.showUpdatedBusinesses} />
+				<BusinessModals
+					isUpdateModalOpen={this.state.isUpdateModalOpen}
+					businesses={this.state.businesses}
+					showUpdatedBusinesses={this.showUpdatedBusinesses}
+				/>
 			</div>
 		);
 	}

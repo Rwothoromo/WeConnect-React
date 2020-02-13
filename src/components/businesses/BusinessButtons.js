@@ -1,6 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faStar } from '@fortawesome/free-solid-svg-icons';
+import Button from 'react-bootstrap/Button';
 
 /**
  * Generate `View` and `Review` buttons for non-business owners
@@ -17,14 +18,14 @@ const BusinessButtons = (props) => {
 	return (
 		<ul className="list-inline">
 			<li className="list-inline-item">
-				<button title="View" className="btn btn-primary btn-sm" data-toggle="modal" data-target={`#viewBusinessModal${business.id}`}>
+				<Button title="View" className="btn btn-primary btn-sm" data-toggle="modal" data-target={`#viewBusinessModal${business.id}`}>
 					View <FontAwesomeIcon icon={faEye} />
-				</button>
+				</Button>
 			</li>
 			<li className="list-inline-item">
-				<button title="Review" className="btn btn-info btn-sm" data-toggle="modal" data-target={`#reviewBusinessModal${business.id}`}>
+				<Button title="Review" className="btn btn-info btn-sm" data-toggle="modal" data-target={`#reviewBusinessModal${business.id}`}>
 					Review <FontAwesomeIcon icon={faStar} />
-				</button>
+				</Button>
 			</li>
 		</ul>
 	);

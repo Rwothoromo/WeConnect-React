@@ -10,9 +10,9 @@ describe('<DeleteBusiness />', () => {
 	mock.onDelete(`${apiUrl}/businesses/2`).reply(200, {
 		message: "Business deleted"
 	});
-	
-	const wrapper = mount(<DeleteBusiness showUpdatedBusinesses={() => {}} business={ {id: 2}} />);
-	
+
+	const wrapper = mount(<DeleteBusiness showUpdatedBusinesses={() => { }} business={{ id: 2 }} />);
+
 
 	it('deletes a business', async () => {
 		const button = wrapper.find('.btn-danger')

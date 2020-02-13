@@ -27,7 +27,12 @@ class BusinessCards extends Component {
 									{business.description}<br />
 									<b>Category:</b> {business.category_name}, <b>Location:</b> {business.location_name}<br />
 								</p>
-								{(business.created_by === user.sub) ? <BusinessOwnerButtons business={business} /> : <BusinessButtons business={business} />}
+								{(business.created_by === user.sub)
+								? <BusinessOwnerButtons
+									business={business}
+									handleUpdateModal={this.props.handleUpdateModal}
+									/>
+								: <BusinessButtons business={business} />}
 							</div>
 						</div>
 					)

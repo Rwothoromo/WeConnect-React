@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from 'react-bootstrap/Button';
 
 /**
  * Generate `Prev` and `Next` buttons for a paginated list
@@ -19,16 +20,16 @@ const Paginator = (props) => {
 	if (prev_page) {
 		prev.push(
 			<li style={{ marginLeft: 20 }} key={prev_page} className="page-item">
-				<button className="page-link" id="prev_page"
+				<Button className="page-link" id="prev_page"
 					onClick={(event) => { handlePageChange(event, prev_page); }}>
 					Prev
-				</button>
+				</Button>
 			</li>
 		);
 	} else {
 		prev.push(
 			<li key={null} style={{ marginLeft: 20 }} className="page-item disabled">
-				<button className="page-link">Prev</button>
+				<Button className="page-link">Prev</Button>
 			</li>
 		);
 	}
@@ -36,16 +37,16 @@ const Paginator = (props) => {
 	if (next_page) {
 		next.push(
 			<li key={next_page} className="page-item">
-				<button className="page-link" id="next_page"
+				<Button className="page-link" id="next_page"
 					onClick={(event) => { handlePageChange(event, next_page); }}>
 					Next
-				</button>
+				</Button>
 			</li>
 		);
 	} else {
 		next.push(
 			<li key={null} className="page-item disabled">
-				<button className="page-link">Next</button>
+				<Button className="page-link">Next</Button>
 			</li>
 		);
 	}
