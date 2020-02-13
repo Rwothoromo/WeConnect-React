@@ -71,7 +71,7 @@ export const clearUser = () => {
  * @param {object} business Containing the Business object
  *
  * ```js
- * registerBusiness(props, business)
+ * registerBusiness(business)
  * ```
  *
  * @returns {None} Null

@@ -44,8 +44,8 @@ const BusinessCards = (props) => {
 
 BusinessCards.propTypes = {
 	user: PropTypes.object.isRequired,
-	businesses_list: PropTypes.object.isRequired,
-	handleUpdateModal: PropTypes.function.isRequired
+	businesses_list: PropTypes.array.isRequired,
+	handleUpdateModal: PropTypes.func
 };
 
 export default BusinessCards;

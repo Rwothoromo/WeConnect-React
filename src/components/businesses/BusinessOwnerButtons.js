@@ -44,8 +44,8 @@ const BusinessOwnerButtons = ({ business, handleUpdateModal }) => {
 }
 
 BusinessOwnerButtons.propTypes = {
-	business: PropTypes.object.isRequired,
-	handleUpdateModal: PropTypes.function.isRequired
+	business: PropTypes.object,
+	handleUpdateModal: PropTypes.func
 };
 
 export default BusinessOwnerButtons;

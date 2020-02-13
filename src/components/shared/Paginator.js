@@ -62,9 +62,9 @@ const Paginator = (props) => {
 };
 
 Paginator.propTypes = {
-	prev_page: PropTypes.integer.isRequired,
-	next_page: PropTypes.integer.isRequired,
-	handlePageChange: PropTypes.function.isRequired
+	prev_page: PropTypes.number,
+	next_page: PropTypes.number,
+	handlePageChange: PropTypes.func
 };
 
 export default Paginator;

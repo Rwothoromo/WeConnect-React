@@ -35,7 +35,7 @@ const ReviewCards = (props) => {
 }
 
 ReviewCards.propTypes = {
-	reviews_list: PropTypes.object
+	reviews_list: PropTypes.array
 };
 
 export default ReviewCards;

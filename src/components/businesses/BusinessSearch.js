@@ -41,7 +41,7 @@ const BusinessSearch = (props) => {
 };
 
 BusinessSearch.propTypes = {
-	searchBusinesses: PropTypes.function.isRequired
+	searchBusinesses: PropTypes.func
 };
 
 export default BusinessSearch;

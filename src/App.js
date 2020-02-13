@@ -42,7 +42,7 @@ export const Routes = () => (
  * <App />
  * ```
  *
- *  @returns {component} Layout
+ *  @returns {component} App
  */
 const App = () => {
 	return (

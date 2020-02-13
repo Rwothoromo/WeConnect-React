@@ -26,7 +26,7 @@ const Layout = (props) => {
 }
 
 Layout.propTypes = {
-	children: PropTypes.component.isRequired
+	children: PropTypes.array
 };
 
 export default Layout;

@@ -9,18 +9,20 @@ describe('<ProfileUser />', () => {
 	const mock = new MockAdapter(Axios);
 	const wrapper = shallow(<ProfileUser />);
 
+	window.alert = jest.fn();
+
 	it('resets user password', async () => {
 		mock.onPost(`${apiUrl}/auth/reset-password`).reply(200, {
 			message: "User password reset",
 			new_password: "new_password"
 		});
 
-		wrapper.setState({loggedIn: true});
+		wrapper.setState({ loggedIn: true });
 		global.confirm = () => true;
 		let spyResetPassword = jest.spyOn(wrapper.instance(), 'resetPassword');
 		await wrapper.instance().resetPassword({
-			preventDefault: () => {},
-			clearUser: () => {}
+			preventDefault: () => { },
+			clearUser: () => { }
 		});
 		expect(spyResetPassword).toHaveBeenCalled();
 	});
@@ -29,9 +31,11 @@ describe('<ProfileUser />', () => {
 		global.confirm = () => false;
 		let spyResetPassword = jest.spyOn(wrapper.instance(), 'resetPassword');
 		await wrapper.instance().resetPassword({
-			preventDefault: () => {},
-			clearUser: () => {}
+			preventDefault: () => { },
+			clearUser: () => { }
 		});
 		expect(spyResetPassword).toHaveBeenCalled();
 	});
+
+	window.alert.mockClear();
 });

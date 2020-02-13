@@ -25,7 +25,7 @@ Places all content within the `Layout`
 <App />
 ```
 
- @returns {component} Layout   
+ @returns {component} App   
 
 
 
@@ -152,8 +152,8 @@ Generate a list of business cards
 Property | Type | Required | Default value | Description
 :--- | :--- | :--- | :--- | :---
 user|object|yes||
-businesses_list|object|yes||
-handleUpdateModal|custom|no||
+businesses_list|array|yes||
+handleUpdateModal|func|no||
 -----
 **src/components/businesses/BusinessModals.js**
 
@@ -164,7 +164,7 @@ Generate `View`, `Review`, `Edit` and `Delete` modals for businesses
 @param {object} props Contains business list
 
 ```html
-<BusinessModals isUpdateModalOpen={isUpdateModalOpen} businesses={businesses} showUpdatedBusinesses={showUpdatedBusinesses} />
+<BusinessModals isUpdateModalOpen={isUpdateModalOpen} businesses={businesses} />
 ```
 
 @returns {component} BusinessModals   
@@ -175,7 +175,7 @@ Generate `View`, `Review`, `Edit` and `Delete` modals for businesses
 Property | Type | Required | Default value | Description
 :--- | :--- | :--- | :--- | :---
 isUpdateModalOpen|bool|yes||
-businesses|object|no||
+businesses|array|no||
 -----
 **src/components/businesses/BusinessOwnerButtons.js**
 
@@ -196,8 +196,8 @@ Generate `View`, `Edit` and `Delete` buttons for business owners
 
 Property | Type | Required | Default value | Description
 :--- | :--- | :--- | :--- | :---
-business|object|yes||
-handleUpdateModal|custom|no||
+business|object|no||
+handleUpdateModal|func|no||
 -----
 **src/components/businesses/BusinessSearch.js**
 
@@ -218,7 +218,7 @@ Form for business search
 
 Property | Type | Required | Default value | Description
 :--- | :--- | :--- | :--- | :---
-searchBusinesses|custom|no||
+searchBusinesses|func|no||
 -----
 **src/components/businesses/BusinessesList.js**
 
@@ -263,10 +263,8 @@ business|object|yes||
 
 Form for registering a business
 
-@param {function} props Form callback function showUpdatedBusinesses
-
 ```html
-<RegisterBusiness showUpdatedBusinesses={showUpdatedBusinesses} />
+<RegisterBusiness />
 ```
 
 @returns {component} RegisterBusiness   
@@ -315,7 +313,7 @@ Generate a list of review cards for a business
 
 Property | Type | Required | Default value | Description
 :--- | :--- | :--- | :--- | :---
-reviews_list|object|no||
+reviews_list|array|no||
 -----
 **src/components/businesses/ShowBusiness.js**
 
@@ -412,7 +410,7 @@ All content is placed between the `Header` and `Footer`
 
 Property | Type | Required | Default value | Description
 :--- | :--- | :--- | :--- | :---
-children|custom|no||
+children|array|no||
 -----
 **src/components/shared/Paginator.js**
 
@@ -433,9 +431,9 @@ Generate `Prev` and `Next` buttons for a paginated list
 
 Property | Type | Required | Default value | Description
 :--- | :--- | :--- | :--- | :---
-prev_page|custom|no||
-next_page|custom|no||
-handlePageChange|custom|no||
+prev_page|number|no||
+next_page|number|no||
+handlePageChange|func|no||
 -----
 **src/components/shared/UserTabs.js**
 

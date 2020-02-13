@@ -1,12 +1,12 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import ShowBusiness from '../../components/businesses/ShowBusiness';
+import ShowBusiness from './ShowBusiness';
 import MockAdapter from 'axios-mock-adapter';
 import Axios from 'axios';
 import { apiUrl } from '../../App';
 
 describe('<ShowBusiness />', () => {
-	const wrapper = mount(<ShowBusiness showUpdatedBusinesses={() => { }} business={{ id: 2 }} />);
+	const wrapper = mount(<ShowBusiness business={{ id: 2 }} />);
 	const mock = new MockAdapter(Axios);
 
 	it('shows a businesses', async () => {

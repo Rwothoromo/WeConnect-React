@@ -168,11 +168,10 @@ class BusinessesList extends Component {
 						<div className="col-md-3" />
 					</div>
 				</main>
-				<RegisterBusiness showUpdatedBusinesses={this.showUpdatedBusinesses} />
+				<RegisterBusiness />
 				<BusinessModals
 					isUpdateModalOpen={this.state.isUpdateModalOpen}
 					businesses={this.state.businesses}
-					showUpdatedBusinesses={this.showUpdatedBusinesses}
 				/>
 			</div>
 		);

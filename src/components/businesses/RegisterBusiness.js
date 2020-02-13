@@ -5,15 +5,13 @@ import Button from 'react-bootstrap/Button';
 /**
  * Form for registering a business
  *
- * @param {function} props Form callback function showUpdatedBusinesses
- *
  * ```html
- * <RegisterBusiness showUpdatedBusinesses={showUpdatedBusinesses} />
+ * <RegisterBusiness />
  * ```
  *
  * @returns {component} RegisterBusiness
  */
-const RegisterBusiness = (props) => {
+const RegisterBusiness = () => {
 
 	const onRegister = (event) => {
 		event.preventDefault();
@@ -26,7 +24,7 @@ const RegisterBusiness = (props) => {
 			location: event.target.elements.location.value
 		}
 
-		registerBusiness(props, business);
+		registerBusiness(business);
 	}
 
 	return (

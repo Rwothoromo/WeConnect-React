@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import ReviewBusiness from '../../components/businesses/ReviewBusiness';
+import ReviewBusiness from './ReviewBusiness';
 import MockAdapter from 'axios-mock-adapter';
 import Axios from 'axios';
 import { apiUrl } from '../../App';
@@ -34,7 +34,7 @@ describe('<ReviewBusiness />', () => {
 			reviews_list: [{}, {}],
 			message: "review"
 		});
-		const wrapper = mount(<ReviewBusiness showUpdatedBusinesses={() => { }} business={{ id: 2 }} />);
+		const wrapper = mount(<ReviewBusiness business={{ id: 2 }} />);
 		let form = wrapper.find('form')
 		form.simulate('submit');
 	});

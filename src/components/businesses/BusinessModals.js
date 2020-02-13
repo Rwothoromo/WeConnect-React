@@ -11,7 +11,7 @@ import DeleteBusiness from './DeleteBusiness';
  * @param {object} props Contains business list
  *
  * ```html
- * <BusinessModals isUpdateModalOpen={isUpdateModalOpen} businesses={businesses} showUpdatedBusinesses={showUpdatedBusinesses} />
+ * <BusinessModals isUpdateModalOpen={isUpdateModalOpen} businesses={businesses} />
  * ```
  *
  * @returns {component} BusinessModals
@@ -40,7 +40,7 @@ const BusinessModals = (props) => {
 
 BusinessModals.propTypes = {
 	isUpdateModalOpen: PropTypes.bool.isRequired,
-	businesses: PropTypes.object
+	businesses: PropTypes.array
 };
 
 export default BusinessModals;
