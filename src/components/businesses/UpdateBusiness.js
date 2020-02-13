@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { NotificationManager } from 'react-notifications';
 import { updateBusiness } from '../utils/Helpers';
 import Button from 'react-bootstrap/Button';
@@ -6,11 +7,13 @@ import Button from 'react-bootstrap/Button';
 /**
  * Form for updating a business
  *
- * @param {object} business Business object
+ * @param {object} props Business object
  *
  * ```html
- * <UpdateBusiness business={business}/ >
+ * <UpdateBusiness business={business} isUpdateModalOpen={isUpdateModalOpen} />
  * ```
+ *
+ * @returns {component} UpdateBusiness
  */
 const UpdateBusiness = ({ business, isUpdateModalOpen }) => {
 
@@ -94,5 +97,10 @@ const UpdateBusiness = ({ business, isUpdateModalOpen }) => {
 		</div>
 	);
 }
+
+UpdateBusiness.propTypes = {
+	business: PropTypes.object.isRequired,
+	isUpdateModalOpen: PropTypes.bool.isRequired
+};
 
 export default UpdateBusiness;

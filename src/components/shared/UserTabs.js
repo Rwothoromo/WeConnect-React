@@ -6,6 +6,8 @@ import React from 'react';
  * ```html
  * <UserTabs />
  * ```
+ *
+ * @returns {component} UserTabs
  */
 const UserTabs = () => {
 	return (

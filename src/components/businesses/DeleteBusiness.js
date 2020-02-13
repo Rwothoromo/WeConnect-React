@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import 'react-notifications/lib/notifications.css';
 import { deleteBusiness } from '../utils/Helpers';
 import Button from 'react-bootstrap/Button';
@@ -6,24 +7,26 @@ import Button from 'react-bootstrap/Button';
 /**
  * Form for deleting a business
  *
- * @param {object} props.business Business object
+ * @param {object} props Business object
  *
  * ```html
- * <DeleteBusiness business={business}/ >
+ * <DeleteBusiness business={business} />
  * ```
+ *
+ * @returns {component} DeleteBusiness
  */
-const DeleteBusiness = (props) => {
+const DeleteBusiness = ({ business }) => {
 
 	const onDelete = (event) => {
 		event.preventDefault();
-		if (props) { deleteBusiness(props); }
+		if (business) { deleteBusiness(business); }
 		else {
 			// retry
 		}
 	}
 
 	return (
-		<div className="modal fade" id={`deleteBusinessModal${props.business.id}`}>
+		<div className="modal fade" id={`deleteBusinessModal${business.id}`}>
 			<div className="modal-dialog">
 				<div className="modal-content">
 					<div className="modal-header">
@@ -35,8 +38,8 @@ const DeleteBusiness = (props) => {
 							<h5 className="card-header">Delete business</h5>
 							<div className="card-body">
 								<div className="card-text">
-									This action will completely delete the business <b>{props.business.name}</b>! Proceed?
-									</div>
+									This action will completely delete the business <b>{business.name}</b>! Proceed?
+								</div>
 							</div>
 						</div>
 					</div>
@@ -49,5 +52,9 @@ const DeleteBusiness = (props) => {
 		</div>
 	);
 }
+
+DeleteBusiness.propTypes = {
+	business: PropTypes.object.isRequired
+};
 
 export default DeleteBusiness;

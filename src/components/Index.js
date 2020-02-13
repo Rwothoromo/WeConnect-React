@@ -6,6 +6,8 @@ import React from 'react';
  * ```html
  * <Index />
  * ```
+ *
+ * @returns {component} Index
  */
 const Index = () => {
 	return (

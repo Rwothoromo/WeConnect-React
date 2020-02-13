@@ -1,16 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 
 /**
  * Generate `Prev` and `Next` buttons for a paginated list
+ *
  * @param {object} props Component props
- * @param {integer} props.prev_page Id for the previous page
- * @param {integer} props.next_page Id for the next page
- * @param {function} props.handlePageChange Paginator callback function
  *
  * ```html
- * <Paginator prev_page={1} next_page={2} handlePageChange={this.handlePageChange} />
+ * <Paginator prev_page={1} next_page={2} handlePageChange={handlePageChange} />
  * ```
+ *
+ * @returns {component} Paginator
  */
 const Paginator = (props) => {
 	const { prev_page, next_page, handlePageChange } = props;
@@ -58,6 +59,12 @@ const Paginator = (props) => {
 			</ul>
 		</div>
 	);
+};
+
+Paginator.propTypes = {
+	prev_page: PropTypes.integer.isRequired,
+	next_page: PropTypes.integer.isRequired,
+	handlePageChange: PropTypes.function.isRequired
 };
 
 export default Paginator;

@@ -1,16 +1,19 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 /**
  * Generate a list of review cards for a business
  *
- * @param {object} props.reviews_list Contains list of business reviews
+ * @param {object} props Contains list of business reviews
  *
  * ```html
  * <ReviewCards reviews_list={reviews_list} />
  * ```
+ *
+ * @returns {component} ReviewCards
  */
 const ReviewCards = (props) => {
-	const reviews_list = props.reviews_list;
+	const { reviews_list } = props;
 	return (
 		<div>
 			<h1 className="display-6">&nbsp;&nbsp;Reviews ({reviews_list.length})</h1>
@@ -30,5 +33,9 @@ const ReviewCards = (props) => {
 		</div>
 	);
 }
+
+ReviewCards.propTypes = {
+	reviews_list: PropTypes.object
+};
 
 export default ReviewCards;

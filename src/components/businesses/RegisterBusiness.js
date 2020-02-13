@@ -5,31 +5,28 @@ import Button from 'react-bootstrap/Button';
 /**
  * Form for registering a business
  *
- * @param {function} props.showUpdatedBusinesses Form callback function showUpdatedBusinesses
+ * @param {function} props Form callback function showUpdatedBusinesses
  *
  * ```html
- * <RegisterBusiness showUpdatedBusinesses={showUpdatedBusinesses}/ >
+ * <RegisterBusiness showUpdatedBusinesses={showUpdatedBusinesses} />
  * ```
+ *
+ * @returns {component} RegisterBusiness
  */
 const RegisterBusiness = (props) => {
 
 	const onRegister = (event) => {
 		event.preventDefault();
 
-		if (props) {
-			// Create a business object from user input
-			let business = {
-				name: event.target.elements.name.value,
-				description: event.target.elements.description.value,
-				category: event.target.elements.category.value,
-				location: event.target.elements.location.value
-			}
+		// Create a business object from user input
+		let business = {
+			name: event.target.elements.name.value,
+			description: event.target.elements.description.value,
+			category: event.target.elements.category.value,
+			location: event.target.elements.location.value
+		}
 
-			registerBusiness(props, business);
-		}
-		else {
-			// retry
-		}
+		registerBusiness(props, business);
 	}
 
 	return (

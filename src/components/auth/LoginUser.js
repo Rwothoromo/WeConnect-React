@@ -11,6 +11,8 @@ import { isLoggedIn } from '../utils/Helpers';
  * ```html
  * <LoginUser />
  * ```
+ *
+ * @returns {component} LoginUser
  */
 class LoginUser extends Component {
 	constructor() {
@@ -20,6 +22,13 @@ class LoginUser extends Component {
 		}
 	}
 
+	/**
+	 * Login event
+	 *
+	 * @param {event} event The submit event
+	 *
+	 * @returns {None} Null
+	 */
 	loginUser = (event) => {
 		event.preventDefault();
 
@@ -54,10 +63,10 @@ class LoginUser extends Component {
 						<p className="home-title">WeConnect</p>
 						<p className="home-body">
 							<br /> Welcome to WeConnect!
-						<br />
+							<br />
 							<br /> WeConnect brings businesses
-						<br /> and users together, and allows
-						<br /> users to review businesses.
+							<br /> and users together, and allows
+							<br /> users to review businesses.
 						</p>
 					</div>
 					<div className="col-md-6">

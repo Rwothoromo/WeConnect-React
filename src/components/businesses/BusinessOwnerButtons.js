@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import Button from 'react-bootstrap/Button';
@@ -6,11 +7,13 @@ import Button from 'react-bootstrap/Button';
 /**
  * Generate `View`, `Edit` and `Delete` buttons for business owners
  *
- * @param {object} props.business Component props containing Business
+ * @param {object} props Component props containing Business
  *
  * ```html
- * <BusinessOwnerButtons business={business} />
+ * <BusinessOwnerButtons business={business} handleUpdateModal={props.handleUpdateModal} />
  * ```
+ *
+ * @returns {component} BusinessOwnerButtons
  */
 const BusinessOwnerButtons = ({ business, handleUpdateModal }) => {
 	return (
@@ -39,5 +42,10 @@ const BusinessOwnerButtons = ({ business, handleUpdateModal }) => {
 		</ul>
 	);
 }
+
+BusinessOwnerButtons.propTypes = {
+	business: PropTypes.object.isRequired,
+	handleUpdateModal: PropTypes.function.isRequired
+};
 
 export default BusinessOwnerButtons;

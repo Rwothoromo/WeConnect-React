@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { NotificationContainer } from 'react-notifications';
 
@@ -18,16 +18,18 @@ export const apiUrl = process.env.REACT_APP_BACKEND_HOST || 'http://127.0.0.1:50
  * ```html
  * <Routes />
  * ```
+ *
+ * @returns {component} Router
  */
-const Routes = () => (
+export const Routes = () => (
 	<Router>
 		<div>
-			<Route exact strict path={"/"} component={Index}/ >
-			<Route exact strict path={"/auth/register"} component={RegisterUser}/ >
-			<Route exact strict path={"/auth/login"} component={LoginUser}/ >
-			<Route exact strict path={"/auth/profile"} component={ProfileUser}/ >
-			<Route exact strict path={"/auth/logout"} component={LogoutUser}/ >
-			<Route exact strict path={"/businesses"} component={BusinessesList}/ >
+			<Route exact strict path={"/"} component={Index} />
+			<Route exact strict path={"/auth/register"} component={RegisterUser} />
+			<Route exact strict path={"/auth/login"} component={LoginUser} />
+			<Route exact strict path={"/auth/profile"} component={ProfileUser} />
+			<Route exact strict path={"/auth/logout"} component={LogoutUser} />
+			<Route exact strict path={"/businesses"} component={BusinessesList} />
 		</div>
 	</Router>
 )
@@ -39,16 +41,16 @@ const Routes = () => (
  * ```html
  * <App />
  * ```
+ *
+ *  @returns {component} Layout
  */
-class App extends Component {
-	render() {
-		return (
-			<Layout>
-				<Routes/>
-				<NotificationContainer/>
-			</Layout>
-		);
-	}
+const App = () => {
+	return (
+		<Layout>
+			<Routes />
+			<NotificationContainer />
+		</Layout>
+	);
 }
 
 export default App;

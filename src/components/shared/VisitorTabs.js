@@ -6,6 +6,8 @@ import React from 'react';
  * ```html
  * <VisitorTabs />
  * ```
+ *
+ * @returns {component} VisitorTabs
  */
 const VisitorTabs = () => {
 	return (

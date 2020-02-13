@@ -12,6 +12,8 @@ import Button from 'react-bootstrap/Button';
  * ```html
  * <ProfileUser />
  * ```
+ *
+ * @returns {component} ProfileUser
  */
 class ProfileUser extends Component {
 	constructor() {
@@ -32,6 +34,13 @@ class ProfileUser extends Component {
 		});
 	}
 
+	/**
+	 * Password reset event
+	 *
+	 * @param {event} event The submit event
+	 *
+	 * @returns {None} Null
+	 */
 	resetPassword = (event) => {
 		event.preventDefault();
 

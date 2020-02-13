@@ -6,6 +6,8 @@ import React from 'react';
  * ```html
  * <Footer />
  * ```
+ *
+ * @returns {component} Footer
  */
 const Footer = () => (
 	<footer className="footer">

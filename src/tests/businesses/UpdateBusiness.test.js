@@ -22,7 +22,7 @@ describe('<UpdateBusiness />', () => {
 		updated_at:"Thu, 28 Jun 2018 14:33:42 GMT"
 	}
 
-	const wrapper = mount(<UpdateBusiness business={business} showUpdatedBusinesses={showUpdatedBusinesses}/ >);
+	const wrapper = mount(<UpdateBusiness business={business} showUpdatedBusinesses={showUpdatedBusinesses} />);
 
 	it('updates a business', async () => {
 		mock.onPut(`${apiUrl}/businesses/2`).reply(200, {

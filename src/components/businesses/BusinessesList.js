@@ -20,6 +20,8 @@ import Button from 'react-bootstrap/Button';
  * ```html
  * <BusinessesList />
  * ```
+ *
+ * @returns {component} BusinessesList
  */
 class BusinessesList extends Component {
 	constructor() {
@@ -41,7 +43,9 @@ class BusinessesList extends Component {
 			this.setState({
 				businesses: response.data.businesses
 			});
-		}).catch(error => { });
+		}).catch(error => {
+			NotificationManager.error(error.response.data.message);
+		});
 	}
 
 	handleUpdateModal = () => {
@@ -75,9 +79,18 @@ class BusinessesList extends Component {
 				prev_page: response.data.prev_page
 			});
 			this.getAllBusinesses();
-		}).catch(error => { });
+		}).catch(error => {
+			NotificationManager.error(error.response.data.message);
+		});
 	}
 
+	/**
+	 * Business search event
+	 *
+	 * @param {event} event The submit event
+	 *
+	 * @returns {object} List of Businesses
+	 */
 	searchBusinesses = (event) => {
 		// Search for businesses by name, category and/or location.
 		event.preventDefault();
@@ -101,6 +114,14 @@ class BusinessesList extends Component {
 		})
 	}
 
+	/**
+	 * Page change event
+	 *
+	 * @param {event} event The submit event
+	 * @param {BigInteger} page The page count
+	 *
+	 * @returns {object} List of Businesses
+	 */
 	handlePageChange = (event, page) => {
 		// Query and return businesses for the requested page.
 		event.preventDefault();

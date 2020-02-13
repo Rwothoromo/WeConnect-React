@@ -12,6 +12,8 @@ import { contains } from '../utils/Helpers';
  * ```html
  * <RegisterUser />
  * ```
+ *
+ * @returns {component} RegisterUser
  */
 class RegisterUser extends Component {
 	constructor() {
@@ -21,6 +23,13 @@ class RegisterUser extends Component {
 		}
 	}
 
+	/**
+	 * User registration event
+	 *
+	 * @param {event} event The submit event
+	 *
+	 * @returns {None} Null
+	 */
 	registerUser = (event) => {
 		event.preventDefault();
 
@@ -64,10 +73,10 @@ class RegisterUser extends Component {
 						<p className="home-title">WeConnect</p>
 						<p className="home-body">
 							<br /> Welcome to WeConnect!
-						<br />
+							<br />
 							<br /> WeConnect brings businesses
-						<br /> and users together, and allows
-						<br /> users to review businesses.
+							<br /> and users together, and allows
+							<br /> users to review businesses.
 						</p>
 					</div>
 					<div className="col-md-6">

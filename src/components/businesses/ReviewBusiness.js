@@ -1,33 +1,31 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { reviewBusiness } from '../utils/Helpers';
 import Button from 'react-bootstrap/Button';
 
 /**
  * Form for reviewing a business
  *
- * @param {object} props.business Business object
+ * @param {object} props Business object
  *
  * ```html
- * <ReviewBusiness business={business}/ >
+ * <ReviewBusiness business={business} />
  * ```
+ *
+ * @returns {component} ReviewBusiness
  */
 const ReviewBusiness = (props) => {
 
 	const onReview = (event) => {
 		event.preventDefault();
 
-		if (props) {
-			// Create a review object from user input
-			let review = {
-				name: event.target.elements.name.value,
-				description: event.target.elements.description.value
-			}
+		// Create a review object from user input
+		let review = {
+			name: event.target.elements.name.value,
+			description: event.target.elements.description.value
+		}
 
-			reviewBusiness(props, review);
-		}
-		else {
-			// retry
-		}
+		reviewBusiness(props, review);
 	}
 
 	return (
@@ -70,5 +68,9 @@ const ReviewBusiness = (props) => {
 		</div>
 	);
 }
+
+ReviewBusiness.propTypes = {
+	business: PropTypes.object.isRequired
+};
 
 export default ReviewBusiness;

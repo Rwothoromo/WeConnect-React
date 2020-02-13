@@ -11,6 +11,8 @@ import Button from 'react-bootstrap/Button';
  * ```html
  * <Header />
  * ```
+ *
+ * @returns {component} Header
  */
 class Header extends Component {
 	constructor() {

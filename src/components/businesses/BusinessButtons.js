@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faStar } from '@fortawesome/free-solid-svg-icons';
 import Button from 'react-bootstrap/Button';
@@ -6,11 +7,13 @@ import Button from 'react-bootstrap/Button';
 /**
  * Generate `View` and `Review` buttons for non-business owners
  *
- * @param {object} props.business Component props containing Business
+ * @param {object} props Component props containing Business
  *
  * ```html
  * <BusinessButtons business={business} />
  * ```
+ *
+ * @returns {component} BusinessButtons
  */
 const BusinessButtons = (props) => {
 	let { business } = props;
@@ -30,5 +33,9 @@ const BusinessButtons = (props) => {
 		</ul>
 	);
 }
+
+BusinessButtons.propTypes = {
+	business: PropTypes.object.isRequired
+};
 
 export default BusinessButtons;

@@ -90,7 +90,7 @@ export const registerBusiness = (business) => {
 /**
  * Update a business
  *
- * @param {object} props Containing the Form callback function and original Business object
+ * @param {BigInteger} id Business id
  * @param {object} business Containing the new Business object
  *
  * ```js

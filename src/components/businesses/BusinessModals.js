@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ShowBusiness from './ShowBusiness';
 import UpdateBusiness from './UpdateBusiness';
 import ReviewBusiness from './ReviewBusiness';
@@ -7,24 +8,27 @@ import DeleteBusiness from './DeleteBusiness';
 /**
  * Generate `View`, `Review`, `Edit` and `Delete` modals for businesses
  *
- * @param {object} props.businesses Contains business list
+ * @param {object} props Contains business list
  *
  * ```html
- * <BusinessModals businesses={businesses}/ >
+ * <BusinessModals isUpdateModalOpen={isUpdateModalOpen} businesses={businesses} showUpdatedBusinesses={showUpdatedBusinesses} />
  * ```
+ *
+ * @returns {component} BusinessModals
  */
 const BusinessModals = (props) => {
 
-	if (!props.businesses) return;
+	let { isUpdateModalOpen, businesses } = props;
 
-	const businesses = props.businesses;
+	if (!businesses) return;
+
 	return (
 		<div>
 			{
 				businesses.map(business =>
 					<div key={business.id}>
 						<ShowBusiness business={business} />
-						<UpdateBusiness business={business} isUpdateModalOpen={props.isUpdateModalOpen} />
+						<UpdateBusiness business={business} isUpdateModalOpen={isUpdateModalOpen} />
 						<ReviewBusiness business={business} />
 						<DeleteBusiness business={business} />
 					</div>
@@ -33,5 +37,10 @@ const BusinessModals = (props) => {
 		</div>
 	);
 }
+
+BusinessModals.propTypes = {
+	isUpdateModalOpen: PropTypes.bool.isRequired,
+	businesses: PropTypes.object
+};
 
 export default BusinessModals;

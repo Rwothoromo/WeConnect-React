@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import Button from 'react-bootstrap/Button';
@@ -6,11 +7,13 @@ import Button from 'react-bootstrap/Button';
 /**
  * Form for business search
  *
- * @param {function} props.searchBusinesses Form submit callback function searchBusinesses
+ * @param {object} props Component props containing callback function searchBusinesses
  *
  * ```html
  * <BusinessSearch searchBusinesses={searchBusinesses} />
  * ```
+ *
+ * @returns {component} BusinessSearch
  */
 const BusinessSearch = (props) => {
 	const { searchBusinesses } = props;
@@ -35,6 +38,10 @@ const BusinessSearch = (props) => {
 			</ul>
 		</form>
 	);
+};
+
+BusinessSearch.propTypes = {
+	searchBusinesses: PropTypes.function.isRequired
 };
 
 export default BusinessSearch;

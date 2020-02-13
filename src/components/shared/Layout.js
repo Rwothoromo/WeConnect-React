@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import Header from './Header';
 import Footer from './Footer';
 
@@ -7,9 +7,13 @@ import Footer from './Footer';
  * The `Layout` for the entire application.
  * All content is placed between the `Header` and `Footer`
  *
+ * @param {object} props
+ *
  * ```html
  * <Layout />
  * ```
+ *
+ * @returns {component} Layout
  */
 const Layout = (props) => {
 	return (
@@ -20,5 +24,9 @@ const Layout = (props) => {
 		</div>
 	);
 }
+
+Layout.propTypes = {
+	children: PropTypes.component.isRequired
+};
 
 export default Layout;
