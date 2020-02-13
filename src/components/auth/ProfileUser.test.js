@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import ProfileUser from '../../components/auth/ProfileUser';
+import ProfileUser from './ProfileUser';
 import MockAdapter from 'axios-mock-adapter';
 import Axios from 'axios';
 import { apiUrl } from '../../App';

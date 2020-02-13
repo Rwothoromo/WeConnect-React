@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import LoginUser from '../../components/auth/LoginUser';
+import LoginUser from './LoginUser';
 import MockAdapter from 'axios-mock-adapter';
 import Axios from 'axios';
 import { apiUrl } from '../../App'

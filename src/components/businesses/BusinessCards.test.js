@@ -1,6 +1,6 @@
 import { mount } from 'enzyme';
 import React from 'react'
-import BusinessCards from '../../components/businesses/BusinessCards';
+import BusinessCards from '../BusinessCards';
 
 describe('<BusinessesList />', () => {
 	it('renders correctly', async () => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import RegisterBusiness from '../../components/businesses/RegisterBusiness';
+import RegisterBusiness from './RegisterBusiness';
 import MockAdapter from 'axios-mock-adapter';
 import Axios from 'axios';
 import { apiUrl } from '../../App';

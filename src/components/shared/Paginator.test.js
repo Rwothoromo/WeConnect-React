@@ -1,6 +1,6 @@
 import React from 'react'
 import { mount } from 'enzyme';
-import Paginator from '../../components/shared/Paginator';
+import Paginator from './Paginator';
 
 describe('<Paginator />', () => {
 	it('should call handlePageChange on prev click', () => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import BusinessSearch from '../../components/businesses/BusinessSearch';
+import BusinessSearch from '../BusinessSearch';
 
 describe('<BusinessSearch />', () => {
 	let searchBusinesses = jest.fn(() => {})

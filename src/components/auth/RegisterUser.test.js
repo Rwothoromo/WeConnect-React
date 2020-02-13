@@ -1,7 +1,7 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 import { mount } from 'enzyme';
-import RegisterUser from '../../components/auth/RegisterUser';
+import RegisterUser from './RegisterUser';
 import MockAdapter from 'axios-mock-adapter';
 import Axios from 'axios';
 import { apiUrl } from '../../App'

@@ -1,7 +1,7 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 import { shallow } from 'enzyme';
-import LogoutUser from '../../components/auth/LogoutUser';
+import LogoutUser from './LogoutUser';
 import MockAdapter from 'axios-mock-adapter';
 import Axios from 'axios';
 import { apiUrl } from '../../App';
