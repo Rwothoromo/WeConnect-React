@@ -1,13 +1,13 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import ProfileUser from './ProfileUser';
+import Profile from '../Profile';
 import MockAdapter from 'axios-mock-adapter';
 import Axios from 'axios';
-import { apiUrl } from '../../App';
+import { apiUrl } from '../../../App';
 
-describe('<ProfileUser />', () => {
+describe('<Profile />', () => {
 	const mock = new MockAdapter(Axios);
-	const wrapper = shallow(<ProfileUser />);
+	const wrapper = shallow(<Profile />);
 
 	window.alert = jest.fn();
 

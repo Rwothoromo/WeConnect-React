@@ -47,30 +47,30 @@ Main page content
 
 
 -----
-**src/components/auth/LoginUser.js**
+**src/components/auth/Login.js**
 
-### 1. LoginUser
+### 1. Login
 
 Form for user login
 
 ```html
-<LoginUser />
+<Login />
 ```
 
-@returns {component} LoginUser   
+@returns {component} Login   
 
 
 
 
 -----
-**src/components/auth/LogoutUser.js**
+**src/components/auth/Logout.js**
 
-### 1. LogoutUser
+### 1. Logout
 
 Logout user
 
 ```html
-<LogoutUser />
+<Logout />
 ```
 
 @returns {component} Logout   
@@ -79,33 +79,33 @@ Logout user
 
 
 -----
-**src/components/auth/ProfileUser.js**
+**src/components/auth/Profile.js**
 
-### 1. ProfileUser
+### 1. Profile
 
 User profile page with password reset button
 
 ```html
-<ProfileUser />
+<Profile />
 ```
 
-@returns {component} ProfileUser   
+@returns {component} Profile   
 
 
 
 
 -----
-**src/components/auth/RegisterUser.js**
+**src/components/auth/Register.js**
 
-### 1. RegisterUser
+### 1. Register
 
 Form for user registration
 
 ```html
-<RegisterUser />
+<Register />
 ```
 
-@returns {component} RegisterUser   
+@returns {component} Register   
 
 
 

@@ -10,12 +10,12 @@ import Button from 'react-bootstrap/Button';
  * User profile page with password reset button
  *
  * ```html
- * <ProfileUser />
+ * <Profile />
  * ```
  *
- * @returns {component} ProfileUser
+ * @returns {component} Profile
  */
-class ProfileUser extends Component {
+class Profile extends Component {
 	constructor() {
 		super();
 		this.state = {
@@ -92,4 +92,4 @@ class ProfileUser extends Component {
 	}
 }
 
-export default ProfileUser;
+export default Profile;

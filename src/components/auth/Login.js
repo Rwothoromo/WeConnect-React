@@ -9,12 +9,12 @@ import { isLoggedIn } from '../utils/Helpers';
  * Form for user login
  *
  * ```html
- * <LoginUser />
+ * <Login />
  * ```
  *
- * @returns {component} LoginUser
+ * @returns {component} Login
  */
-class LoginUser extends Component {
+class Login extends Component {
 	constructor() {
 		super();
 		this.state = {
@@ -29,7 +29,7 @@ class LoginUser extends Component {
 	 *
 	 * @returns {None} Null
 	 */
-	loginUser = (event) => {
+	Login = (event) => {
 		event.preventDefault();
 
 		// Create a user object from user input
@@ -70,7 +70,7 @@ class LoginUser extends Component {
 						</p>
 					</div>
 					<div className="col-md-6">
-						<form className="weconnect-form" onSubmit={this.loginUser}>
+						<form className="weconnect-form" onSubmit={this.Login}>
 							<div className="form-group">
 								<label className="control-label col-md-12" style={{ textAlign: 'center' }}>Login</label>
 							</div>
@@ -91,4 +91,4 @@ class LoginUser extends Component {
 	}
 }
 
-export default LoginUser;
+export default Login;

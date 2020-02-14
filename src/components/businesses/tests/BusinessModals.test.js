@@ -1,6 +1,6 @@
 import { mount } from 'enzyme';
 import React from 'react'
-import BusinessModals from './BusinessModals';
+import BusinessModals from '../BusinessModals';
 
 describe('<BusinessesList />', () => {
 	it('it renders correctly', async () => {

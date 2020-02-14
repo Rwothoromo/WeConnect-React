@@ -10,12 +10,12 @@ import { contains } from '../utils/Helpers';
  * Form for user registration
  *
  * ```html
- * <RegisterUser />
+ * <Register />
  * ```
  *
- * @returns {component} RegisterUser
+ * @returns {component} Register
  */
-class RegisterUser extends Component {
+class Register extends Component {
 	constructor() {
 		super();
 		this.state = {
@@ -30,7 +30,7 @@ class RegisterUser extends Component {
 	 *
 	 * @returns {None} Null
 	 */
-	registerUser = (event) => {
+	Register = (event) => {
 		event.preventDefault();
 
 		var passwordStrength = document.getElementsByClassName("ReactPasswordStrength-strength-desc")[0];
@@ -80,7 +80,7 @@ class RegisterUser extends Component {
 						</p>
 					</div>
 					<div className="col-md-6">
-						<form className="weconnect-form" id="register-user" onSubmit={this.registerUser}>
+						<form className="weconnect-form" id="register-user" onSubmit={this.Register}>
 							<div className="form-group">
 								<label className="control-label col-md-12" style={{ textAlign: 'center' }}>Register</label>
 							</div>
@@ -122,4 +122,4 @@ class RegisterUser extends Component {
 	}
 }
 
-export default RegisterUser;
+export default Register;

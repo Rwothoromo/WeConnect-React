@@ -1,9 +1,9 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import RegisterBusiness from './RegisterBusiness';
+import RegisterBusiness from '../RegisterBusiness';
 import MockAdapter from 'axios-mock-adapter';
 import Axios from 'axios';
-import { apiUrl } from '../../App';
+import { apiUrl } from '../../../App';
 
 describe('<RegisterBusiness />', () => {
 	const mock = new MockAdapter(Axios);

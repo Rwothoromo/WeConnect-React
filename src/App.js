@@ -3,12 +3,12 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { NotificationContainer } from 'react-notifications';
 
 import Index from './components/Index';
-import RegisterUser from './components/auth/RegisterUser';
-import LoginUser from './components/auth/LoginUser';
-import ProfileUser from './components/auth/ProfileUser';
+import Register from './components/auth/Register';
+import Login from './components/auth/Login';
+import Profile from './components/auth/Profile';
 import Layout from './components/shared/Layout';
 import BusinessesList from './components/businesses/BusinessesList';
-import LogoutUser from './components/auth/LogoutUser';
+import Logout from './components/auth/Logout';
 
 export const apiUrl = process.env.REACT_APP_BACKEND_HOST || 'http://127.0.0.1:5000/api/v2'
 
@@ -25,10 +25,10 @@ export const Routes = () => (
 	<Router>
 		<div>
 			<Route exact strict path={"/"} component={Index} />
-			<Route exact strict path={"/auth/register"} component={RegisterUser} />
-			<Route exact strict path={"/auth/login"} component={LoginUser} />
-			<Route exact strict path={"/auth/profile"} component={ProfileUser} />
-			<Route exact strict path={"/auth/logout"} component={LogoutUser} />
+			<Route exact strict path={"/auth/register"} component={Register} />
+			<Route exact strict path={"/auth/login"} component={Login} />
+			<Route exact strict path={"/auth/profile"} component={Profile} />
+			<Route exact strict path={"/auth/logout"} component={Logout} />
 			<Route exact strict path={"/businesses"} component={BusinessesList} />
 		</div>
 	</Router>

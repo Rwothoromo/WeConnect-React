@@ -1,12 +1,12 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import LoginUser from './LoginUser';
+import Login from '../Login';
 import MockAdapter from 'axios-mock-adapter';
 import Axios from 'axios';
-import { apiUrl } from '../../App'
+import { apiUrl } from '../../../App'
 
-describe('<LoginUser />', () => {
-	const wrapper = mount(<LoginUser />);
+describe('<Login />', () => {
+	const wrapper = mount(<Login />);
 	const mock = new MockAdapter(Axios);
 
 	it('renders without crashing', () => {

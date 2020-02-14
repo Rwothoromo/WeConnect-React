@@ -10,12 +10,12 @@ import { isLoggedIn, clearUser } from '../utils/Helpers';
  * Logout user
  *
  * ```html
- * <LogoutUser />
+ * <Logout />
  * ```
  *
  * @returns {component} Logout
  */
-class LogoutUser extends Component {
+class Logout extends Component {
 	constructor() {
 		super();
 		this.state = {
@@ -39,4 +39,4 @@ class LogoutUser extends Component {
 	}
 }
 
-export default LogoutUser;
+export default Logout;
