@@ -31,7 +31,6 @@ class BusinessesList extends Component {
 			businesses_list: [],
 			next_page: null,
 			prev_page: null,
-			isUpdateModalOpen: true,
 			loggedIn: isLoggedIn()
 		}
 	}
@@ -46,12 +45,6 @@ class BusinessesList extends Component {
 		}).catch(error => {
 			NotificationManager.error(error.response.data.message);
 		});
-	}
-
-	handleUpdateModal = () => {
-		this.setState(state => ({
-			isUpdateModalOpen: !state.isUpdateModalOpen
-		}))
 	}
 
 	componentDidMount = () => {
@@ -170,7 +163,6 @@ class BusinessesList extends Component {
 				</main>
 				<RegisterBusiness />
 				<BusinessModals
-					isUpdateModalOpen={this.state.isUpdateModalOpen}
 					businesses={this.state.businesses}
 				/>
 			</div>

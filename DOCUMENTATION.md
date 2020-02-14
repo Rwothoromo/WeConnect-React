@@ -164,7 +164,7 @@ Generate `View`, `Review`, `Edit` and `Delete` modals for businesses
 @param {object} props Contains business list
 
 ```html
-<BusinessModals isUpdateModalOpen={isUpdateModalOpen} businesses={businesses} />
+<BusinessModals businesses={businesses} />
 ```
 
 @returns {component} BusinessModals   
@@ -174,7 +174,6 @@ Generate `View`, `Review`, `Edit` and `Delete` modals for businesses
 
 Property | Type | Required | Default value | Description
 :--- | :--- | :--- | :--- | :---
-isUpdateModalOpen|bool|yes||
 businesses|array|no||
 -----
 **src/components/businesses/BusinessOwnerButtons.js**
@@ -345,7 +344,7 @@ Form for updating a business
 @param {object} props Business object
 
 ```html
-<UpdateBusiness business={business} isUpdateModalOpen={isUpdateModalOpen} />
+<UpdateBusiness business={business} />
 ```
 
 @returns {component} UpdateBusiness   
@@ -356,7 +355,6 @@ Form for updating a business
 Property | Type | Required | Default value | Description
 :--- | :--- | :--- | :--- | :---
 business|object|yes||
-isUpdateModalOpen|bool|yes||
 -----
 **src/components/shared/Footer.js**
 

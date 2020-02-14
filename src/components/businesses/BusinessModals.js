@@ -11,14 +11,14 @@ import DeleteBusiness from './DeleteBusiness';
  * @param {object} props Contains business list
  *
  * ```html
- * <BusinessModals isUpdateModalOpen={isUpdateModalOpen} businesses={businesses} />
+ * <BusinessModals businesses={businesses} />
  * ```
  *
  * @returns {component} BusinessModals
  */
 const BusinessModals = (props) => {
 
-	let { isUpdateModalOpen, businesses } = props;
+	let { businesses } = props;
 
 	if (!businesses) return;
 
@@ -28,7 +28,7 @@ const BusinessModals = (props) => {
 				businesses.map(business =>
 					<div key={business.id}>
 						<ShowBusiness business={business} />
-						<UpdateBusiness business={business} isUpdateModalOpen={isUpdateModalOpen} />
+						<UpdateBusiness business={business} />
 						<ReviewBusiness business={business} />
 						<DeleteBusiness business={business} />
 					</div>
@@ -39,7 +39,6 @@ const BusinessModals = (props) => {
 }
 
 BusinessModals.propTypes = {
-	isUpdateModalOpen: PropTypes.bool.isRequired,
 	businesses: PropTypes.array
 };
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { NotificationManager } from 'react-notifications';
 import { updateBusiness } from '../utils/Helpers';
@@ -10,17 +10,13 @@ import Button from 'react-bootstrap/Button';
  * @param {object} props Business object
  *
  * ```html
- * <UpdateBusiness business={business} isUpdateModalOpen={isUpdateModalOpen} />
+ * <UpdateBusiness business={business} />
  * ```
  *
  * @returns {component} UpdateBusiness
  */
-const UpdateBusiness = ({ business, isUpdateModalOpen }) => {
+const UpdateBusiness = ({ business }) => {
 
-	const [isOpen, setIsOpen] = useState(true);
-	useEffect(() => {
-		setIsOpen(isUpdateModalOpen)
-	}, [isUpdateModalOpen])
 	const onUpdate = async (event) => {
 		event.preventDefault();
 		NotificationManager.success("Alas!");
@@ -33,20 +29,13 @@ const UpdateBusiness = ({ business, isUpdateModalOpen }) => {
 			location: event.target.elements.location.value
 		}
 		try {
-			NotificationManager.success("Alas again!");
 			const response = await updateBusiness(business.id, updatedBusiness);
-			NotificationManager.success("Alas Now!");
-			console.log(business, updateBusiness)
-			// close modal
-			setIsOpen(false);
 			NotificationManager.success(response.data.message);
 		} catch (error) {
 			NotificationManager.error(error.response.data.message);
-			setIsOpen(false);
 		}
 	}
 	return (
-		isOpen &&
 		<div className="modal fade" id={`updateBusinessModal${business.id}`}>
 			<div className="modal-dialog">
 				<div className="modal-content">
@@ -99,8 +88,7 @@ const UpdateBusiness = ({ business, isUpdateModalOpen }) => {
 }
 
 UpdateBusiness.propTypes = {
-	business: PropTypes.object.isRequired,
-	isUpdateModalOpen: PropTypes.bool.isRequired
+	business: PropTypes.object.isRequired
 };
 
 export default UpdateBusiness;
