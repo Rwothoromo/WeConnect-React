@@ -1,7 +1,7 @@
 # WeConnect
 
-[![Build Status](https://travis-ci.org/Rwothoromo/WeConnect-React.svg?branch=ft-test-components-157818712)](https://travis-ci.org/Rwothoromo/WeConnect-React)
-[![Coverage Status](https://coveralls.io/repos/github/Rwothoromo/WeConnect-React/badge.svg?branch=master)](https://coveralls.io/github/Rwothoromo/WeConnect-React?branch=master)
+[![Build Status](https://travis-ci.org/Rwothoromo/WeConnect-React.svg)](https://travis-ci.org/Rwothoromo/WeConnect-React)
+[![Coverage Status](https://coveralls.io/repos/github/Rwothoromo/WeConnect-React/badge.svg)](https://coveralls.io/github/Rwothoromo/WeConnect-React)
 [![Maintainability](https://api.codeclimate.com/v1/badges/011fa7aac9be205db2c7/maintainability)](https://codeclimate.com/github/Rwothoromo/WeConnect-React/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/011fa7aac9be205db2c7/test_coverage)](https://codeclimate.com/github/Rwothoromo/WeConnect-React/test_coverage)
 
