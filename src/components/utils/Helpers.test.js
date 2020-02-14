@@ -1,4 +1,6 @@
-import { isLoggedIn, contains } from '../../utils/Helpers';
+/*jshint esversion: 6 */
+
+import { isLoggedIn, contains } from './Helpers';
 
 describe('Helper - isLoggedIn', () => {
 	const jwt = require('jsonwebtoken');

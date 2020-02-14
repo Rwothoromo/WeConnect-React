@@ -1,18 +1,21 @@
 import React, { Component } from 'react';
+import { NotificationManager } from 'react-notifications';
 import { Redirect } from 'react-router-dom';
 import 'react-notifications/lib/notifications.css';
 import axios from "axios";
 import { apiUrl } from '../../App';
-import { isLoggedIn, clearUser } from '../../utils/Helpers';
+import { isLoggedIn, clearUser } from '../utils/Helpers';
 
 /**
  * Logout user
  *
  * ```html
- * <LogoutUser />
+ * <Logout />
  * ```
+ *
+ * @returns {component} Logout
  */
-class LogoutUser extends Component {
+class Logout extends Component {
 	constructor() {
 		super();
 		this.state = {
@@ -23,6 +26,7 @@ class LogoutUser extends Component {
 	componentDidMount = () => {
 		axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
 		axios.post(`${apiUrl}/auth/logout`).then(response => {
+			NotificationManager.success(response.data.message);
 			this.setState({ loggedIn: false });
 			localStorage.removeItem("access_token");
 			clearUser();
@@ -35,4 +39,4 @@ class LogoutUser extends Component {
 	}
 }
 
-export default LogoutUser;
+export default Logout;

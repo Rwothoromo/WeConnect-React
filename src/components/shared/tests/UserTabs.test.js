@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import UserTabs from '../../components/shared/UserTabs';
+import UserTabs from '../UserTabs';
 
 describe('<UserTabs />', () => {
 	const wrapper = shallow(<UserTabs />);

@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Header from '../../components/shared/Header';
-import UserTabs from '../../components/shared/UserTabs';
-import VisitorTabs from '../../components/shared/VisitorTabs';
+import Header from '../Header';
+import UserTabs from '../UserTabs';
+import VisitorTabs from '../VisitorTabs';
 
 describe('<Header />', () => {
 	const wrapper = shallow(<Header />);

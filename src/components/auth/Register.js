@@ -4,16 +4,18 @@ import ReactPasswordStrength from 'react-password-strength';
 import { NotificationManager } from 'react-notifications';
 import axios from "axios";
 import { apiUrl } from '../../App';
-import { contains } from '../../utils/Helpers';
+import { contains } from '../utils/Helpers';
 
 /**
  * Form for user registration
  *
  * ```html
- * <RegisterUser />
+ * <Register />
  * ```
+ *
+ * @returns {component} Register
  */
-class RegisterUser extends Component {
+class Register extends Component {
 	constructor() {
 		super();
 		this.state = {
@@ -21,7 +23,14 @@ class RegisterUser extends Component {
 		}
 	}
 
-	registerUser = (event) => {
+	/**
+	 * User registration event
+	 *
+	 * @param {event} event The submit event
+	 *
+	 * @returns {None} Null
+	 */
+	Register = (event) => {
 		event.preventDefault();
 
 		var passwordStrength = document.getElementsByClassName("ReactPasswordStrength-strength-desc")[0];
@@ -64,14 +73,14 @@ class RegisterUser extends Component {
 						<p className="home-title">WeConnect</p>
 						<p className="home-body">
 							<br /> Welcome to WeConnect!
-						<br />
+							<br />
 							<br /> WeConnect brings businesses
-						<br /> and users together, and allows
-						<br /> users to review businesses.
+							<br /> and users together, and allows
+							<br /> users to review businesses.
 						</p>
 					</div>
 					<div className="col-md-6">
-						<form className="weconnect-form" id="register-user" onSubmit={this.registerUser}>
+						<form className="weconnect-form" id="register-user" onSubmit={this.Register}>
 							<div className="form-group">
 								<label className="control-label col-md-12" style={{ textAlign: 'center' }}>Register</label>
 							</div>
@@ -113,4 +122,4 @@ class RegisterUser extends Component {
 	}
 }
 
-export default RegisterUser;
+export default Register;

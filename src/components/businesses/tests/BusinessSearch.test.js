@@ -1,11 +1,11 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import BusinessSearch from '../../components/businesses/BusinessSearch';
+import BusinessSearch from '../BusinessSearch';
 
 describe('<BusinessSearch />', () => {
 	let searchBusinesses = jest.fn(() => {})
-	
-	const wrapper = mount(<BusinessSearch searchBusinesses={searchBusinesses}/>);
+
+	const wrapper = mount(<BusinessSearch searchBusinesses={searchBusinesses} />);
 
 	it('calls the search function', () => {
 		let spy = jest.spyOn(wrapper.props(), 'searchBusinesses');

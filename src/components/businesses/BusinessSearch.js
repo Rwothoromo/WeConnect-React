@@ -1,15 +1,19 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import Button from 'react-bootstrap/Button';
 
 /**
  * Form for business search
  *
- * @param {function} props.searchBusinesses Form submit callback function searchBusinesses
+ * @param {object} props Component props containing callback function searchBusinesses
  *
  * ```html
  * <BusinessSearch searchBusinesses={searchBusinesses} />
  * ```
+ *
+ * @returns {component} BusinessSearch
  */
 const BusinessSearch = (props) => {
 	const { searchBusinesses } = props;
@@ -27,13 +31,17 @@ const BusinessSearch = (props) => {
 					<input type="text" style={{ width: 180 }} className="form-control" placeholder="Location" id="location" name="location" defaultValue="" />
 				</li>
 				<li className="list-inline-item">
-					<button title="Search" className="btn btn-success">
+					<Button title="Search" className="btn btn-success">
 						<FontAwesomeIcon icon={faSearch} />
-					</button>
+					</Button>
 				</li>
 			</ul>
 		</form>
 	);
+};
+
+BusinessSearch.propTypes = {
+	searchBusinesses: PropTypes.func
 };
 
 export default BusinessSearch;

@@ -3,23 +3,26 @@ import { Redirect } from 'react-router-dom';
 import { NotificationManager } from 'react-notifications';
 import axios from "axios";
 import { apiUrl } from '../../App';
-import { isLoggedIn, clearUser } from '../../utils/Helpers';
+import { isLoggedIn, clearUser } from '../utils/Helpers';
+import Button from 'react-bootstrap/Button';
 
 /**
  * User profile page with password reset button
  *
  * ```html
- * <ProfileUser />
+ * <Profile />
  * ```
+ *
+ * @returns {component} Profile
  */
-class ProfileUser extends Component {
+class Profile extends Component {
 	constructor() {
 		super();
 		this.state = {
 			username: '',
 			first_name: '',
 			last_name: '',
-			loggedIn: isLoggedIn()
+			loggedIn: isLoggedIn(localStorage)
 		}
 	}
 
@@ -31,6 +34,13 @@ class ProfileUser extends Component {
 		});
 	}
 
+	/**
+	 * Password reset event
+	 *
+	 * @param {event} event The submit event
+	 *
+	 * @returns {None} Null
+	 */
 	resetPassword = (event) => {
 		event.preventDefault();
 
@@ -69,7 +79,7 @@ class ProfileUser extends Component {
 										<th style={{ textAlign: 'right' }}>Username:</th><td>{this.state.username}</td>
 									</tr>
 									<tr>
-										<th colSpan={2} style={{ textAlign: 'right' }}><button className="btn btn-warning btn-sm" onClick={this.resetPassword}>Reset password</button></th>
+										<th colSpan={2} style={{ textAlign: 'right' }}><Button className="btn btn-warning btn-sm" onClick={this.resetPassword}>Reset password</Button></th>
 									</tr>
 								</table>
 							</div>
@@ -82,4 +92,4 @@ class ProfileUser extends Component {
 	}
 }
 
-export default ProfileUser;
+export default Profile;

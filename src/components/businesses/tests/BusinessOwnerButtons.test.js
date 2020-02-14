@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import BusinessOwnerButtons from '../../components/businesses/BusinessOwnerButtons';
+import BusinessOwnerButtons from '../BusinessOwnerButtons';
 
 describe('<BusinessOwnerButtons />', () => {
 	const wrapper = shallow(<BusinessOwnerButtons business={{}} />);

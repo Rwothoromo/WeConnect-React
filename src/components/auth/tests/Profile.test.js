@@ -1,13 +1,15 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import ProfileUser from '../../components/auth/ProfileUser';
+import Profile from '../Profile';
 import MockAdapter from 'axios-mock-adapter';
 import Axios from 'axios';
-import { apiUrl } from '../../App';
+import { apiUrl } from '../../../App';
 
-describe('<ProfileUser />', () => {
+describe('<Profile />', () => {
 	const mock = new MockAdapter(Axios);
-	const wrapper = shallow(<ProfileUser />);
+	const wrapper = shallow(<Profile />);
+
+	window.alert = jest.fn();
 
 	it('resets user password', async () => {
 		mock.onPost(`${apiUrl}/auth/reset-password`).reply(200, {
@@ -15,12 +17,12 @@ describe('<ProfileUser />', () => {
 			new_password: "new_password"
 		});
 
-		wrapper.setState({loggedIn: true});
+		wrapper.setState({ loggedIn: true });
 		global.confirm = () => true;
 		let spyResetPassword = jest.spyOn(wrapper.instance(), 'resetPassword');
 		await wrapper.instance().resetPassword({
-			preventDefault: () => {},
-			clearUser: () => {}
+			preventDefault: () => { },
+			clearUser: () => { }
 		});
 		expect(spyResetPassword).toHaveBeenCalled();
 	});
@@ -29,9 +31,11 @@ describe('<ProfileUser />', () => {
 		global.confirm = () => false;
 		let spyResetPassword = jest.spyOn(wrapper.instance(), 'resetPassword');
 		await wrapper.instance().resetPassword({
-			preventDefault: () => {},
-			clearUser: () => {}
+			preventDefault: () => { },
+			clearUser: () => { }
 		});
 		expect(spyResetPassword).toHaveBeenCalled();
 	});
+
+	window.alert.mockClear();
 });

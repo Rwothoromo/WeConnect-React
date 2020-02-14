@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-
+import React from 'react';
+import PropTypes from 'prop-types';
 import Header from './Header';
 import Footer from './Footer';
 
@@ -7,20 +7,26 @@ import Footer from './Footer';
  * The `Layout` for the entire application.
  * All content is placed between the `Header` and `Footer`
  *
+ * @param {object} props
+ *
  * ```html
  * <Layout />
  * ```
+ *
+ * @returns {component} Layout
  */
-class Layout extends Component {
-	render() {
-		return (
-			<div>
-				<Header />
-				{this.props.children}
-				<Footer />
-			</div>
-		);
-	}
+const Layout = (props) => {
+	return (
+		<div>
+			<Header />
+			{props.children}
+			<Footer />
+		</div>
+	);
 }
+
+Layout.propTypes = {
+	children: PropTypes.array
+};
 
 export default Layout;

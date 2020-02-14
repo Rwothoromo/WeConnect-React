@@ -1,10 +1,10 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 import { shallow } from 'enzyme';
-import BusinessesList from '../../components/businesses/BusinessesList';
+import BusinessesList from '../BusinessesList';
 import MockAdapter from 'axios-mock-adapter';
 import Axios from 'axios';
-import { apiUrl } from '../../App';
+import { apiUrl } from '../../../App';
 
 describe('<BusinessesList />', () => {
 	const wrapper = shallow(<MemoryRouter><BusinessesList /></MemoryRouter>);

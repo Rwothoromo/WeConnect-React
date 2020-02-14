@@ -1,16 +1,21 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { NotificationManager } from 'react-notifications';
 import axios from "axios";
 import { apiUrl } from '../../App';
 import ReviewCards from './ReviewCards';
+import Button from 'react-bootstrap/Button';
 
 /**
  * Display a business' information and reviews
  *
- * @param {object} props.business  Component props containing Business
+ * @param {object} props  Component props containing Business
  *
  * ```html
  * <ShowBusiness business={business} />
  * ```
+ *
+ * @returns {component} ShowBusiness
  */
 class ShowBusiness extends Component {
 	constructor(props) {
@@ -26,7 +31,9 @@ class ShowBusiness extends Component {
 			this.setState({
 				reviews_list: response.data
 			})
-		}).catch(error => { });
+		}).catch(error => {
+			NotificationManager.error(error.response.data.message);
+		});
 	}
 
 	render() {
@@ -36,7 +43,7 @@ class ShowBusiness extends Component {
 					<div className="modal-content">
 						<div className="modal-header">
 							<h4 className="modal-title">Business</h4>
-							<button type="button" className="close" data-dismiss="modal">×</button>
+							<Button className="close" data-dismiss="modal">×</Button>
 						</div>
 						<div className="modal-body">
 							<div style={{ overflowY: "auto", height: "auto" }}>
@@ -46,7 +53,7 @@ class ShowBusiness extends Component {
 							</div>
 						</div>
 						<div className="modal-footer">
-							<button type="button" className="btn btn-danger" data-dismiss="modal">Close</button>
+							<Button className="btn btn-danger" data-dismiss="modal">Close</Button>
 						</div>
 					</div>
 				</div>
@@ -54,5 +61,9 @@ class ShowBusiness extends Component {
 		);
 	}
 }
+
+ShowBusiness.propTypes = {
+	business: PropTypes.object.isRequired
+};
 
 export default ShowBusiness;

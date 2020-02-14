@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import ShowBusiness from './ShowBusiness';
 import UpdateBusiness from './UpdateBusiness';
 import ReviewBusiness from './ReviewBusiness';
@@ -7,37 +8,38 @@ import DeleteBusiness from './DeleteBusiness';
 /**
  * Generate `View`, `Review`, `Edit` and `Delete` modals for businesses
  *
- * @param {object} props.businesses Contains business list
- * @param {function} props.showUpdatedBusinesses Business list update function
+ * @param {object} props Contains business list
  *
  * ```html
- * <BusinessModals businesses={businesses} showUpdatedBusinesses={showUpdatedBusinesses} />
+ * <BusinessModals businesses={businesses} />
  * ```
+ *
+ * @returns {component} BusinessModals
  */
-class BusinessModals extends Component {
-	constructor(props) {
-		super(props);
-	}
+const BusinessModals = (props) => {
 
-	render() {
-		if (!this.props.businesses) return;
+	let { businesses } = props;
 
-		const businesses = this.props.businesses;
-		return (
-			<div>
-				{
-					businesses.map(business =>
-						<div key={business.id}>
-							<ShowBusiness business={business} />
-							<UpdateBusiness business={business} showUpdatedBusinesses={this.props.showUpdatedBusinesses} />
-							<ReviewBusiness business={business} showUpdatedBusinesses={this.props.howUpdatedBusinesses} />
-							<DeleteBusiness business={business} showUpdatedBusinesses={this.props.showUpdatedBusinesses} />
-						</div>
-					)
-				}
-			</div>
-		);
-	}
+	if (!businesses) return;
+
+	return (
+		<div>
+			{
+				businesses.map(business =>
+					<div key={business.id}>
+						<ShowBusiness business={business} />
+						<UpdateBusiness business={business} />
+						<ReviewBusiness business={business} />
+						<DeleteBusiness business={business} />
+					</div>
+				)
+			}
+		</div>
+	);
 }
+
+BusinessModals.propTypes = {
+	businesses: PropTypes.array
+};
 
 export default BusinessModals;

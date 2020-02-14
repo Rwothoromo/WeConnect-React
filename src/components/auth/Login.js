@@ -3,16 +3,18 @@ import { NotificationManager } from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
 import axios from "axios";
 import { apiUrl } from '../../App'
-import { isLoggedIn } from '../../utils/Helpers';
+import { isLoggedIn } from '../utils/Helpers';
 
 /**
  * Form for user login
  *
  * ```html
- * <LoginUser />
+ * <Login />
  * ```
+ *
+ * @returns {component} Login
  */
-class LoginUser extends Component {
+class Login extends Component {
 	constructor() {
 		super();
 		this.state = {
@@ -20,7 +22,14 @@ class LoginUser extends Component {
 		}
 	}
 
-	loginUser = (event) => {
+	/**
+	 * Login event
+	 *
+	 * @param {event} event The submit event
+	 *
+	 * @returns {None} Null
+	 */
+	Login = (event) => {
 		event.preventDefault();
 
 		// Create a user object from user input
@@ -54,14 +63,14 @@ class LoginUser extends Component {
 						<p className="home-title">WeConnect</p>
 						<p className="home-body">
 							<br /> Welcome to WeConnect!
-						<br />
+							<br />
 							<br /> WeConnect brings businesses
-						<br /> and users together, and allows
-						<br /> users to review businesses.
+							<br /> and users together, and allows
+							<br /> users to review businesses.
 						</p>
 					</div>
 					<div className="col-md-6">
-						<form className="weconnect-form" onSubmit={this.loginUser}>
+						<form className="weconnect-form" onSubmit={this.Login}>
 							<div className="form-group">
 								<label className="control-label col-md-12" style={{ textAlign: 'center' }}>Login</label>
 							</div>
@@ -82,4 +91,4 @@ class LoginUser extends Component {
 	}
 }
 
-export default LoginUser;
+export default Login;

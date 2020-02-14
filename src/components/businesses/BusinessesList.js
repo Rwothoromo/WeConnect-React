@@ -6,12 +6,13 @@ import decode from 'jwt-decode';
 import { NotificationManager } from 'react-notifications';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import { isLoggedIn } from '../../utils/Helpers';
+import { isLoggedIn } from '../utils/Helpers';
 import Paginator from '../shared/Paginator';
 import BusinessSearch from './BusinessSearch';
 import BusinessCards from './BusinessCards';
 import BusinessModals from './BusinessModals';
 import RegisterBusiness from './RegisterBusiness';
+import Button from 'react-bootstrap/Button';
 
 /**
  * List all businesses in a searchable, paginated display
@@ -19,6 +20,8 @@ import RegisterBusiness from './RegisterBusiness';
  * ```html
  * <BusinessesList />
  * ```
+ *
+ * @returns {component} BusinessesList
  */
 class BusinessesList extends Component {
 	constructor() {
@@ -39,7 +42,9 @@ class BusinessesList extends Component {
 			this.setState({
 				businesses: response.data.businesses
 			});
-		}).catch(error => { });
+		}).catch(error => {
+			NotificationManager.error(error.response.data.message);
+		});
 	}
 
 	componentDidMount = () => {
@@ -67,9 +72,18 @@ class BusinessesList extends Component {
 				prev_page: response.data.prev_page
 			});
 			this.getAllBusinesses();
-		}).catch(error => { });
+		}).catch(error => {
+			NotificationManager.error(error.response.data.message);
+		});
 	}
 
+	/**
+	 * Business search event
+	 *
+	 * @param {event} event The submit event
+	 *
+	 * @returns {object} List of Businesses
+	 */
 	searchBusinesses = (event) => {
 		// Search for businesses by name, category and/or location.
 		event.preventDefault();
@@ -93,6 +107,14 @@ class BusinessesList extends Component {
 		})
 	}
 
+	/**
+	 * Page change event
+	 *
+	 * @param {event} event The submit event
+	 * @param {BigInteger} page The page count
+	 *
+	 * @returns {object} List of Businesses
+	 */
 	handlePageChange = (event, page) => {
 		// Query and return businesses for the requested page.
 		event.preventDefault();
@@ -125,18 +147,24 @@ class BusinessesList extends Component {
 						<div className="col-md-3" />
 						<div className="col-md-6 weconnect-div">
 							<BusinessSearch searchBusinesses={this.searchBusinesses} />
-							<button title="Add business" type="button" className="btn btn-primary btn-sm" style={{ marginBottom: 10, marginLeft: 20 }}
+							<Button title="Add business" className="btn btn-primary btn-sm" style={{ marginBottom: 10, marginLeft: 20 }}
 								data-toggle="modal" data-target="#registerBusinessModal">
 								Add a business <FontAwesomeIcon icon={faPlus} />
-							</button>
-							<BusinessCards user={user} businesses_list={this.state.businesses_list} />
+							</Button>
+							<BusinessCards
+								user={user}
+								businesses_list={this.state.businesses_list}
+								handleUpdateModal={this.handleUpdateModal}
+							/>
 							<Paginator prev_page={this.state.prev_page} next_page={this.state.next_page} handlePageChange={this.handlePageChange} />
 						</div>
 						<div className="col-md-3" />
 					</div>
 				</main>
-				<RegisterBusiness showUpdatedBusinesses={this.showUpdatedBusinesses} />
-				<BusinessModals businesses={this.state.businesses} showUpdatedBusinesses={this.showUpdatedBusinesses} />
+				<RegisterBusiness />
+				<BusinessModals
+					businesses={this.state.businesses}
+				/>
 			</div>
 		);
 	}

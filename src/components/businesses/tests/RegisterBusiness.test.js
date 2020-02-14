@@ -1,17 +1,25 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import RegisterBusiness from '../../components/businesses/RegisterBusiness';
+import RegisterBusiness from '../RegisterBusiness';
 import MockAdapter from 'axios-mock-adapter';
 import Axios from 'axios';
-import { apiUrl } from '../../App';
+import { apiUrl } from '../../../App';
 
 describe('<RegisterBusiness />', () => {
 	const mock = new MockAdapter(Axios);
-	const wrapper = mount(<RegisterBusiness showUpdatedBusinesses={() => {}} business={ {id: 2}} />);
+	const wrapper = mount(<RegisterBusiness business={ {id: 2}} />);
 
 	it('registers a business', () => {
 		mock.onPost(`${apiUrl}/businesses`).reply(201, {
 			message: "Business added"
+		})
+		const form = wrapper.find('form')
+		form.simulate('submit')
+	});
+
+	it('does not register an existing business', () => {
+		mock.onPost(`${apiUrl}/businesses`).reply(409, {
+			message: "Business already exists"
 		})
 		const form = wrapper.find('form')
 		form.simulate('submit')
