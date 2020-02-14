@@ -100,7 +100,6 @@ export const registerBusiness = (business) => {
  * @returns {None} Null
  */
 export const updateBusiness = (id, business) => {
-	console.log("bloody: ", id);
 	axios.defaults.headers.common.Authorization = 'Bearer ' + localStorage.getItem('access_token');
 	return axios.put(`${apiUrl}/businesses/${id}`, JSON.stringify(business), {
 		headers: { 'Content-Type': 'application/json' }
@@ -114,17 +113,17 @@ export const updateBusiness = (id, business) => {
 /**
  * Delete a business
  *
- * @param {object} props Containing the Business object and Form callback function
+ * @param {object} business Containing the Business object
  *
  * ```js
- * deleteBusiness(props)
+ * deleteBusiness(business)
  * ```
  *
  * @returns {None} Null
  */
-export const deleteBusiness = (props) => {
+export const deleteBusiness = (business) => {
 	axios.defaults.headers.common.Authorization = 'Bearer ' + localStorage.getItem('access_token');
-	axios.delete(`${apiUrl}/businesses/${props.business.id}`).then(response => {
+	axios.delete(`${apiUrl}/businesses/${business.id}`).then(response => {
 		NotificationManager.success(response.data.message);
 	}).catch(error => {
 		NotificationManager.error(error.response.data.message);

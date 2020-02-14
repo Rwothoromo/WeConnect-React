@@ -16,4 +16,12 @@ describe('<RegisterBusiness />', () => {
 		const form = wrapper.find('form')
 		form.simulate('submit')
 	});
+
+	it('does not register an existing business', () => {
+		mock.onPost(`${apiUrl}/businesses`).reply(409, {
+			message: "Business already exists"
+		})
+		const form = wrapper.find('form')
+		form.simulate('submit')
+	});
 });

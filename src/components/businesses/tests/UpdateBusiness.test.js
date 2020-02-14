@@ -27,33 +27,16 @@ describe('<UpdateBusiness />', () => {
 		mock.onPut(`${apiUrl}/businesses/2`).reply(200, {
 			message: "Business updated"
 		});
-
-		const updateBusinessComponent = wrapper;
-		// let spyUpdateBusiness = jest.spyOn(updateBusinessComponent.instance(), 'updateBusiness');
-
-		// updateBusinessComponent.instance().forceUpdate();
-		// updateBusinessComponent.find("input[name='name']").simulate('change', { target: { value: 'andela' } })
-		// updateBusinessComponent.find("input[name='category']").simulate('change', { target: { value: 'category' } })
-		// updateBusinessComponent.find("input[name='location']").simulate('change', { target: { value: 'location' } })
-		// updateBusinessComponent.find("textarea[name='description']").simulate('change', { target: { value: 'description' } })
-
-		// await updateBusinessComponent.find("form").simulate('submit', { preventDefault: () => { } })
-		// expect(spyUpdateBusiness).toHaveBeenCalled();
+		const form = wrapper.find('form')
+		form.simulate('submit')
 	});
 
-	it('fails if the category or location are blank', async () => {
+	it('fails if the category or location are blank', () => {
 		mock.onPut(`${apiUrl}/businesses/2`).reply(400, {
 			message: "category must be a string of maximum 50 characters"
 		});
-
-		const updateBusinessComponent = wrapper;
-		// let spyUpdateBusiness = jest.spyOn(updateBusinessComponent.instance(), 'updateBusiness');
-
-		// updateBusinessComponent.instance().forceUpdate();
-		// updateBusinessComponent.find("input[name='name']").simulate('change', { target: { value: 'andela' } })
-
-		// await updateBusinessComponent.find("form").simulate('submit', { preventDefault: () => { } })
-		// expect(spyUpdateBusiness).toHaveBeenCalled();
+		const form = wrapper.find('form')
+		form.simulate('submit')
 	});
 
 });

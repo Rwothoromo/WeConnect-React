@@ -19,10 +19,8 @@ const DeleteBusiness = ({ business }) => {
 
 	const onDelete = (event) => {
 		event.preventDefault();
-		if (business) { deleteBusiness(business); }
-		else {
-			// retry
-		}
+
+		deleteBusiness(business);
 	}
 
 	return (
@@ -44,7 +42,7 @@ const DeleteBusiness = ({ business }) => {
 						</div>
 					</div>
 					<div className="modal-footer">
-						<Button className="btn btn-danger" onClick={onDelete} data-dismiss="modal">Delete</Button>
+						<Button className="btn btn-danger" id="onDelete" onClick={onDelete} data-dismiss="modal">Delete</Button>
 						<Button className="btn btn-info" data-dismiss="modal">Close</Button>
 					</div>
 				</div>
